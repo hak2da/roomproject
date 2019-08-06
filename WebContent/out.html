@@ -113,49 +113,14 @@
 <form onsubmit="return false;">
     <div class="wrap-950 add-container">
         <div class="content left-content">
-            
-            <h4 style="display:inline-block">위치정보</h4>
-            <table class="add-table">
-                <tbody><tr>
-                    <th>주소</th>
-                    <td colspan="3">
-                       <input type="text" style="width: 350px; position: relative;">
-                        <div class="i-txt">
-                            · 주소와 단지명 모두 검색이 가능합니다.<br>
-                            · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
-                            · 오피스텔을 검색할 때에는 동/읍/면 이름과 단지 명을 함께 입력하면 좀 더<br>
-                            &nbsp;&nbsp;편하게 주소를 검색할 수 있습니다. 예) 계산동 하이베라스
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>번지</th>
-                    <td colspan="3">
-                        <input type="text" class="text" style="width:360px; margin-right:10px;">
-                        <button type="button" class="btn-locatino-check"> <span>위치 확인하기</span></button>
-                    </td>
-                </tr>
-                <tr id="address_detail">
-                    <th>나머지주소</th>
-                    <td colspan="3"><input type="text" class="text max" name="local4"></td>
-                </tr>
-            </tbody></table>
 
             <h4>사진 등록</h4>
             <div class="add-photo">
                 <p class="item-txt ischrome">
-                    · 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br>
-                    · 아래에 등록 버튼을 클릭하여 사진을 선택하거나, 마우스로 사진을 끌어와서 등록할 수도 있습니다.<br>
+                    · 사진 최대 5장 까지 등록할 수 있습니다.<br>
+                    · 아래에 등록 버튼을 클릭하여 등록할 수 있습니다.<br>
                     · 한꺼번에 여러 장 등록도 가능합니다.<br>
                     <span class="fc-red1">· 직접 찍은 실제 방 사진의 원본을 등록해야 합니다.</span><br>
-                    <span class="fc-red1">· 워터마크, 날짜, 전화번호 등이 포함된 사진이나 방과 관련없는 사진을 등록할 경우 중개가 종료될 수 있습니다.</span>
-                </p>
-                <p class="item-txt isnotchrome" style="display:none">
-                    · 등록 버튼을 이용하여 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.<br>
-                    · 사진을 여러장 선택하여 한번에 등록도 가능합니다.
-                </p>
-                <p class="item-txt islowIE" style="display:none">
-                    · 등록 버튼을 이용하여 사진 최소 5장 최대 15장 까지 등록할 수 있습니다.
                 </p>
 
                 <div class="item-photo" id="add-photo-box">
@@ -190,9 +155,19 @@
                 </div>
             </div>
  
-            <h4>상세 정보</h4>
+            <h4>정보 입력</h4>
             <table class="add-table">
-                <tbody><tr>
+                <tbody>
+                  <tr>
+                      <th>주소</th>
+                    <td colspan="3">
+                       <input type="text" style="width: 350px; position: relative;">
+                        <div class="i-txt">
+                            · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
+                        </div>
+                    </td>
+                  </tr>
+                   <tr>
                     <th>보증금</th>
                     <td>
                         <input type="text" class="text" name="deposit" onkeydown="return number_validate1(event);"> 만원
@@ -244,11 +219,6 @@
                 <tr>
                     <th>층수</th>
                     <td>
-                        건물 층 수:
-                        <select name="building_floor">
-                            <option value="">선택하세요</option>
-                            <option value="1">1층</option><option value="2">2층</option><option value="3">3층</option><option value="4">4층</option><option value="5">5층</option><option value="6">6층</option><option value="7">7층</option><option value="8">8층</option><option value="9">9층</option><option value="10">10층</option><option value="11">11층</option><option value="12">12층</option><option value="13">13층</option><option value="14">14층</option><option value="15">15층</option><option value="16">16층</option><option value="17">17층</option><option value="18">18층</option><option value="19">19층</option><option value="20">20층</option><option value="21">21층</option><option value="22">22층</option><option value="23">23층</option><option value="24">24층</option><option value="25">25층</option><option value="26">26층</option><option value="27">27층</option><option value="28">28층</option><option value="29">29층</option><option value="30">30층</option><option value="31">31층</option><option value="32">32층</option><option value="33">33층</option><option value="34">34층</option><option value="35">35층</option><option value="36">36층</option><option value="37">37층</option><option value="38">38층</option><option value="39">39층</option><option value="40">40층</option></select>
-                        &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
                         해당 층 :
                         <select name="room_floor">
                             <option value="">선택하세요</option>
