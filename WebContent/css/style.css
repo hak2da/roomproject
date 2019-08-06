@@ -1543,7 +1543,7 @@ element.style {
 }
 .add-container .add-photo .item-photo {
     width: 605px;
-    height: 300px;
+    height: 90px;
     overflow: hidden;
 }
 
@@ -1601,9 +1601,15 @@ element.style {
 
 .add-container .add-photo {
     border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
     color: #333333;
 }
 
+.add-table{
+    border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
+    color: #333333;
+}
 .add-container .add-table td select {
     height: 22px;
     border: 1px solid #a6a6a6;
@@ -1720,4 +1726,7 @@ body {
 #add_room {
     margin-top: 20px;
 }
-﻿
+#pyeong{
+    width: 30px;
+    margin-right: 5px;
+}

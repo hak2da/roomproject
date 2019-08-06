@@ -53,34 +53,73 @@
 	<![endif]-->
 
 	</head>
-
    <body>
-
-    
-   
+	
 	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<div id="fh5co-logo"><a href="index.html">King.</a></div>
+				</div>
+				<div class="col-xs-10 text-right menu-1">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="work.html">Work</a></li>
+						<li><a href="about.html">About</a></li>
+						<li class="has-dropdown">
+							<a href="services.html">Services</a>
+							<ul class="dropdown">
+								<li><a href="#">Web Design</a></li>
+								<li><a href="#">eCommerce</a></li>
+								<li><a href="#">Branding</a></li>
+								<li><a href="#">API</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
+							<a href="#">Tools</a>
+							<ul class="dropdown">
+								<li><a href="#">HTML5</a></li>
+								<li><a href="#">CSS3</a></li>
+								<li><a href="#">Sass</a></li>
+								<li><a href="#">jQuery</a></li>
+							</ul>
+						</li>
+						<li class="active"><a href="contact.html">Contact</a></li>
+						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+
+	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_2.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Contact Us</h1>
+							<h2>Free html5 templates Made by <a href="http://freehtml5.co" target="_blank">freehtml5.co</a></h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
 	
 <form onsubmit="return false;">
-    <input type="hidden" id="local1" name="local1">
-    <input type="hidden" id="local2" name="local2">
-    <input type="hidden" id="local3" name="local3">
-    <input type="hidden" id="local4" name="local4">
-    <input type="hidden" id="lat" name="lat">
-    <input type="hidden" id="lng" name="lng">
-    <input type="hidden" id="images" name="images">
-    <input type="hidden" id="area_danji_id" name="area_danji_id">
-    <input type="hidden" id="area_building_id" name="area_building_id">
-    <input type="hidden" id="building_type" name="building_type">
-
     <div class="wrap-950 add-container">
         <div class="content left-content">
             
-            <h4 style="display:inline-block">위치정보</h4><span class="fc-red1 address-x" style="display:none;">  ※주소는 변경이 불가능합니다. 주소가 다른 방은 새로 등록해 주세요. </span>
+            <h4 style="display:inline-block">위치정보</h4>
             <table class="add-table">
                 <tbody><tr>
                     <th>주소</th>
                     <td colspan="3">
-                        <span class="twitter-typeahead" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="text mb-5 tt-hint" style="width: 350px; position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);" readonly="" autocomplete="off" spellcheck="false" tabindex="-1"><input type="text" class="text mb-5 tt-input" id="address1" name="address1" style="width: 350px; position: relative; vertical-align: top; background-color: transparent;" autocomplete="off" spellcheck="false" dir="auto"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Spoqa Han Sans&quot;, 나눔고딕, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none; right: auto;"><div class="tt-dataset-addresses"></div><div class="tt-dataset-danjis"></div></span></span>
+                       <input type="text" style="width: 350px; position: relative;">
                         <div class="i-txt">
                             · 주소와 단지명 모두 검색이 가능합니다.<br>
                             · 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
@@ -92,28 +131,13 @@
                 <tr>
                     <th>번지</th>
                     <td colspan="3">
-                        <input type="text" class="text" style="width:360px; margin-right:10px;" id="address2" name="address2" onkeydown="return captureReturnKey(event);">
-                        <button type="button" class="btn-locatino-check"><em class="zbIcon icon-location"></em> <span>위치 확인하기</span></button>
-                        <div class="item-map">
-                            <div id="map"></div>
-                            <div class="i-status" id="agent_bar" style="display:none;">방 주변에 <span id="agent_count">32</span>곳의 중개사무소가 있습니다 <button type="button" class="btn-map-show">[목록보기]</button></div>
-                            <div class="i-list">
-                                <ul id="list-agent"></ul>
-                            </div>
-                        </div>
+                        <input type="text" class="text" style="width:360px; margin-right:10px;">
+                        <button type="button" class="btn-locatino-check"> <span>위치 확인하기</span></button>
                     </td>
                 </tr>
                 <tr id="address_detail">
                     <th>나머지주소</th>
                     <td colspan="3"><input type="text" class="text max" name="local4"></td>
-                </tr>
-                <tr id="danji_detail" style="display:none">
-                    <th>동</th>
-                    <td>
-                        <select id="area_building_id" name="area_building_id"></select>
-                    </td>
-                    <th>호수</th>
-                    <td><input type="text" class="text max" name="address3"></td>
                 </tr>
             </tbody></table>
 
@@ -140,67 +164,28 @@
                             <span class="i-count">1</span>
                             <button class="i-btn" type="button" id="add_image1" value="true" data-index="0" style="z-index: 1;">+등록</button>
                             <em class="i-tit">대표사진</em>
-                        <div id="html5_1dhidtvo57phi3ncas1do11bnq3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvo57phi3ncas1do11bnq3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
+                            </li>
                         <li id="li2" class="ui-sortable-handle">
                             <span class="i-count">2</span>
                             <button class="i-btn" type="button" id="add_image2" value="true" data-index="1" style="z-index: 1;">+등록</button>
                             <em class="i-tit">화장실</em>
-                        <div id="html5_1dhidtvo71k8mjhl4aogrc4566_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvo71k8mjhl4aogrc4566" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
+                        </li>
                         <li id="li3" class="ui-sortable-handle">
                             <span class="i-count">3</span>
                             <button class="i-btn" type="button" id="add_image3" value="true" data-index="2" style="z-index: 1;">+등록</button>
                             <em class="i-tit">주방</em>
-                        <div id="html5_1dhidtvob17uimqbijl1ml51g379_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvob17uimqbijl1ml51g379" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
+                        </li>
                         <li id="li4" class="ui-sortable-handle">
                             <span class="i-count">4</span>
                             <button class="i-btn" type="button" id="add_image4" data-index="3" style="z-index: 1;">+등록</button>
                             <em class="i-tit">방사진</em>
-                        <div id="html5_1dhidtvodenbrgrsag1esncr6c_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvodenbrgrsag1esncr6c" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
+                        </li>
                         <li id="li5" class="ui-sortable-handle">
                             <span class="i-count">5</span>
                             <button class="i-btn" type="button" id="add_image5" data-index="4" style="z-index: 1;">+등록</button>
                             <em class="i-tit">방사진</em>
-                        <div id="html5_1dhidtvoff7cf9c18q6rp51havf_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvoff7cf9c18q6rp51havf" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li6" class="ui-sortable-handle">
-                            <span class="i-count">6</span>
-                            <button class="i-btn" type="button" id="add_image6" data-index="5" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvog1ho71a991hchss8gdti_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvog1ho71a991hchss8gdti" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li7" class="ui-sortable-handle">
-                            <span class="i-count">7</span>
-                            <button class="i-btn" type="button" id="add_image7" data-index="6" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvoh16821i2g8kf1jup13cpl_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvoh16821i2g8kf1jup13cpl" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li8" class="ui-sortable-handle">
-                            <span class="i-count">8</span>
-                            <button class="i-btn" type="button" id="add_image8" data-index="7" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvoi1t9o1krdg4cu7jro_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvoi1t9o1krdg4cu7jro" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li9" class="ui-sortable-handle">
-                            <span class="i-count">9</span>
-                            <button class="i-btn" type="button" id="add_image9" data-index="8" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvoli7afoaetlscg1om4r_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvoli7afoaetlscg1om4r" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li10" class="ui-sortable-handle">
-                            <span class="i-count">10</span>
-                            <button class="i-btn" type="button" id="add_image10" data-index="9" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvon1deu1i3dkqf1spud65u_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvon1deu1i3dkqf1spud65u" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li11" class="ui-sortable-handle">
-                            <span class="i-count">11</span>
-                            <button class="i-btn" type="button" id="add_image11" data-index="10" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvoo1vuc1m041f4ua681a2011_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvoo1vuc1m041f4ua681a2011" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li12" class="ui-sortable-handle">
-                            <span class="i-count">12</span>
-                            <button class="i-btn" type="button" id="add_image12" data-index="11" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvopcknqi1qeg1kl11oqb14_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvopcknqi1qeg1kl11oqb14" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li13" class="ui-sortable-handle">
-                            <span class="i-count">13</span>
-                            <button class="i-btn" type="button" id="add_image13" data-index="12" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvoq16is1kf4dss1l2t1nli17_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvoq16is1kf4dss1l2t1nli17" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li14" class="ui-sortable-handle">
-                            <span class="i-count">14</span>
-                            <button class="i-btn" type="button" id="add_image14" data-index="13" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvos1djn1tj8jo2qc6oe91a_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvos1djn1tj8jo2qc6oe91a" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
-                        <li id="li15" class="ui-sortable-handle">
-                            <span class="i-count">15</span>
-                            <button class="i-btn" type="button" id="add_image15" data-index="14" style="z-index: 1;">+등록</button>
-                        <div id="html5_1dhidtvp111p61ata7iudcqhkj1d_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 28px; left: 33px; width: 41px; height: 29px; overflow: hidden; z-index: 0;"><input id="html5_1dhidtvp111p61ata7iudcqhkj1d" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/png"></div></li>
+                       </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -230,7 +215,6 @@
                             <option value="02">분리형 원룸 (방1, 거실1)</option>
                             <option value="03">복층형 원룸</option>
                             <option value="04">투룸 (방2, 거실1)</option>
-                            <option value="05">쓰리룸+</option>
                         </select>
                     </td>
                 </tr>
@@ -254,11 +238,7 @@
                 <tr>
                     <th>크기</th>
                     <td>
-                        <div class="mb-5">전용면적 : <input type="text" class="text min" name="size_m2" onkeydown="return number_validate2(event);"> m<sup>2</sup>  = <input type="text" class="text min" name="size" onkeydown="return number_validate2(event);"> P</div>
-                        <span class="mb-5" id="contract_size">
-                            계약면적 : <input type="text" class="text min" name="size_contract_m2" onkeydown="return number_validate2(event);"> m<sup>2</sup> = <input type="text" class="text min" name="size_contract" onkeydown="return number_validate2(event);"> P
-                        </span>
-                        <span class="fc-red1">※한 단위만 입력하면 자동으로 전환됩니다</span>
+                        <div class="mb-5">전용면적 : <input type="text" id="pyeong"/>평
                     </td>
                 </tr>
                 <tr>
@@ -267,67 +247,16 @@
                         건물 층 수:
                         <select name="building_floor">
                             <option value="">선택하세요</option>
-                        <option value="1">1층</option><option value="2">2층</option><option value="3">3층</option><option value="4">4층</option><option value="5">5층</option><option value="6">6층</option><option value="7">7층</option><option value="8">8층</option><option value="9">9층</option><option value="10">10층</option><option value="11">11층</option><option value="12">12층</option><option value="13">13층</option><option value="14">14층</option><option value="15">15층</option><option value="16">16층</option><option value="17">17층</option><option value="18">18층</option><option value="19">19층</option><option value="20">20층</option><option value="21">21층</option><option value="22">22층</option><option value="23">23층</option><option value="24">24층</option><option value="25">25층</option><option value="26">26층</option><option value="27">27층</option><option value="28">28층</option><option value="29">29층</option><option value="30">30층</option><option value="31">31층</option><option value="32">32층</option><option value="33">33층</option><option value="34">34층</option><option value="35">35층</option><option value="36">36층</option><option value="37">37층</option><option value="38">38층</option><option value="39">39층</option><option value="40">40층</option><option value="41">41층</option><option value="42">42층</option><option value="43">43층</option><option value="44">44층</option><option value="45">45층</option><option value="46">46층</option><option value="47">47층</option><option value="48">48층</option><option value="49">49층</option><option value="50">50층</option><option value="51">51층</option><option value="52">52층</option><option value="53">53층</option><option value="54">54층</option><option value="55">55층</option><option value="56">56층</option><option value="57">57층</option><option value="58">58층</option><option value="59">59층</option><option value="60">60층</option><option value="61">61층</option><option value="62">62층</option><option value="63">63층</option><option value="64">64층</option><option value="65">65층</option><option value="66">66층</option><option value="67">67층</option><option value="68">68층</option><option value="69">69층</option><option value="70">70층</option><option value="71">71층</option><option value="72">72층</option><option value="73">73층</option><option value="74">74층</option><option value="75">75층</option><option value="76">76층</option><option value="77">77층</option><option value="78">78층</option><option value="79">79층</option><option value="80">80층</option></select>
+                            <option value="1">1층</option><option value="2">2층</option><option value="3">3층</option><option value="4">4층</option><option value="5">5층</option><option value="6">6층</option><option value="7">7층</option><option value="8">8층</option><option value="9">9층</option><option value="10">10층</option><option value="11">11층</option><option value="12">12층</option><option value="13">13층</option><option value="14">14층</option><option value="15">15층</option><option value="16">16층</option><option value="17">17층</option><option value="18">18층</option><option value="19">19층</option><option value="20">20층</option><option value="21">21층</option><option value="22">22층</option><option value="23">23층</option><option value="24">24층</option><option value="25">25층</option><option value="26">26층</option><option value="27">27층</option><option value="28">28층</option><option value="29">29층</option><option value="30">30층</option><option value="31">31층</option><option value="32">32층</option><option value="33">33층</option><option value="34">34층</option><option value="35">35층</option><option value="36">36층</option><option value="37">37층</option><option value="38">38층</option><option value="39">39층</option><option value="40">40층</option></select>
                         &nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
                         해당 층 :
                         <select name="room_floor">
                             <option value="">선택하세요</option>
                             <option value="반지하">반지하</option>
                             <option value="옥탑방">옥탑방</option>
-                        <option value="1">1층</option><option value="2">2층</option><option value="3">3층</option><option value="4">4층</option><option value="5">5층</option><option value="6">6층</option><option value="7">7층</option><option value="8">8층</option><option value="9">9층</option><option value="10">10층</option><option value="11">11층</option><option value="12">12층</option><option value="13">13층</option><option value="14">14층</option><option value="15">15층</option><option value="16">16층</option><option value="17">17층</option><option value="18">18층</option><option value="19">19층</option><option value="20">20층</option><option value="21">21층</option><option value="22">22층</option><option value="23">23층</option><option value="24">24층</option><option value="25">25층</option><option value="26">26층</option><option value="27">27층</option><option value="28">28층</option><option value="29">29층</option><option value="30">30층</option><option value="31">31층</option><option value="32">32층</option><option value="33">33층</option><option value="34">34층</option><option value="35">35층</option><option value="36">36층</option><option value="37">37층</option><option value="38">38층</option><option value="39">39층</option><option value="40">40층</option><option value="41">41층</option><option value="42">42층</option><option value="43">43층</option><option value="44">44층</option><option value="45">45층</option><option value="46">46층</option><option value="47">47층</option><option value="48">48층</option><option value="49">49층</option><option value="50">50층</option><option value="51">51층</option><option value="52">52층</option><option value="53">53층</option><option value="54">54층</option><option value="55">55층</option><option value="56">56층</option><option value="57">57층</option><option value="58">58층</option><option value="59">59층</option><option value="60">60층</option><option value="61">61층</option><option value="62">62층</option><option value="63">63층</option><option value="64">64층</option><option value="65">65층</option><option value="66">66층</option><option value="67">67층</option><option value="68">68층</option><option value="69">69층</option><option value="70">70층</option><option value="71">71층</option><option value="72">72층</option><option value="73">73층</option><option value="74">74층</option><option value="75">75층</option><option value="76">76층</option><option value="77">77층</option><option value="78">78층</option><option value="79">79층</option><option value="80">80층</option></select>
+                        <option value="1">1층</option><option value="2">2층</option><option value="3">3층</option><option value="4">4층</option><option value="5">5층</option><option value="6">6층</option><option value="7">7층</option><option value="8">8층</option><option value="9">9층</option><option value="10">10층</option><option value="11">11층</option><option value="12">12층</option><option value="13">13층</option><option value="14">14층</option><option value="15">15층</option><option value="16">16층</option><option value="17">17층</option><option value="18">18층</option><option value="19">19층</option><option value="20">20층</option><option value="21">21층</option><option value="22">22층</option><option value="23">23층</option><option value="24">24층</option><option value="25">25층</option><option value="26">26층</option><option value="27">27층</option><option value="28">28층</option><option value="29">29층</option><option value="30">30층</option><option value="31">31층</option><option value="32">32층</option><option value="33">33층</option><option value="34">34층</option><option value="35">35층</option><option value="36">36층</option><option value="37">37층</option><option value="38">38층</option><option value="39">39층</option><option value="40">40층</option></select>
                     </td>
-                </tr>
-                <tr>
-                    <th>방향</th>
-                    <td>
-                        <select name="room_direction">
-                            <option value="">선택하세요</option>
-                            <option value="E">동향</option>
-                            <option value="W">서향</option>
-                            <option value="S">남향</option>
-                            <option value="N">북향</option>
-                            <option value="SE">남동향</option>
-                            <option value="SW">남서향</option>
-                            <option value="NE">북동향</option>
-                            <option value="NW">북서향</option>
-                            <option value="-">확인필요</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <th>옵션</th>
-                    <td class="i-options">
-                        <label><input type="checkbox" name="room_options" value="01"> 에어컨</label>
-                        <label><input type="checkbox" name="room_options" value="02"> 냉장고</label>
-                        <label><input type="checkbox" name="room_options" value="03"> 세탁기</label>
-                        <label><input type="checkbox" name="room_options" value="04"> 가스레인지</label>
-                        <label><input type="checkbox" name="room_options" value="05"> 인덕션</label>
-                        <label><input type="checkbox" name="room_options" value="06"> 전자레인지</label>
-                        <label><input type="checkbox" name="room_options" value="07"> 책상</label>
-                        <label><input type="checkbox" name="room_options" value="08"> 책장</label>
-                        <label><input type="checkbox" name="room_options" value="09"> 침대</label>
-                        <label><input type="checkbox" name="room_options" value="10"> 옷장</label>
-                        <label><input type="checkbox" name="room_options" value="11"> 신발장</label>
-                        <label><input type="checkbox" name="room_options" value="12"> 싱크대</label>
-                    </td>
-                </tr>
-                <tr>
-                    <th>전세 대출</th>
-                    <td>
-                        <label> <input type="radio" name="loan" value="true"> 가능</label>
-                        <label><input type="radio" name="loan" value="false"> 불가능</label>
-                        <label><input type="radio" name="loan" value="-"> 확인필요</label>
-                    </td>
-                </tr>
-                <tr>
-                    <th>반려동물</th>
-                    <td>
-                        <label><input type="radio" name="pets" value="yes"> 가능</label>
-                        <label><input type="radio" name="pets" value="no"> 불가능</label>
-                        <label><input type="radio" name="pets" value="catonly"> 고양이만</label>
-                        <label><input type="radio" name="pets" value="-"> 확인필요</label>
-                    </td>
-                </tr>
+                </tr> 
                 <tr>
                     <th>주차</th>
                     <td class="has-col">
@@ -366,12 +295,6 @@
                         
                     </td>
                 </tr>
-                <tr id="to_agent_memo">
-                    <th>중개사에게<br>남기는 메세지</th>
-                    <td>
-                        <textarea id="to_agent_text" name="to_agent" style="height:50px;" placeholder="중개사에게만 보여 집니다. 상세한 조건 등 중개사에게 전달할 말을 적어 주세요"></textarea>
-                    </td>
-                </tr>
             </tbody></table>
 
             
@@ -393,6 +316,15 @@
     </div>
 </form>
 </div>
-
+<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
     </body>
 </html>
