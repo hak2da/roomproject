@@ -1,3 +1,4 @@
+﻿@@ -1,1721 +1 @@
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -10,6 +11,8 @@
 * 	Template Style 
 *
 * ======================================================= */
+
+
 body {
   font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
@@ -19,6 +22,7 @@ body {
   background: #fff;
     
 }
+
 .centered { display: table; margin-left: auto; margin-right: auto; }
 
 .card-signin {
@@ -26,27 +30,30 @@ body {
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
     width: 500px;
-
 }
 
-.card-signin .card-title {
+.card-signin .card-title .card-addr{
   margin-bottom: 2rem;
   font-weight: 300;
   font-size: 1.5rem;
 }
 
 .card-signin .card-body {
-  padding-top: 20%;
-    padding-bottom: 20%;
-    padding-left: 10%;
-    padding-right: 10%;
+  padding: 2rem;
 }
 
 .form-signin {
   width: 100%;
- 
-
 }
+
+.card-addr {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    width: 600px;
+}
+
+
 
 .form-signin .btn {
   font-size: 80%;
@@ -1489,4 +1496,237 @@ h1, h2, h3, h4, h5, h6, figure {
   border-bottom-left-radius: 0px !important;
 }
 
+
+
 /*# sourceMappingURL=style.css.map */
+
+/*out.html*/
+
+.add-container .add-table th {
+    width: 91px;
+    background: #f7f6f4;
+    border-bottom: 1px dotted #bbbbbb;
+    font-weight: 700;
+    text-align: center;
+}
+
+.add-container .add-table td {
+    padding: 7px 10px;
+    border-bottom: 1px dotted #bbbbbb;
+}
+
+.add-container .i-txt {
+    font-size: 12px;
+    color: #666666;
+}
+
+element.style {
+    width: 360px;
+    margin-right: 10px;
+}
+
+.add-container .add-table td .btn-locatino-check {
+    padding: 2px 10px 4px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 0 -1px 0 #b6b6b6 inset;
+    font-size: 12px;
+}
+.add-container .add-table td .text.max {
+    width: 100%;
+}
+.add-container h4 {
+    margin: 30px 0 10px;
+    font-size: 16px;
+    color: #333333;
+    font-weight: 700;
+}
+.add-container .add-photo .item-photo {
+    width: 605px;
+    height: 90px;
+    overflow: hidden;
+}
+
+element.style {
+}
+.add-container .add-photo .item-photo li .i-count {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 36px;
+    padding: 0 12px 0 0;
+    background: url(//s.zigbang.com/v1/web/rooms/bg_count.png) no-repeat 0 0;
+    z-index: 1;
+    color: #999999;
+    font-family: Myriad, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.add-container .add-photo .item-photo li {
+    position: relative;
+    float: left;
+    width: 108px;
+    height: 81px;
+    margin-right: 13px;
+    margin-bottom: 11px;
+    border: 1px solid #dddddd;
+    overflow: hidden;
+    box-sizing: border-box;
+    text-align: center;
+    background: #f7f6f4;
+}
+
+.add-container .add-photo .item-photo li .i-btn {
+    position: absolute;
+    top: 28px;
+    left: 33px;
+    padding: 4px 5px 5px;
+    background: white;
+    border: 1px solid #666666;
+    box-shadow: 0 -1px 0 #b6b6b6 inset;
+    border-radius: 5px;
+}
+
+.add-container .add-photo .item-photo li .i-tit {
+    position: absolute;
+    left: 5;
+    right: 0;
+    bottom: 5px;
+    text-align: center;
+}
+
+.add-container .add-photo {
+    border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
+    color: #333333;
+}
+
+.add-table{
+    border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
+    color: #333333;
+}
+.add-container .add-table td select {
+    height: 22px;
+    border: 1px solid #a6a6a6;
+}
+select {
+    height: 28px;
+    box-sizing: border-box;
+}
+
+.add-container .add-table td .text.min {
+    width: 60px;
+}
+.add-container .add-table td .text {
+    width: 250px;
+    height: 22px;
+    border: 1px solid #a6a6a6;
+}
+
+.add-container .add-table td.i-options label {
+    display: inline-block;
+    width: 93px;
+    margin: 0 0 5px;
+    vertical-align: top;
+}
+
+input {
+    vertical-align: middle;
+}
+
+.add-container .add-table td label {
+    margin-right: 20px;
+}
+
+.add-container .add-table td .i-col strong {
+    display: block;
+    float: left;
+    padding: 0 10px;
+    margin-right: 10px;
+    height: 37px;
+    background: #f7f6f4;
+    line-height: 37px;
+}
+
+.add-container .add-table td .i-col {
+    display: inline-block;
+    margin-left: 80px;
+    height: 37px;
+    line-height: 37px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.add-container .add-table td textarea {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #a6a6a6;
+    box-sizing: border-box;
+}
+
+.add-container .add-btn button {
+    display: block;
+    width: 260px;
+    height: 46px;
+    margin: 0 auto;
+    background: #f18113;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+input, button, select, a, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+.add-container .add-btn {
+    width: 630px;
+    float: left;
+}
+.m-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.content.left-content {
+    float: center;
+    width: 630px;
+}
+.content {
+    width: 950px;
+    padding: 0 15px 50px;
+    margin: 23px auto 50px;
+    background: white;
+    border: 1px solid #d9d3c8;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, em, img, sub, sup, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, figcaption, footer, header, hgroup, menu, nav, section, summary, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+}
+
+body {
+    line-height: 1.5em;
+    background: #f6f6f6;
+    font-size: 12px;
+    color: #666666;
+    font-family: Spoqa Han Sans, '나눔고딕', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
+    -webkit-text-size-adjust: none;
+}
+#add_room {
+    margin-top: 20px;
+}
+#pyeong{
+    width: 30px;
+    margin-right: 5px;
+}
