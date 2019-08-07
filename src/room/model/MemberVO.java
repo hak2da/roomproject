@@ -47,5 +47,5 @@ public class MemberVO {
 		this.usernum = usernum;
 	}
 	
-	
+	//
 }
