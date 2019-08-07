@@ -1,6 +1,6 @@
-﻿<<<<<<< HEAD
 ﻿
-=======
+﻿@@ -1,1721 +1 @@
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -15,6 +15,16 @@
 * ======================================================= */
 
 
+
+body {
+  font-family: "Work Sans", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #828282;
+  background: #fff;
+    
+}
 
 
 .centered { display: table; margin-left: auto; margin-right: auto; }
@@ -1521,6 +1531,18 @@ element.style {
 
 
 
+
+.add-container .add-table td .btn-locatino-check {
+    padding: 2px 10px 4px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 0 -1px 0 #b6b6b6 inset;
+    font-size: 12px;
+}
+.add-container .add-table td .text.max {
+    width: 100%;
+}
+
 .add-container h4 {
     margin: 30px 0 10px;
     font-size: 16px;
@@ -1529,11 +1551,32 @@ element.style {
 }
 .add-container .add-photo .item-photo {
     width: 605px;
-    height: 300px;
+
+    height: 90px;
+
     overflow: hidden;
 }
 
 element.style {
+}
+
+
+
+.add-container .add-photo .item-photo li .i-count {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 36px;
+    padding: 0 12px 0 0;
+    background: url(//s.zigbang.com/v1/web/rooms/bg_count.png) no-repeat 0 0;
+    z-index: 1;
+    color: #999999;
+    font-family: Myriad, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
 }
 
 
@@ -1572,7 +1615,23 @@ element.style {
 
 .add-container .add-photo {
     border-top: 2px solid #333333;
+
     color: #333333;
+}
+
+
+    border-bottom: 1px solid #333333;
+    color: #333333;
+}
+
+.add-table{
+    border-top: 2px solid #333333;
+    border-bottom: 1px solid #333333;
+    color: #333333;
+}
+.add-container .add-table td select {
+    height: 22px;
+    border: 1px solid #a6a6a6;
 }
 
 select {
@@ -1584,7 +1643,9 @@ select {
     width: 60px;
 }
 .add-container .add-table td .text {
-    width: 180px;
+
+    width: 250px;
+
     height: 22px;
     border: 1px solid #a6a6a6;
 }
@@ -1633,6 +1694,26 @@ input {
 
 
 
+
+.add-container .add-btn button {
+    display: block;
+    width: 260px;
+    height: 46px;
+    margin: 0 auto;
+    background: #f18113;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+input, button, select, a, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+
 .add-container .add-btn {
     width: 630px;
     float: left;
@@ -1656,6 +1737,14 @@ input {
 }
 
 
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, em, img, sub, sup, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, figcaption, footer, header, hgroup, menu, nav, section, summary, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+
+
 body {
     line-height: 1.5em;
     background: #f6f6f6;
@@ -1666,5 +1755,12 @@ body {
 }
 #add_room {
     margin-top: 20px;
+}
+
+
+
+#pyeong{
+    width: 30px;
+    margin-right: 5px;
 }
 
