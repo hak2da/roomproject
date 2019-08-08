@@ -46,6 +46,5 @@ public class MemberVO {
 	public void setUsernum(int usernum) {
 		this.usernum = usernum;
 	}
-	
-	
+
 }
