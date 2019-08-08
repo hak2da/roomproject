@@ -20,7 +20,6 @@ public class RoomDAO {
 		try{
 			Context init = new InitialContext();
 	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc:OracleDB");
-	  		System.out.println("연결성공");
 		}catch(Exception ex){
 			System.out.println("DB 연결 실패 : " + ex);
 			return;
