@@ -120,17 +120,16 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">로그인</h5>
-            <form class="form-signin" method="post">
+            <form class="form-signin" method="post" action="login.do">
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="아이디" required autofocus>
+                <input type="text" name="id" class="form-control" placeholder="아이디" required autofocus>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
+                <input type="password" name="password" class="form-control" placeholder="비밀번호" required>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">일반 로그인</button>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">업체 로그인</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">로그인</button>
               
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='search.html'">아이디/비밀번호 찾기</button>
               

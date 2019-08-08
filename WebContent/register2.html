@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>King &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width
+	=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
 	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="gettemplates.co" />
@@ -52,10 +53,10 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
+	
 	</head>
 	<body>
-		
+	
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -119,12 +120,37 @@
        <div class="centered">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">회원가입</h5>
-              
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="location.href='register2.html'">일반 회원가입</button>
-              
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="location.href='register3.html'">업체 회원가입</button>
+            <h5 class="card-title text-center">일반 회원가입</h5>
+            <form class="form-signin" action="register2.do" method="post">
              
+             <div class="form-label-group">
+                <input type="text" name="name" class="form-control" placeholder="이름" required autofocus>
+              </div>
+             
+              <div class="form-label-group">
+                <input type="text" name="id" class="form-control" placeholder="아이디" required autofocus>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" name="pwd1" class="form-control" placeholder="비밀번호" required>
+              </div>
+              
+              <div class="form-label-group">
+                <input type="password" name="pwd2" class="form-control" placeholder="비밀번호 확인" required>
+              </div>
+              
+              <div class="form-label-group">
+                <input type="email" name="email" class="form-control" placeholder="이메일" required autofocus>
+              </div>
+              
+              <div class="form-label-group">
+                <input type="text" name="phone" class="form-control" placeholder="전화번호" required autofocus>
+              </div>
+              
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
+             
+            
+            </form>
           </div>
            </div>
         </div>
