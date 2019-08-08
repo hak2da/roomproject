@@ -35,11 +35,11 @@ public class RoomDAO {
 		
 		try {
 			System.out.println("RoomDAO insert문 시작");
-		sql = "INSERT INTO ROOMINFO (ADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "INSERT INTO ROOMINFO (ADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES "
+				+ "					(       ?,    ?,     ?,     ?,     ?,     ?,      ?,   ?,       ?,   ?,    ?,    ?,      ?,   ?,    ?,    ?,    ?,      ?)";
 			
 		con = ds.getConnection();
 		pstmt = con.prepareStatement(sql);
-		rs = pstmt.executeQuery();
 		
 		pstmt.setString(1, room.getADDRESS());
 		pstmt.setString(2, room.getIMAGE1());
@@ -50,13 +50,13 @@ public class RoomDAO {
 		pstmt.setInt(7, room.getDEPOSIT());
 		pstmt.setInt(8, room.getRENT());
 		pstmt.setString(9, room.getROOMTYPE());
-		pstmt.setInt(10, room.getMPAY());
+		pstmt.setString(10, room.getMPAY());
 		pstmt.setString(11, room.getMPAY2());
 		pstmt.setInt(12, room.getRSIZE());
-		pstmt.setInt(13, room.getPARKING());
-		pstmt.setInt(14, room.getELVE());
+		pstmt.setString(13, room.getPARKING());
+		pstmt.setString(14, room.getELVE());
 		pstmt.setString(15, room.getFLOOR());
-		pstmt.setDate(16, (Date) room.getRDATE());
+		pstmt.setString(16, room.getRDATE());
 		pstmt.setString(17, room.getTITLE());
 		pstmt.setString(18, room.getCONTENT());
 		

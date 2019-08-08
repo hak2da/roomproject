@@ -27,8 +27,12 @@ public class RoomOutFrontController
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(command.equals("/RoomOut.do")){
+		if(command.equals("/Out.do")){
 			System.out.println("RoomOutFrontController1");
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("out.html");
+		} else if (command.equals("/RoomOutAction.do")) {
 			action  = new RoomOutAction();
 			try {
 				forward=action.execute(request, response );

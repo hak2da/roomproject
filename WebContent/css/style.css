@@ -1596,8 +1596,8 @@ element.style {
 
 .add-container .add-photo .item-photo li .i-btn {
     position: absolute;
-    top: 28px;
-    left: 33px;
+    top: 25px;
+    left: 27px;
     padding: 4px 5px 5px;
     background: white;
     border: 1px solid #666666;
@@ -1605,17 +1605,18 @@ element.style {
     border-radius: 5px;
 }
 
+
 .add-container .add-photo .item-photo li .i-tit {
     position: absolute;
     left: 5;
     right: 0;
-    bottom: 5px;
+    bottom: 2px;
     text-align: center;
 }
 
 .add-container .add-photo {
     border-top: 2px solid #333333;
-
+    border-bottom: 1px solid #333333;
     color: #333333;
 }
 

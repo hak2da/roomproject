@@ -22,6 +22,7 @@ public class RoomOutAction implements Action{
 		boolean result=false;
 		
 		try{
+			request.setCharacterEncoding("utf-8");
 			System.out.println("RoomOutAction");
 			vo.setADDRESS(request.getParameter("ADDRESS"));
 			vo.setIMAGE1(request.getParameter("IMAGE1"));
@@ -32,12 +33,13 @@ public class RoomOutAction implements Action{
 			vo.setDEPOSIT(Integer.parseInt(request.getParameter("DEPOSIT")));
 			vo.setRENT(Integer.parseInt(request.getParameter("RENT")));
 			vo.setROOMTYPE(request.getParameter("ROOMTYPE"));
-			vo.setMPAY(Integer.parseInt(request.getParameter("MPAY")));
+			vo.setMPAY(request.getParameter("MPAY"));
 			vo.setMPAY2(request.getParameter("MPAY2"));
 			vo.setRSIZE(Integer.parseInt(request.getParameter("RSIZE")));
-			vo.setPARKING(Integer.parseInt(request.getParameter("PARKING")));
-			vo.setELVE(Integer.parseInt(request.getParameter("ELVE")));
-			vo.setRDATE(new Date("RDATE"));
+			vo.setPARKING(request.getParameter("PARKING"));
+			vo.setELVE(request.getParameter("ELVE"));
+			vo.setFLOOR(request.getParameter("FLOOR"));
+			vo.setRDATE(request.getParameter("RDATE"));
 			vo.setTITLE(request.getParameter("TITLE"));
 			vo.setCONTENT(request.getParameter("CONTENT"));
 		
