@@ -10,6 +10,7 @@ public class JoinAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("JoinAction");
 		request.setCharacterEncoding("UTF-8");
 		MemberDAO dao = new MemberDAO();
 	   	MemberVO vo = new MemberVO();
@@ -33,7 +34,7 @@ public class JoinAction implements Action {
    		System.out.println("회원 등록 완료");
    		
    		forward.setRedirect(true);
-   		forward.setPath("./login.do");
+   		forward.setPath("./login.to");
    		return forward;
 	}
 

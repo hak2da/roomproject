@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.action.Action;
 import member.action.ActionForward;
 
-@WebServlet("*.do")
+@WebServlet("*.to")
 public class MemberController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
 	private static final long serialVersionUID = 1L;
@@ -25,18 +25,25 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 		ActionForward forward = null;
 		Action action = null;
 
-		if (command.equals("/register2.do")) {
+		if (command.equals("/register2.to")) {
+			System.out.println("MemberController1");
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("register2.html");
-		} else if (command.equals("/JoinAction.do")) {
+		} else if (command.equals("/JoinAction.to")) {
+			System.out.println("MemberController2");
 			action = new JoinAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} 
+		} else if (command.equals("/login.to")) {
+			System.out.println("MemberController1");
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("login.html");
+		}
 
 		if (forward != null) {
 			if (forward.isRedirect()) {
