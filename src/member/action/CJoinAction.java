@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import room.model.MemberDAO;
 import room.model.MemberVO;
 
-public class JoinAction implements Action {
+public class CJoinAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -19,13 +19,14 @@ public class JoinAction implements Action {
 	   	boolean result=false;
 	   	
 	   	vo.setName(request.getParameter("name"));
+	   	vo.setCname(request.getParameter("cname"));
 	   	vo.setId(request.getParameter("id"));
 	   	vo.setPwd(request.getParameter("pwd1"));
 	   	vo.setEmail(request.getParameter("email"));
 	   	vo.setPhone(request.getParameter("phone"));
-	   	vo.setUsernum(1);
+	   	vo.setUsernum(2);
 	   	
-	   	result = dao.insert(vo);
+	   	result = dao.cinsert(vo);
    		
    		if(result==false){
    			System.out.println("회원 등록 실패");

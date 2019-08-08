@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.action.JoinAction;
 import room.action.Action;
 import room.action.ActionForward;
 import room.action.RoomOutAction;
@@ -27,14 +28,19 @@ public class RoomOutFrontController
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(command.equals("/RoomOut.do")){
-			action  = new RoomOutAction();
+		if(command.equals("/RommOut.do")){
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("out.html");
+		} else if (command.equals("/RoomOutAction.do")) {
+			action = new RoomOutAction();
 			try {
-				forward=action.execute(request, response );
+				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
+		
 			if(forward != null){
 				if(forward.isRedirect()){
 					response.sendRedirect(forward.getPath());

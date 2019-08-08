@@ -26,12 +26,10 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 		Action action = null;
 
 		if (command.equals("/register2.to")) {
-			System.out.println("MemberController1");
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("register2.html");
 		} else if (command.equals("/JoinAction.to")) {
-			System.out.println("MemberController2");
 			action = new JoinAction();
 			try {
 				forward = action.execute(request, response);
@@ -39,10 +37,20 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 				e.printStackTrace();
 			}
 		} else if (command.equals("/login.to")) {
-			System.out.println("MemberController1");
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("login.html");
+		} else if (command.equals("/register3.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("register3.html");
+		} else if (command.equals("/CJoinAction.to")) {
+			action = new CJoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if (forward != null) {
