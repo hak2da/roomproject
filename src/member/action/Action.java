@@ -1,9 +1,11 @@
 package member.action;
 
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.action.ActionForward;
 
 public interface Action {
-	public String process(HttpServletRequest request, HttpServletResponse response) 
-			throws Exception;
+	public ActionForward execute(HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
 }
-
