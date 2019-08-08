@@ -22,6 +22,7 @@ public class RoomOutAction implements Action{
 		boolean result=false;
 		
 		try{
+			System.out.println("RoomOutAction");
 			vo.setADDRESS(request.getParameter("ADDRESS"));
 			vo.setIMAGE1(request.getParameter("IMAGE1"));
 			vo.setIMAGE2(request.getParameter("IMAGE1"));

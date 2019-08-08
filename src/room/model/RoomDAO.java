@@ -20,16 +20,11 @@ public class RoomDAO {
 		try{
 			Context init = new InitialContext();
 	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc:OracleDB");
+	  	    System.out.println("RoomDAO 연결 성공");
 		}catch(Exception ex){
-			System.out.println("DB 연결 실패 : " + ex);
+			System.out.println("RoomDAO 연결 실패");
 			return;
 		}
-	}
-	
-	private static RoomDAO instance = new RoomDAO();
-	
-	public static RoomDAO getInstance() {
-		return instance;
 	}
 	
 	//방정보 추가
@@ -39,6 +34,7 @@ public class RoomDAO {
 		int result=0;
 		
 		try {
+			System.out.println("RoomDAO insert문 시작");
 		sql = "INSERT INTO ROOMINFO (ADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			
 		con = ds.getConnection();
