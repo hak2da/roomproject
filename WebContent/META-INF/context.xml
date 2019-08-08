@@ -1,5 +1,5 @@
  <Context> 
-     <Resource name="jdbc/OracleDB" 
+     <Resource name="jdbc:OracleDB" 
          auth="Container"
          type="javax.sql.DataSource" 
          username="room" 

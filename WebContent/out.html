@@ -52,6 +52,12 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
+	<script language="javascript">
+	function addboard(){
+		boardform.submit();
+	}
+	</script>
+	
 	</head>
    <body>
 	
@@ -110,7 +116,7 @@
 		</div>
 	</header>
 	
-<form  method = "post" action="room.do">
+<form action="./RoomOut.do" method="post" enctype="multipart/form-data" name="boardform">
     <div class="wrap-950 add-container">
         <div class="content left-content">
 
@@ -127,27 +133,27 @@
                     <ul class="ui-sortable">
                         <li id="li1" class="ui-sortable-handle">
                             <span class="i-count">1</span>
-                            <button class="i-btn" type="button" id="add_image1" value="true" data-index="0" style="z-index: 1;">+등록</button>
+                            <button class="i-btn" type="button" name="IMAGE1" value="true" data-index="0" style="z-index: 1;">+등록</button>
                             <em class="i-tit">대표사진</em>
                             </li>
                         <li id="li2" class="ui-sortable-handle">
                             <span class="i-count">2</span>
-                            <button class="i-btn" type="button" id="add_image2" value="true" data-index="1" style="z-index: 1;">+등록</button>
+                            <button class="i-btn" type="button" name="IMAGE2" value="true" data-index="1" style="z-index: 1;">+등록</button>
                             <em class="i-tit">화장실</em>
                         </li>
                         <li id="li3" class="ui-sortable-handle">
                             <span class="i-count">3</span>
-                            <button class="i-btn" type="button" id="add_image3" value="true" data-index="2" style="z-index: 1;">+등록</button>
+                            <button class="i-btn" type="button" name="IMAGE3" value="true" data-index="2" style="z-index: 1;">+등록</button>
                             <em class="i-tit">주방</em>
                         </li>
                         <li id="li4" class="ui-sortable-handle">
                             <span class="i-count">4</span>
-                            <button class="i-btn" type="button" id="add_image4" data-index="3" style="z-index: 1;">+등록</button>
+                            <button class="i-btn" type="button" name="IMAGE4" data-index="3" style="z-index: 1;">+등록</button>
                             <em class="i-tit">방사진</em>
                         </li>
                         <li id="li5" class="ui-sortable-handle">
                             <span class="i-count">5</span>
-                            <button class="i-btn" type="button" id="add_image5" data-index="4" style="z-index: 1;">+등록</button>
+                            <button class="i-btn" type="button" name="IMAGE5" data-index="4" style="z-index: 1;">+등록</button>
                             <em class="i-tit">방사진</em>
                        </li>
                         
@@ -170,21 +176,21 @@
                    <tr>
                     <th>보증금</th>
                     <td>
-                        <input type="text" class="text" name="deposit" onkeydown="return number_validate1(event);"> 만원
+                        <input type="text" class="text" name="DEPOSIT" onkeydown="return number_validate1(event);"> 만원
                         <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span>
                     </td>
                 </tr>
                 <tr>
                     <th>월세</th>
                     <td>
-                        <input type="text" class="text" name="rent" onkeydown="return number_validate1(event);"> 만원
+                        <input type="text" class="text" name="RENT" onkeydown="return number_validate1(event);"> 만원
                         <span class="fc-red1">※전세일 경우, 0을 입력 하세요</span>
                     </td>
                 </tr>
                 <tr>
                     <th>방구조</th>
                     <td>
-                        <select style="width:180px" name="room_type">
+                        <select style="width:180px" name="ROOMTYPE">
                             <option value="">선택하세요</option>
                             <option value="01">오픈형 원룸 (방1)</option>
                             <option value="02">분리형 원룸 (방1, 거실1)</option>
@@ -273,16 +279,12 @@
         <div class="add-btn m-bottom-20">
             
 
-            <button type="button" class="btn btn-orange" id="add_room">
+            <button type="submit" class="btn btn-orange" id="add_room">
                 <span id="btn_complete">방 내놓기</span>
-                <span id="btn_loading" class="three-bounce" style="display:none">
-
-                </span>
             </button>
+            
             </div>
-        </div>
-
-        
+        </div>        
     </div>
 </form>
 </div>
