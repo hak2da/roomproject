@@ -54,6 +54,15 @@
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPiMMsJJAPPXRXq7jFuXCfn_WXbGdsIgw&libraries=places&callback=initMap"
+    async defer></script>
+    
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 
 <script type="text/javascript">
  //MPAY 없음 선택
@@ -72,6 +81,30 @@ $(function () {
 	$('#btn-upload').click(function(e) {
 			e.preventDefault();
 			$('#file').click();
+		});
+	});
+$(function () {
+	$('#btn-upload2').click(function(e) {
+			e.preventDefault();
+			$('#file2').click();
+		});
+	});
+$(function () {
+	$('#btn-upload3').click(function(e) {
+			e.preventDefault();
+			$('#file3').click();
+		});
+	});
+$(function () {
+	$('#btn-upload4').click(function(e) {
+			e.preventDefault();
+			$('#file4').click();
+		});
+	});
+$(function () {
+	$('#btn-upload5').click(function(e) {
+			e.preventDefault();
+			$('#file5').click();
 		});
 	});
 	//주소정보
@@ -131,13 +164,12 @@ function sample4_execDaumPostcode() {
 }
 	
 //달력
-//<![CDATA[
 $(function(){
 	$("#date1").datepicker();
 	
 	$("#date2").datepicker({
 		showOn: "button",
-      buttonImage: "images/calendar.gif",
+        buttonImage: "images/calendar.gif",
 	    buttonImageOnly: false,
 		buttonText: "Select date"
 	});
@@ -149,29 +181,16 @@ $(function(){
 		}
 	});
 });
-//]]>
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPiMMsJJAPPXRXq7jFuXCfn_WXbGdsIgw&libraries=places&callback=initMap"
-    async defer></script>
-    
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
-<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script>
-<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 
 </head>
 <body>
-
-	<input type="text" name="date" id="date1" size="12" />
-	<br />
-	<input type="text" name="date" id="date2" size="12" />
-	<br />
-	<input type="text" name="date" id="date3" size="12" />
-	<input type="button" value="달력"
-		onclick="date($('#date3').datepicker('show');)" />
+<input type="text" name="date" id="date1" size="12" />
+<br/>
+<input type="text" name="date" id="date2" size="12" />
+<br/>
+<input type="text" name="date" id="date3" size="12" />
+<input type="button" value="달력" onclick="$('#date3').datepicker('show');" />
 
 	<div id="page">
 		<nav class="fh5co-nav" role="navigation">
@@ -245,23 +264,35 @@ $(function(){
 							<ul class="ui-sortable">
 								<li id="li1" class="ui-sortable-handle"><span class="i-count">1</span>
 									<div>
-									<input type="file" id="file" name="file"/>
-									<button type="button" id="btn-upload">Image</button>
+									<input class="i-btn" type="file" id="file" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload">Image</button>
 									</div>
 									<em class="i-tit">대표사진</em>
 									</li>
 								<li id="li2" class="ui-sortable-handle"><span class="i-count">2</span>
-									<button class="i-btn" type="button" name="IMAGE2" value="true" data-index="1" style="z-index: 1;">
-									+등록</button> <em class="i-tit">화장실</em></li>
+									<div>
+									<input class="i-btn" type="file" id="file2" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload2">Image</button>
+									</div>
+									<em class="i-tit">화장실</em></li>
 								<li id="li3" class="ui-sortable-handle"><span class="i-count">3</span>
-									<button class="i-btn" type="button" name="IMAGE3" value="true" data-index="2" style="z-index: 1;">
-									+등록</button> <em class="i-tit">주방</em></li>
+									<div>
+									<input class="i-btn" type="file" id="file3" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload3">Image</button>
+									</div>
+									<em class="i-tit">주방</em></li>
 								<li id="li4" class="ui-sortable-handle"><span class="i-count">4</span>
-									<button class="i-btn" type="button" name="IMAGE4" data-index="3" style="z-index: 1;">
-									+등록</button> <em class="i-tit">방사진</em></li>
+									<div>
+									<input class="i-btn" type="file" id="file4" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload4">Image</button>
+									</div>
+									<em class="i-tit">방사진</em></li>
 								<li id="li5" class="ui-sortable-handle"><span class="i-count">5</span>
-									<button class="i-btn" type="button" name="IMAGE5" data-index="4" style="z-index: 1;">
-									+등록</button> <em class="i-tit">방사진</em></li>
+									<div>
+									<input class="i-btn" type="file" id="file5" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload5">Image</button>
+									</div>
+									<em class="i-tit">방사진</em></li>
 							</ul>
 						</div>
 					</div>
@@ -429,5 +460,7 @@ $(function(){
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	
+
 </body>
 </html>

@@ -1765,7 +1765,7 @@ body {
     width: 30px;
     margin-right: 5px;
 }
-#file { display:none; } 
+#file ,#file2, #file3, #file4, #file5 { display:none; } 
 
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
