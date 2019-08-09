@@ -10,26 +10,19 @@ public class MemberLoginAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
+		System.out.println("MemberLoginAction");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd1");
+		String pwd = request.getParameter("pwd");
 
 		MemberDAO dao = new MemberDAO();
 		int check = dao.loginCheck(id, pwd);
-
-		if (check == 0) // 비밀번호 틀릴경우 -> 다시 로그인 화면으로 이동
+		System.out.println("check = " + check);
+		if (check == 0) // 아이디나 비밀번호가 틀릴 경우 -> 다시 로그인 화면으로 이동
 		{
-			// 로그인 실패시 메시지를 request에 담는다.
 			request.setAttribute("fail", "0");
-
-			forward.setRedirect(false);
-			forward.setPath("login.to");
-		} else if (check == -1) // 아이디가 없을 경우 -> 다시 로그인 화면으로 이동
-		{
-			request.setAttribute("fail", "-1");
 
 			forward.setRedirect(false);
 			forward.setPath("login.to");

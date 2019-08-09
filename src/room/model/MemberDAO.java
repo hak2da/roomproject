@@ -16,7 +16,6 @@ public class MemberDAO {
 	ResultSet rs;
 
 	public MemberDAO() {
-		System.out.println("MemberDAO");
 		try {
 			Context init = new InitialContext();
 			ds = (DataSource) init.lookup("java:comp/env/jdbc:OracleDB");
@@ -27,7 +26,7 @@ public class MemberDAO {
 	}
 
 	public Boolean insert(MemberVO vo) throws SQLException {
-		
+
 		String sql = "";
 
 		int result = 0;
@@ -122,33 +121,35 @@ public class MemberDAO {
 		return false;
 
 	}
-	
+
 	public int loginCheck(String id, String pwd) {
-		
+		System.out.println("loginCheck");
 		String dbPW = ""; // db에서 꺼낸 비밀번호를 담을 변수
-		int x = -1;
+		int x = 0;
 
 		try {
 			// 쿼리 - 먼저 입력된 아이디로 DB에서 비밀번호를 조회한다.
-			StringBuffer query = new StringBuffer();
-			query.append("SELECT PWD FROM MEMBER WHERE ID=?");
+			String sql = "SELECT PWD FROM MEMBER WHERE ID=?";
 
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(query.toString());
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			System.out.println("id = " + id);
 
 			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
 			{
 				dbPW = rs.getString("pwd"); // 비번을 변수에 넣는다.
-
-				if (dbPW.equals(pwd)) 
+				if (dbPW.equals(pwd)) {
 					x = 1; // 넘겨받은 비번과 꺼내온 비번 비교. 같으면 인증성공
-				else 				 
+					System.out.println("아이디O 비번O dbpw = " + dbPW);
+				} else {
 					x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-				
+					System.out.println("아이디O 비번X dbpw = " + dbPW);
+				}
 			} else {
-				x = -1; // 해당 아이디가 없을 경우
+				System.out.println("아이디X 비번X dbpw = " + dbPW);
+				x = 0; // 해당 아이디가 없을 경우
 			}
 
 			return x;
@@ -173,7 +174,7 @@ public class MemberDAO {
 				}
 		}
 		return x;
-		
+
 	}
 
 }

@@ -39,13 +39,36 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 		} else if (command.equals("/login.to")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("login.html");
-		} else if (command.equals("/register3.to")) {
+			forward.setPath("login.jsp");
+		} else if (command.equals("/login.to")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("register3.html");
+			forward.setPath("login.jsp");
+		} else if (command.equals("/register.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("register.html");
 		} else if (command.equals("/CJoinAction.to")) {
 			action = new CJoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/index.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("index.jsp");
+		} else if (command.equals("/logout.to")) {
+			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if (command.equals("/MemberLoginAction.to")) {
+			System.out.println("MemberController");
+			action = new MemberLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
