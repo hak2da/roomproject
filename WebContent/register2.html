@@ -81,6 +81,18 @@
 				$('#pwdCheckMessage').html('');
 			}
 		}
+		
+		function validate() {
+			var re = /^[a-zA-Z0-9]{4,12}$/;
+			var rePhone = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+			
+			var id = $( '#id' ).val();
+			var pwd = $( '#pwd1' ).val();
+			var email = $( '#email' ).val();
+			var phone = $( '#phone' ).val();
+			
+		}
+		
 	</script>
 	
 	</head>
