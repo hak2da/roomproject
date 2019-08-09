@@ -50,7 +50,7 @@ public class MemberDAO {
 
 			return true;
 		} catch (Exception ex) {
-			System.out.println("회원등록 에러 : " + ex);
+			ex.printStackTrace();
 		} finally {
 			if (rs != null)
 				try {
@@ -99,7 +99,7 @@ public class MemberDAO {
 
 			return true;
 		} catch (Exception ex) {
-			System.out.println("회원등록 에러 : " + ex);
+			ex.printStackTrace();
 		} finally {
 			if (rs != null)
 				try {
@@ -123,7 +123,7 @@ public class MemberDAO {
 	}
 
 	public int loginCheck(String id, String pwd) {
-		System.out.println("loginCheck");
+
 		String dbPW = ""; // db에서 꺼낸 비밀번호를 담을 변수
 		int x = 0;
 
@@ -135,20 +135,19 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			System.out.println("id = " + id);
 
 			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
 			{
 				dbPW = rs.getString("pwd"); // 비번을 변수에 넣는다.
 				if (dbPW.equals(pwd)) {
 					x = 1; // 넘겨받은 비번과 꺼내온 비번 비교. 같으면 인증성공
-					System.out.println("아이디O 비번O dbpw = " + dbPW);
+
 				} else {
 					x = 0; // DB의 비밀번호와 입력받은 비밀번호 다름, 인증실패
-					System.out.println("아이디O 비번X dbpw = " + dbPW);
+
 				}
 			} else {
-				System.out.println("아이디X 비번X dbpw = " + dbPW);
+
 				x = 0; // 해당 아이디가 없을 경우
 			}
 
@@ -175,6 +174,47 @@ public class MemberDAO {
 		}
 		return x;
 
+	}
+
+	public int idCheck(String id) {
+		int result = 0;
+
+		try {
+
+			String sql = "SELECT ID FROM MEMBER WHERE ID=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next() || id.equals("")) {
+				result = 0; //이미 있는 아이디
+			} else {
+				result = 1;
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+
+		return result;
 	}
 
 }

@@ -10,7 +10,6 @@ public class MemberLoginAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("MemberLoginAction");
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 
@@ -19,7 +18,6 @@ public class MemberLoginAction implements Action {
 
 		MemberDAO dao = new MemberDAO();
 		int check = dao.loginCheck(id, pwd);
-		System.out.println("check = " + check);
 		if (check == 0) // 아이디나 비밀번호가 틀릴 경우 -> 다시 로그인 화면으로 이동
 		{
 			request.setAttribute("fail", "0");

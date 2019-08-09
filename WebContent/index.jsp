@@ -68,7 +68,7 @@
 						</li>
 						
 					<c:if test="${sessionScope.sessionID==null}">
-						<li class="btn-cta"><a href="login.to"><span>Login</span></a></li>
+						<li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
 					
                         <li class="btn-cta"><a href="register.to"><span>회원가입</span></a></li> 
                     </c:if>

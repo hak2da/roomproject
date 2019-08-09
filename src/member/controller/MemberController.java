@@ -1,4 +1,4 @@
-package member.action;
+package member.controller;
 
 import java.io.IOException;
 
@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.action.Action;
 import member.action.ActionForward;
+import member.action.CJoinAction;
+import member.action.JoinAction;
+import member.action.MemberLoginAction;
+import member.action.MemberLogoutAction;
+import room.model.MemberDAO;
 
 @WebServlet("*.to")
 public class MemberController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
@@ -67,13 +72,15 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 				e.printStackTrace();
 			}
 		} else if (command.equals("/MemberLoginAction.to")) {
-			System.out.println("MemberController");
 			action = new MemberLoginAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/idCheck.to")) {
+			String id = request.getParameter("id");
+			response.getWriter().write(new MemberDAO().idCheck(id) + "");
 		}
 
 		if (forward != null) {
