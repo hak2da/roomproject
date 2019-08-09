@@ -1767,6 +1767,7 @@ body {
 }
 #file ,#file2, #file3, #file4, #file5 { display:none; } 
 
+/*구글 api 사용 예제 (미사용)*/
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
