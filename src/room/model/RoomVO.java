@@ -4,14 +4,32 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class RoomVO {
-	private String ADDRESS, IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,ROOMTYPE,MPAY2,FLOOR,RDATE,TITLE,CONTENT,MPAY,PARKING,ELVE;
+	private String RADDRESS,NADDRESS,ADDRESS2,ADDRESS3, IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,ROOMTYPE,MPAY2,FLOOR,RDATE,TITLE,CONTENT,MPAY,PARKING,ELVE;
 	private int DEPOSIT,RENT,RSIZE;
 	
-	public String getADDRESS() {
-		return ADDRESS;
+	public String getRADDRESS() {
+		return RADDRESS;
 	}
-	public void setADDRESS(String aDDRESS) {
-		ADDRESS = aDDRESS;
+	public void setRADDRESS(String rADDRESS) {
+		RADDRESS = rADDRESS;
+	}
+	public String getNADDRESS() {
+		return NADDRESS;
+	}
+	public void setNADDRESS(String nADDRESS) {
+		NADDRESS = nADDRESS;
+	}
+	public String getADDRESS2() {
+		return ADDRESS2;
+	}
+	public void setADDRESS2(String aDDRESS2) {
+		ADDRESS2 = aDDRESS2;
+	}
+	public String getADDRESS3() {
+		return ADDRESS3;
+	}
+	public void setADDRESS3(String aDDRESS3) {
+		ADDRESS3 = aDDRESS3;
 	}
 	public String getIMAGE1() {
 		return IMAGE1;
@@ -115,7 +133,4 @@ public class RoomVO {
 	public void setRSIZE(int rSIZE) {
 		RSIZE = rSIZE;
 	}
-	
-	
-	
 }

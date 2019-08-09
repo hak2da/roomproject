@@ -1,7 +1,7 @@
 <html style="overflow-y: hidden !important">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>King &mdash; Free Website Template, Free HTML5 Template
 	by gettemplates.co</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +56,7 @@
 	<![endif]-->
 
 <script type="text/javascript">
- 
+ //MPAY 없음 선택
 function checkDisable(form)
 {
     if( form.MPAY_none.checked == true ){
@@ -67,10 +67,111 @@ function checkDisable(form)
 	form.MPAY.disabled = false;
 	}
 }
+//이미지 안됨
+$(function () {
+	$('#btn-upload').click(function(e) {
+			e.preventDefault();
+			$('#file').click();
+		});
+	});
+	//주소정보
+function sample4_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 참고 항목 변수
+
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                extraRoadAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if(data.buildingName !== '' && data.apartment === 'Y'){
+               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if(extraRoadAddr !== ''){
+                extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('sample4_postcode').value = data.zonecode;
+            document.getElementById("sample4_roadAddress").value = roadAddr;
+            document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+            
+            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+            if(roadAddr !== ''){
+                document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+            } else {
+                document.getElementById("sample4_extraAddress").value = '';
+            }
+
+            var guideTextBox = document.getElementById("guide");
+            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+            if(data.autoRoadAddress) {
+                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                guideTextBox.style.display = 'block';
+
+            } else if(data.autoJibunAddress) {
+                var expJibunAddr = data.autoJibunAddress;
+                guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                guideTextBox.style.display = 'block';
+            } else {
+                guideTextBox.innerHTML = '';
+                guideTextBox.style.display = 'none';
+            }
+        }
+    }).open();
+}
+	
+//달력
+//<![CDATA[
+$(function(){
+	$("#date1").datepicker();
+	
+	$("#date2").datepicker({
+		showOn: "button",
+      buttonImage: "images/calendar.gif",
+	    buttonImageOnly: false,
+		buttonText: "Select date"
+	});
+	
+	$("#date3").datepicker({
+		onSelect:function(dateText, inst) {
+			console.log(dateText);
+			console.log(inst);
+		}
+	});
+});
+//]]>
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPiMMsJJAPPXRXq7jFuXCfn_WXbGdsIgw&libraries=places&callback=initMap"
+    async defer></script>
+    
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
+<link rel="stylesheet" href="./js/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="./js/jquery-ui.min.js"></script>
+<script src="./js/datepicker-ko.js"></script>
 
 </head>
 <body>
+
+	<input type="text" name="date" id="date1" size="12" />
+	<br />
+	<input type="text" name="date" id="date2" size="12" />
+	<br />
+	<input type="text" name="date" id="date3" size="12" />
+	<input type="button" value="달력"
+		onclick="date($('#date3').datepicker('show');)" />
 
 	<div id="page">
 		<nav class="fh5co-nav" role="navigation">
@@ -140,12 +241,15 @@ function checkDisable(form)
 							· 한꺼번에 여러 장 등록도 가능합니다.<br> <span class="fc-red1">· 직접
 								찍은 실제 방 사진의 원본을 등록해야 합니다.</span><br>
 						</p>
-
 						<div class="item-photo" id="add-photo-box">
 							<ul class="ui-sortable">
 								<li id="li1" class="ui-sortable-handle"><span class="i-count">1</span>
-									<button class="i-btn" type="button" name="IMAGE1" value="true" data-index="0" style="z-index: 1;">
-									+등록</button> <em class="i-tit">대표사진</em></li>
+									<div>
+									<input type="file" id="file" name="file"/>
+									<button type="button" id="btn-upload">Image</button>
+									</div>
+									<em class="i-tit">대표사진</em>
+									</li>
 								<li id="li2" class="ui-sortable-handle"><span class="i-count">2</span>
 									<button class="i-btn" type="button" name="IMAGE2" value="true" data-index="1" style="z-index: 1;">
 									+등록</button> <em class="i-tit">화장실</em></li>
@@ -162,15 +266,21 @@ function checkDisable(form)
 						</div>
 					</div>
 
+
 					<h4>정보 입력</h4>
 					<table class="add-table">
 						<tbody>
 							<tr>
 								<th>주소</th>
-								<td colspan="3"><input type="text" style="width: 350px; height:25px; position: relative;" name="ADDRESS">
-									<div class="i-txt">
-										· 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
-									</div></td>
+								<td colspan="3">
+									<input type="text" id="sample4_postcode" placeholder="우편번호">
+									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+									<input type="text" id="sample4_roadAddress" name = "RADDRESS" placeholder="도로명주소"><br>
+									<input type="text" id="sample4_jibunAddress" name = "NADDRESS" placeholder="지번주소">
+									<span id="guide" style="color:#999;display:none"></span>
+									<input type="text" id="sample4_detailAddress" name = "ADDRESS2" placeholder="상세주소">
+									<input type="text" id="sample4_extraAddress" name = "ADDRESS3" placeholder="참고항목">
+								</td>
 							</tr>
 							<tr>
 								<th>보증금</th>
