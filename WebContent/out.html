@@ -1,7 +1,7 @@
 <html style="overflow-y: hidden !important">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>King &mdash; Free Website Template, Free HTML5 Template
 	by gettemplates.co</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,15 +54,145 @@
 <!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+<!-- 구글 맵 api (사용안함) -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPiMMsJJAPPXRXq7jFuXCfn_WXbGdsIgw&libraries=places&callback=initMap"
+    async defer></script>
+<!-- 우편번호 및 주소 받아오기 -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- 입주 가능 입력 캘린더 (아직 미사용) -->
+<link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script>
+<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 
-<script language="javascript">
-	function addboard(){
-		boardform.submit();
+<script type="text/javascript">
+ //MPAY 없음 선택
+function checkDisable(form)
+{
+    if( form.MPAY_none.checked == true ){
+    	form.MPAY.value ="없음";
+    	form.MPAY.disabled = true;
+} else {
+	form.MPAY.value ="";
+	form.MPAY.disabled = false;
 	}
-	</script>
+}
+//이미지
+$(function () {
+	$('#btn-upload').click(function(e) {
+			e.preventDefault();
+			$('#file').click();
+		});
+	});
+$(function () {
+	$('#btn-upload2').click(function(e) {
+			e.preventDefault();
+			$('#file2').click();
+		});
+	});
+$(function () {
+	$('#btn-upload3').click(function(e) {
+			e.preventDefault();
+			$('#file3').click();
+		});
+	});
+$(function () {
+	$('#btn-upload4').click(function(e) {
+			e.preventDefault();
+			$('#file4').click();
+		});
+	});
+$(function () {
+	$('#btn-upload5').click(function(e) {
+			e.preventDefault();
+			$('#file5').click();
+		});
+	});
+//주소정보
+function sample4_execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var roadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 참고 항목 변수
+
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                extraRoadAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if(data.buildingName !== '' && data.apartment === 'Y'){
+               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if(extraRoadAddr !== ''){
+                extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('sample4_postcode').value = data.zonecode;
+            document.getElementById("sample4_roadAddress").value = roadAddr;
+            document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+            
+            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+            if(roadAddr !== ''){
+                document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+            } else {
+                document.getElementById("sample4_extraAddress").value = '';
+            }
+
+            var guideTextBox = document.getElementById("guide");
+            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+            if(data.autoRoadAddress) {
+                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                guideTextBox.style.display = 'block';
+
+            } else if(data.autoJibunAddress) {
+                var expJibunAddr = data.autoJibunAddress;
+                guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                guideTextBox.style.display = 'block';
+            } else {
+                guideTextBox.innerHTML = '';
+                guideTextBox.style.display = 'none';
+            }
+        }
+    }).open();
+}
+	
+//달력
+$(function(){
+	$("#date1").datepicker();
+	
+	$("#date2").datepicker({
+		showOn: "button",
+        buttonImage: "images/calendar.gif",
+	    buttonImageOnly: false,
+		buttonText: "Select date"
+	});
+	
+	$("#date3").datepicker({
+		onSelect:function(dateText, inst) {
+			console.log(dateText);
+			console.log(inst);
+		}
+	});
+});
+</script>
 
 </head>
 <body>
+<!-- 달력 테스트 사용 코드 -->
+<!-- <input type="text" name="date" id="date1" size="12" />
+<br/>
+<input type="text" name="date" id="date2" size="12" />
+<br/>
+<input type="text" name="date" id="date3" size="12" />
+<input type="button" value="달력" onclick="$('#date3').datepicker('show');" /> -->
 
 	<div id="page">
 		<nav class="fh5co-nav" role="navigation">
@@ -121,8 +251,9 @@
 			</div>
 		</header>
 
-		<form action="RoomOutAction.do" method="post"
-			enctype="multipart/form-data" name="boardform">
+
+		<form action="RoomOutAction.do" method="post" name="boardform">
+
 			<div class="wrap-950 add-container">
 				<div class="content left-content">
 
@@ -133,98 +264,102 @@
 							· 한꺼번에 여러 장 등록도 가능합니다.<br> <span class="fc-red1">· 직접
 								찍은 실제 방 사진의 원본을 등록해야 합니다.</span><br>
 						</p>
-
 						<div class="item-photo" id="add-photo-box">
 							<ul class="ui-sortable">
-								<li id="li1" class="ui-sortable-handle"><span
-									class="i-count">1</span>
-									<button class="i-btn" type="button" name="IMAGE1" value="true"
-										data-index="0" style="z-index: 1;">+등록</button> <em
-									class="i-tit">대표사진</em></li>
-								<li id="li2" class="ui-sortable-handle"><span
-									class="i-count">2</span>
-									<button class="i-btn" type="button" name="IMAGE2" value="true"
-										data-index="1" style="z-index: 1;">+등록</button> <em
-									class="i-tit">화장실</em></li>
-								<li id="li3" class="ui-sortable-handle"><span
-									class="i-count">3</span>
-									<button class="i-btn" type="button" name="IMAGE3" value="true"
-										data-index="2" style="z-index: 1;">+등록</button> <em
-									class="i-tit">주방</em></li>
-								<li id="li4" class="ui-sortable-handle"><span
-									class="i-count">4</span>
-									<button class="i-btn" type="button" name="IMAGE4"
-										data-index="3" style="z-index: 1;">+등록</button> <em
-									class="i-tit">방사진</em></li>
-								<li id="li5" class="ui-sortable-handle"><span
-									class="i-count">5</span>
-									<button class="i-btn" type="button" name="IMAGE5"
-										data-index="4" style="z-index: 1;">+등록</button> <em
-									class="i-tit">방사진</em></li>
-
+								<li id="li1" class="ui-sortable-handle"><span class="i-count">1</span>
+									<div>
+									<input class="i-btn" type="file" id="file" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload">Image</button>
+									</div>
+									<em class="i-tit">대표사진</em>
+									</li>
+								<li id="li2" class="ui-sortable-handle"><span class="i-count">2</span>
+									<div>
+									<input class="i-btn" type="file" id="file2" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload2">Image</button>
+									</div>
+									<em class="i-tit">화장실</em></li>
+								<li id="li3" class="ui-sortable-handle"><span class="i-count">3</span>
+									<div>
+									<input class="i-btn" type="file" id="file3" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload3">Image</button>
+									</div>
+									<em class="i-tit">주방</em></li>
+								<li id="li4" class="ui-sortable-handle"><span class="i-count">4</span>
+									<div>
+									<input class="i-btn" type="file" id="file4" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload4">Image</button>
+									</div>
+									<em class="i-tit">방사진</em></li>
+								<li id="li5" class="ui-sortable-handle"><span class="i-count">5</span>
+									<div>
+									<input class="i-btn" type="file" id="file5" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload5">Image</button>
+									</div>
+									<em class="i-tit">방사진</em></li>
 							</ul>
 						</div>
 					</div>
+
 
 					<h4>정보 입력</h4>
 					<table class="add-table">
 						<tbody>
 							<tr>
 								<th>주소</th>
-								<td colspan="3"><input type="text"
-									style="width: 350px; position: relative;">
-									<div class="i-txt">
-										· 주소 입력 시에는 동/읍/면 으로 검색해 주세요. 예) 자곡동, 동읍면, 신월읍<br>
-									</div></td>
+								<td colspan="3">
+									<input type="text" id="sample4_postcode" placeholder="우편번호">
+									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+									<input type="text" id="sample4_roadAddress" name = "RADDRESS" placeholder="도로명주소"><br>
+									<input type="text" id="sample4_jibunAddress" name = "NADDRESS" placeholder="지번주소">
+									<span id="guide" style="color:#999;display:none"></span>
+									<input type="text" id="sample4_detailAddress" name = "ADDRESS2" placeholder="상세주소">
+									<input type="text" id="sample4_extraAddress" name = "ADDRESS3" placeholder="참고항목">
+								</td>
 							</tr>
 							<tr>
 								<th>보증금</th>
-								<td><input type="text" class="text" name="DEPOSIT"
-									onkeydown="return number_validate1(event);"> 만원 <span
-									class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
+								<td><input type="text" class="text" name="DEPOSIT"> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
 							</tr>
 							<tr>
 								<th>월세</th>
-								<td><input type="text" class="text" name="RENT"
-									onkeydown="return number_validate1(event);"> 만원 <span
-									class="fc-red1">※전세일 경우, 0을 입력 하세요</span></td>
+								<td><input type="text" class="text" name="RENT"> 만원 <span class="fc-red1">※전세일 경우, 0을 입력 하세요</span></td>
 							</tr>
 							<tr>
 								<th>방구조</th>
 								<td><select style="width: 180px" name="ROOMTYPE">
 										<option value="">선택하세요</option>
-										<option value="01">오픈형 원룸 (방1)</option>
-										<option value="02">분리형 원룸 (방1, 거실1)</option>
-										<option value="03">복층형 원룸</option>
-										<option value="04">투룸 (방2, 거실1)</option>
+										<option value="오픈형 원룸 (방1)">오픈형 원룸 (방1)</option>
+										<option value="분리형 원룸 (방1, 거실1)">분리형 원룸 (방1, 거실1)</option>
+										<option value="복층형 원룸">복층형 원룸</option>
+										<option value="투룸 (방2, 거실1)">투룸 (방2, 거실1)</option>
 								</select></td>
 							</tr>
 
 							<tr>
 								<th>관리비</th>
-								<td><input type="text" class="text" name="fee"
-									onkeydown="return number_validate2(event);"> 만원
-									&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp; <label><input
-										type="checkbox" id="fee_none" name="fee_none"> 없음</label>
+								<td><input type="text" class="text" name="MPAY" id="MPAY"> 만원
+									&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp; 
+									<label><input type="checkbox" id="MPAY_none" name="MPAY_none" onClick="checkDisable(this.form)"> 없음</label>
 									<p class="i-gray">
 										<strong>관리비 포함 항목</strong> <label><input
-											name="fee_inc" type="checkbox" value="01"> 전기세</label> <label><input
-											name="fee_inc" type="checkbox" value="02"> 가스</label> <label><input
-											name="fee_inc" type="checkbox" value="03"> 수도</label> <label><input
-											name="fee_inc" type="checkbox" value="04"> 인터넷</label> <label><input
-											name="fee_inc" type="checkbox" value="05"> TV</label>
+											name="MPAY2" type="checkbox" value="전기세"> 전기세</label> <label><input
+											name="MPAY2" type="checkbox" value="가스"> 가스</label> <label><input
+											name="MPAY2" type="checkbox" value="수도"> 수도</label> <label><input
+											name="MPAY2" type="checkbox" value="인터넷"> 인터넷</label> <label><input
+											name="MPAY2" type="checkbox" value="TV"> TV</label>
 									</p></td>
 							</tr>
+							
 							<tr>
 								<th>크기</th>
 								<td>
-									<div class="mb-5">
-										전용면적 : <input type="text" name="pyeong" />평
+										전용면적 : <input type="text" style="width:50px; margin-right:5px;"name="RSIZE" />평
 								</td>
 							</tr>
 							<tr>
 								<th>층수</th>
-								<td>해당 층 : <select name="room_floor">
+								<td>해당 층 : <select name="FLOOR">
 										<option value="">선택하세요</option>
 										<option value="반지하">반지하</option>
 										<option value="옥탑방">옥탑방</option>
@@ -274,36 +409,34 @@
 							<tr>
 								<th>주차</th>
 								<td class="has-col"><label><input type="radio"
-										name="parking" value="가능"> 가능</label> <label><input
-										type="radio" name="parking" value="불가능"> 없음</label>
+										name="PARKING" value="가능"> 가능</label> <label><input
+										type="radio" name="PARKING" value="없음"> 없음</label>
 									<div class="i-col">
 										<strong>엘리베이터</strong> <label><input type="radio"
-											name="building_elevator" value="true"> 있음</label> <label><input
-											type="radio" name="building_elevator" value="false">
+											name="ELVE" value="있음"> 있음</label> <label><input
+											type="radio" name="ELVE" value="없음">
 											없음</label>
 									</div></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<th>입주가능일</th>
-								<td><input type="text" class="text max" name="movein_date">
+								<td><input type="text" class="text max" name="RDATE">
 								</td>
 							</tr>
 							<tr>
 								<th>제목</th>
-								<td><input type="text" class="text max" name="title">
+								<td><input type="text" class="text max" name="TITLE">
 								</td>
 							</tr>
 							<tr>
 								<th>상세설명</th>
-								<td><textarea name="description" class="description"
+								<td><textarea name="CONTENT" class="description"
 										placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다.
 														방의 위치와 교통, 주변 편의시설, 방의 특징과 장점, 보안시설, 옵션, 주차, 전체적인
 														방의 느낌 등을 작성해 주세요.      
-														
 														다른 방에 대한 설명, 연락처, 홍보 메시지 등 해당 방과 관련없는 내용을 입력하거나 
-														해당 방에 대한 설명이 부적절할 경우 중개가 종료될 수 있습니다.
-                                  "></textarea>
+														해당 방에 대한 설명이 부적절할 경우 중개가 종료될 수 있습니다."></textarea>
 
 								</td>
 							</tr>
@@ -311,12 +444,9 @@
 					</table>
 
 					<div class="add-btn m-bottom-20">
-
-
 						<button type="submit" class="btn btn-orange" id="add_room">
 							<span id="btn_complete">방 내놓기</span>
 						</button>
-
 					</div>
 				</div>
 			</div>
@@ -332,5 +462,7 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	
+
 </body>
 </html>

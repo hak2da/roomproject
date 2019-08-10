@@ -28,14 +28,17 @@ public class RoomOutFrontController
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(command.equals("/RommOut.do")){
+
+		if(command.equals("/Out.do")){
+			System.out.println("RoomOutFrontController1");
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("out.html");
 		} else if (command.equals("/RoomOutAction.do")) {
-			action = new RoomOutAction();
+			action  = new RoomOutAction();
 			try {
-				forward = action.execute(request, response);
+				forward=action.execute(request, response );
+				System.out.println("RoomOutFrontController2");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -43,8 +46,10 @@ public class RoomOutFrontController
 		
 			if(forward != null){
 				if(forward.isRedirect()){
+					System.out.println("RoomOutFrontController3");
 					response.sendRedirect(forward.getPath());
 				}else{
+					System.out.println("RoomOutFrontController4");
 					RequestDispatcher dispatcher=
 							request.getRequestDispatcher(forward.getPath());
 					dispatcher.forward(request, response);
