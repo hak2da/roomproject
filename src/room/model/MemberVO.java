@@ -1,4 +1,4 @@
-package room.board.model;
+package room.model;
 
 public class MemberVO {
 	private String name,id,pwd,email,phone,cname;

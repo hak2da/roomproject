@@ -1,4 +1,4 @@
-package room.board.model;
+package room.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import dbclose.util.CloseUtil;
+import room.model.BoardVO;
 
 public class BoardDAO { // Controller
 
@@ -20,7 +21,7 @@ public class BoardDAO { // Controller
 		return instance;
 	}
 
-	private BoardDAO() {
+	public BoardDAO() {
 	} // useBean 태그로 객체 생성하면~
 
 	public Connection getConnection() throws Exception {
@@ -33,22 +34,22 @@ public class BoardDAO { // Controller
 	}// getConnection() end
 
 	// insert(vo) method - 새로운 글을 게시판에 추가, 글 입력처리에 사용
-	public int insert(BoardVO vo) {
+	public boolean boardInsert(BoardVO vo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int result = 0;
 
 
 		try {
 			conn = getConnection();
 			// 현재 board 테이블에 레코드 유무 판단과 글 번호 지정
-			rs = pstmt.executeQuery();
 
 			// insert 처리 명령
 
 			// System.out.println(sb.toString());
 
-			pstmt = conn.prepareStatement("insert into board2(id, pwd, average,title, content, bdate) values(?,?,?,?,?,?)" );
+			pstmt = conn.prepareStatement("insert into board2(id, pwd, average,title, content, bdate) values(?,?,?,?,?,?)");
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPwd());
 			pstmt.setFloat(3, vo.getAverage());
@@ -56,8 +57,10 @@ public class BoardDAO { // Controller
 			pstmt.setString(5, vo.getContent());
 			pstmt.setTimestamp(6, vo.getBdate());
 
-			pstmt.executeUpdate();
-
+			result = pstmt.executeUpdate();
+			if(result==0) return false;
+			
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -66,7 +69,7 @@ public class BoardDAO { // Controller
 			CloseUtil.close(conn);
 		} // try end
 
-		return 0;
+		return false;
 	}// insert() end
 
 	/*

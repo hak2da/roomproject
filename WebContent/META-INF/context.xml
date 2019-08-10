@@ -3,7 +3,7 @@
 <Context reloadable="true">
 	<WatchedResource>WEB-INF/web.xml</WatchedResource>
 	
-	 <Resource name="jdbc:Board2DB" 
+	 <Resource name="jdbc:board2DB" 
 	 			auth="Container"
             	type="javax.sql.DataSource"
             	username="c##stint"

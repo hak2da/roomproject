@@ -1,4 +1,4 @@
-package room.board.model;
+package room.model;
 
 import java.util.Date;
 

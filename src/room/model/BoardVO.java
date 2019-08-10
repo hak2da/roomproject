@@ -1,12 +1,21 @@
-package room.board.model;
+package room.model;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 public class BoardVO {
+	private int boardnum;
 	private String id,pwd,title,content;
 	private float average;
 	private Timestamp bdate;
+	
+	
+	public int getBoardnum() {
+		return boardnum;
+	}
+	public void setBoardnum(int boardnum) {
+		this.boardnum = boardnum;
+	}
 	
 	public String getId() {
 		return id;
