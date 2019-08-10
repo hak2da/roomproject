@@ -56,6 +56,18 @@
 	<![endif]-->
 	
 	<script type="text/javascript">
+	
+		var checkId = 0;
+		
+		function nameCheck() {
+			var name = $( '#name' ).val();
+			if(name != ""){
+				$("#name").css("background-color", "#B0F6AC");
+			} else {
+				$("#name").css("background-color", "#FFCECE");
+			}
+		}
+		
 		function idCheck() {
 			var id = $( '#id' ).val();
 			$.ajax({
@@ -63,10 +75,13 @@
 				url: 'idCheck.to',
 				data: {id : id},
 				success: function(result) {
-					if(result == 1) {
+					if(result == 1 && id != "") {
 						$('#idCheckMessage').html('사용가능한 아이디입니다.').css("color", "green");
+						$("#id").css("background-color", "#B0F6AC");
+						checkId = 1;
 					} else {
 						$('#idCheckMessage').html('이미 있는 아이디입니다.').css("color", "red");
+						$("#id").css("background-color", "#FFCECE");
 					}
 				}
 			})
@@ -75,70 +90,85 @@
 		function pwdCheck() {
 			var pwd1 = $( '#pwd1' ).val();
 			var pwd2 = $( '#pwd2' ).val();
-			if(pwd1 != pwd2) {
-				$('#pwdCheckMessage').html('비밀번호가 서로 일치하지 않습니다.');
-			} else {
+			if(pwd1 == pwd2) {
 				$('#pwdCheckMessage').html('');
+				$("#pwd1").css("background-color", "#B0F6AC");
+				$("#pwd2").css("background-color", "#B0F6AC");
+			} else {
+				$('#pwdCheckMessage').html('비밀번호가 서로 일치하지 않습니다.');
+				$("#pwd1").css("background-color", "#FFCECE");
+				$("#pwd2").css("background-color", "#FFCECE");
 			}
 		}
 		
-		function validate() {
-
-			// 이메일검사
-
-			// 4글자이상(\w=[a-zA-Z0-9_],[\w-]:'-'까지는 허용) @가 나오고
-
-			// hanmail.net, naver.com, lycos.co.kr, iei.or.kr
-
-			// 1글자 이상(주소).글자 가 1~3번 반복
-
-			var userid = document.getElementById("userid");
-
-			// 첫글자는 반드시 영문소문자, 4~12자로 이루어지고, 숫자가  하나 이상 포함되어야한다.
-
-			// 영문소문자와 숫자로만 이루어져야 한다.
-
-			// \d : [0-9]와 같다. {n,m} : n에서 m사이
-
-			if (!chk(/^[a-z][a-z\d]{3,11}$/, userid, "잘못된 형식의 ID입니다."))
-				return false;
-
-			if (!chk(/[\d]/, userid, "잘못된 형식의 ID입니다."))
-				return false;
-
-			//alert(re.test(userid.value));
-
-			var pwd = document.getElementById("pwd1");
-
-
-
-			var email = document.getElementById("email");
-
-			if (!chk(/^[\w-]{4,}@[\w-]+(\.\w+){1,3}$/, email,
-					"이메일 형식이 잘못되었습니다."))
-				;
-
-			var email = document.getElementById("email");
-
-			//return false;
-
+		function emailCheck() {
+			var email = $( '#email' ).val();
+			if(email != ""){
+				$("#email").css("background-color", "#B0F6AC");
+			} else {
+				$("#email").css("background-color", "#FFCECE");
+			}
 		}
-
-		function chk(re, e, msg) {
-
-			if (re.test(e.value))
-				return true;
-
-			alert(msg);
-
-			e.value = "";
-
-			e.focus();
-
-			return false;
-
+		
+		function phoneCheck() {
+			var phone = $( '#phone' ).val();
+			if(phone != ""){
+				$("#phone").css("background-color", "#B0F6AC");
+			} else {
+				$("#phone").css("background-color", "#FFCECE");
+			}
 		}
-
+		
+		function check() {
+			var getCheck = RegExp(/^[a-zA-Z0-9]{4,12}$/);
+			var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+			var getPhone = RegExp(/^01([0|1|6|7|8|9]?)+-([0-9]{3,4})+-([0-9]{4})$/);
+			
+			if(!getCheck.test($("#id").val())) {
+			      alert("형식에 맞춰서 입력해주세요.");
+			      $("#id").val("");
+			      $("#id").focus();
+			      return false;
+			}
+			if(!getCheck.test($("#pwd1").val())) {
+			      alert("형식에 맞춰서 입력해주세요.");
+			      $("#pwd1").val("");
+			      $("#pwd1").focus();
+			      return false;
+			}
+			if ($("#id").val()==($("#pwd1").val())) {
+			      alert("비밀번호가 아이디랑 같습니다.");
+			      $("#pwd1").val("");
+			      $("#pwd1").focus();
+			      return false;
+			}
+			if ($("#pwd1").val()!=($("#pwd2").val())) {
+			      alert("비밀번호가 다릅니다.");
+			      $("#pwd2").val("");
+			      $("#pwd2").focus();
+			      return false;
+			}
+			if(!getMail.test($("#email").val())){
+		        alert("올바른 이메일 주소를 입력해주세요.");
+		        $("#email").val("");
+		        $("#email").focus();
+		        return false;
+		    }
+			if(!getPhone.test($("#phone").val())){
+		        alert("핸드폰 형식으로 해주세요.");
+		        $("#phone").val("");
+		        $("#phone").focus();
+		        return false;
+		    }
+			if(checkId == 0) {
+				alert("아이디 중복확인을 해주세요.");
+				return false;
+			}
+			
+			return true;
+		}
+		
+			
 	</script>
 	
 	</head>
@@ -208,38 +238,38 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">일반 회원가입</h5>
-            <form class="form-signin" action="JoinAction.to" method="post" onsubmit="return validate();">
+            <form class="form-signin" action="JoinAction.to" method="post" onsubmit="return check();">
              
              <div class="form-label-group">
-                <input type="text" name="name" class="form-control" placeholder="이름" required autofocus>
+                <input type="text" name="name" id="name" oninput="nameCheck()" class="form-control" placeholder="이름" required autofocus>
               </div>
              
               <div class="form-label-group">
-                <input type="text" name="id" id="id" class="form-control" placeholder="아이디" required autofocus>
+                <input type="text" name="id" id="id" class="form-control" placeholder="아이디 ※4~12자의 영문 대소문자와 숫자" maxlength="12" required autofocus>
                 <button type="button" onclick="idCheck()">중복확인</button><h5 id="idCheckMessage"></h5>
               </div>
 
               <div class="form-label-group">
-                <input type="password" onkeyup="pwdCheck();" id="pwd1" name="pwd1" class="form-control" placeholder="비밀번호" required>
+                <input type="password" oninput="pwdCheck()" id="pwd1" name="pwd1" class="form-control" placeholder="비밀번호 ※4~12자의 영문 대소문자와 숫자" maxlength="12" required>
               </div>
               
               <div class="form-label-group">
-                <input type="password" onkeyup="pwdCheck();" id="pwd2" name="pwd2" class="form-control" placeholder="비밀번호 확인" required>
+                <input type="password" oninput="pwdCheck()" id="pwd2" name="pwd2" class="form-control" placeholder="비밀번호 확인" maxlength="12" required>
               </div>
               
               <div class="form-label-group">
-                <input type="email" name="email" class="form-control" placeholder="이메일" required autofocus>
+                <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required autofocus>
               </div>
               
               <div class="form-label-group">
-                <input type="text" name="phone" class="form-control" placeholder="전화번호" required autofocus>
+                <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required autofocus>
               </div>
               
               <div class="form-label-group">
               <h5 style="color: red;" id="pwdCheckMessage"></h5>
               </div>
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
+              <button id="button" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
              
             
             </form>
