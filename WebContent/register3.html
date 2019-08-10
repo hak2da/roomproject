@@ -89,7 +89,7 @@
 							</ul>
 						</li>
 						<li class="active"><a href="contact.html">Contact</a></li>
-						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
+						<li class="btn-cta"><a href="login.html"><span>Login</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -113,38 +113,56 @@
 		</div>
 	</header>
 	
-	
+	<div id="fh5co-contact">
 	 <div class="container">
     <div class="row">
-      <div class="card card-signin my-5">
-          <div class="card-body" >
-            <h5 class="card-title text-center">Sign In</h5>
-            <form class="form-signin">
+       <div class="centered">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">업체 회원가입</h5>
+            <form class="form-signin" action="login.html" method="post">
+             
+             <div class="form-label-group">
+                <input type="text" id="inputEmail" class="form-control" placeholder="이름" required autofocus>
+              </div>
+              
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputEmail">Email address</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="업체 이름" required autofocus>
+              </div>
+             
+              <div class="form-label-group">
+                <input type="text" id="inputEmail" class="form-control" placeholder="아이디" required autofocus>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
               </div>
-
-              <div class="custom-control custom-checkbox mb-3">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" placeholder="비밀번호 확인" required>
               </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" class="form-control" placeholder="이메일" required autofocus>
+              </div>
+              
+              <div class="form-label-group">
+                <input type="text" id="inputEmail" class="form-control" placeholder="전화번호" required autofocus>
+              </div>
+              
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
              
             
             </form>
           </div>
+           </div>
         </div>
       </div>
     </div>
- 
-  
+  </div>
+	</div>
 	
+
 
 	<div id="fh5co-started">
 		<div class="container">
