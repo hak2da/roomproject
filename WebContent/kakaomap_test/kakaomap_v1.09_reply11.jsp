@@ -16,6 +16,7 @@
 <title>마커 클러스터러 사용하기</title>
 
 <p style="margin-top:25px "  height=150px>
+
 <form action="javascript:searchkeyword()" name="incruitpart" >
 <input type="text" width=50px name="searchcontent" id="searchcontent" >
 <input type="submit" height=150px value="검색" >

@@ -13,146 +13,240 @@ import dbclose.util.CloseUtil;
 
 
 public class kakaoDAO {
-	private static kakaoDAO instance = new kakaoDAO();
+   private static kakaoDAO instance = new kakaoDAO();
 
-	
-	
-	public static kakaoDAO getInstance() {
-		return instance;
-	}
+   
+   
+   public static kakaoDAO getInstance() {
+      return instance;
+   }
 
-	private kakaoDAO() {
-	} // useBean ÅÂ±×·Î °´Ã¼ »ı¼ºÇÏ¸é~
+   private kakaoDAO() {
+   } // useBean íƒœê·¸ë¡œ ê°ì²´ ìƒì„±í•˜ë©´~
 
-	public Connection getConnection() throws Exception {
-		// ¿¬°áÀº JNDI * Pool ÇüÅÂ·Î ¿¬°á °´Ã¼ »ı¼ºÇØ¼­ ¸®ÅÏÇÒ°Í
-		Context initCtx = new InitialContext();
+   public Connection getConnection() throws Exception {
+      // ì—°ê²°ì€ JNDI * Pool í˜•íƒœë¡œ ì—°ê²° ê°ì²´ ìƒì„±í•´ì„œ ë¦¬í„´í• ê²ƒ
+      Context initCtx = new InitialContext();
 
-		DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc:kakaoDB");
+      DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc:kakaoDB");
 
-		return ds.getConnection();
-	}// getConnection() end
+      return ds.getConnection();
+   }// getConnection() end
 
-	// insert(vo) method - »õ·Î¿î ±ÛÀ» °Ô½ÃÆÇ¿¡ Ãß°¡, ±Û ÀÔ·ÂÃ³¸®¿¡ »ç¿ë
-	public int insert(kakaoVO vo) {
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+   // insert(vo) method - ìƒˆë¡œìš´ ê¸€ì„ ê²Œì‹œíŒì— ì¶”ê°€, ê¸€ ì…ë ¥ì²˜ë¦¬ì— ì‚¬ìš©
+   public int insert(kakaoVO vo) {
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
 
-		// ´äº¯ ±ÛÀÎÁö ÀÏ¹İ(»õ±Û)ÀÎÁö ±¸ºĞÇØ¼­ ÀÔ·Â ½ÃÅ°´Â ·ÎÁ÷
-		String lat = vo.getLat(); // À§µµ
-		String lng = vo.getLng(); // °æµµ
-		String addr = vo.getAddr(); // Áö¹øÁÖ¼Ò
-		String content = vo.getContent();
+      // ë‹µë³€ ê¸€ì¸ì§€ ì¼ë°˜(ìƒˆê¸€)ì¸ì§€ êµ¬ë¶„í•´ì„œ ì…ë ¥ ì‹œí‚¤ëŠ” ë¡œì§
+      String lat = vo.getLat(); // ìœ„ë„
+      String lng = vo.getLng(); // ê²½ë„
+      String addr = vo.getAddr(); // ì§€ë²ˆì£¼ì†Œ
+      String content = vo.getContent();
 
-		StringBuffer sb = new StringBuffer();
-		
-		int result=0;
-		try {
-			conn = getConnection();
-			// ÇöÀç board Å×ÀÌºí¿¡ ·¹ÄÚµå À¯¹« ÆÇ´Ü°ú ±Û ¹øÈ£ ÁöÁ¤
-			//pstmt = conn.prepareStatement("SELECT MAX(NUM) FROM BOARD");
-			//rs = pstmt.executeQuery();
+      StringBuffer sb = new StringBuffer();
+      
+      int result=0;
+      try {
+         conn = getConnection();
+         // í˜„ì¬ board í…Œì´ë¸”ì— ë ˆì½”ë“œ ìœ ë¬´ íŒë‹¨ê³¼ ê¸€ ë²ˆí˜¸ ì§€ì •
+         //pstmt = conn.prepareStatement("SELECT MAX(NUM) FROM BOARD");
+         //rs = pstmt.executeQuery();
 
-			// insert Ã³¸® ¸í·É
-			sb.append("insert into oneroomplanettwo(lat,lng,addr,content) ");			
-			sb.append(" values(?,?,?,?)");
+         // insert ì²˜ë¦¬ ëª…ë ¹
+         sb.append("insert into oneroomplanettwo(lat,lng,addr,content) ");         
+         sb.append(" values(?,?,?,?)");
 
-			// System.out.println(sb.toString());
+         // System.out.println(sb.toString());
 
-			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, lat);
-			pstmt.setString(2, lng);
-			pstmt.setString(3, addr);
-			pstmt.setString(4, content);
+         pstmt = conn.prepareStatement(sb.toString());
+         pstmt.setString(1, lat);
+         pstmt.setString(2, lng);
+         pstmt.setString(3, addr);
+         pstmt.setString(4, content);
 
-			result =pstmt.executeUpdate();
-			
-			
+         result =pstmt.executeUpdate();
+         
+         
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseUtil.close(rs);
-			CloseUtil.close(pstmt);
-			CloseUtil.close(conn);
-		} // try end
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         CloseUtil.close(rs);
+         CloseUtil.close(pstmt);
+         CloseUtil.close(conn);
+      } // try end
 
-		return result;
-	}// insert() end
-	
-	public ArrayList<kakaoVO> getdb_to_markercluster(String latlng) {
-		
-		ArrayList<kakaoVO> arr2 = new ArrayList<kakaoVO>();
-		
-		latlng= latlng.replace("(", "");
-		latlng= latlng.replace(")", "");
-		latlng= latlng.replace(" ", "");	
-		
-		String arr[] = latlng.split(",");
-		System.out.println(arr.toString());
-		System.out.println(latlng.toString());
-		System.out.println("arr[0] = "+arr[0]); //lngmin
-		System.out.println("arr[1] = "+arr[1]); //latmin
-		System.out.println("arr[2] = "+arr[2]); //lngmax
-		System.out.println("arr[3] = "+arr[3]); //lngmax
-		String lngmin="",lngmax="",latmin="",latmax="";
-		
-		latmin=arr[0];
-		latmax=arr[2];
-		lngmin=arr[1];
-		lngmax=arr[3];
-		
-		
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		StringBuffer sb = new StringBuffer();
-		try {
-			conn = getConnection();
-						
-			sb.append("select*from oneroomplanettwo where"
-					+ " lat>=? and lat<=? and lng>=? and lng<=?");
-			
-			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, latmin);
-			pstmt.setString(2, latmax);
-			pstmt.setString(3, lngmin);
-			pstmt.setString(4, lngmax);
-			
-			rs =pstmt.executeQuery();
-				
-			if(rs.next()) {
-				do {
-					kakaoVO vo = new kakaoVO();
-					
-					vo.setLat(rs.getString("lat"));
-					vo.setLng(rs.getString("lng"));
-					vo.setAddr(rs.getString("addr"));					
-					vo.setContent("123");
-					
-					//list °´Ã¼¿¡ µ¥ÀÌÅÍ ÀúÀåºóÀÎ BoardVO °´Ã¼¿¡ ÀúÀå
-					arr2.add(vo);
-					
-				}while(rs.next());	
-			
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseUtil.close(rs);
-			CloseUtil.close(pstmt);
-			CloseUtil.close(conn);
-		} // try end
+      return result;
+   }// insert() end
+   
+   public ArrayList<kakaoVO> getdb_to_markercluster(String latlng) {
+      
+      ArrayList<kakaoVO> arr2 = new ArrayList<kakaoVO>();
+      
+      latlng= latlng.replace("(", "");
+      latlng= latlng.replace(")", "");
+      latlng= latlng.replace(" ", "");   
+      
+      String arr[] = latlng.split(",");
+      System.out.println(arr.toString());
+      System.out.println(latlng.toString());
+      System.out.println("arr[0] = "+arr[0]); //lngmin
+      System.out.println("arr[1] = "+arr[1]); //latmin
+      System.out.println("arr[2] = "+arr[2]); //lngmax
+      System.out.println("arr[3] = "+arr[3]); //lngmax
+      String lngmin="",lngmax="",latmin="",latmax="";
+      
+      latmin=arr[0];
+      latmax=arr[2];
+      lngmin=arr[1];
+      lngmax=arr[3];
+      
+      
+      
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      StringBuffer sb = new StringBuffer();
+      try {
+         conn = getConnection();
+                  
+         sb.append("select*from oneroomplanettwo where"
+               + " lat>=? and lat<=? and lng>=? and lng<=?");
+         
+         pstmt = conn.prepareStatement(sb.toString());
+         pstmt.setString(1, latmin);
+         pstmt.setString(2, latmax);
+         pstmt.setString(3, lngmin);
+         pstmt.setString(4, lngmax);
+         
+         rs =pstmt.executeQuery();
+            
+         if(rs.next()) {
+            do {
+               kakaoVO vo = new kakaoVO();
+               
+               vo.setLat(rs.getString("lat"));
+               vo.setLng(rs.getString("lng"));
+               vo.setAddr(rs.getString("addr"));               
+               vo.setContent("123");
+               
+               //list ê°ì²´ì— ë°ì´í„° ì €ì¥ë¹ˆì¸ BoardVO ê°ì²´ì— ì €ì¥
+               arr2.add(vo);
+               
+            }while(rs.next());   
+         
+         }
+         
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         CloseUtil.close(rs);
+         CloseUtil.close(pstmt);
+         CloseUtil.close(conn);
+      } // try end
 
-		return arr2;
-				
-	}
+      return arr2;
+            
+   }
+
+   public int replysavedb(replyVO vo) {
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+
+      // ë‹µë³€ ê¸€ì¸ì§€ ì¼ë°˜(ìƒˆê¸€)ì¸ì§€ êµ¬ë¶„í•´ì„œ ì…ë ¥ ì‹œí‚¤ëŠ” ë¡œì§
+      String reply = vo.getReply(); // ìœ„ë„
+      String addr = vo.getAddr(); // ê²½ë„
+      String id = vo.getId(); // ì§€ë²ˆì£¼ì†Œ
+
+      StringBuffer sb = new StringBuffer();
+      
+      int result=0;
+      try {
+         conn = getConnection();
+         
+         // insert ì²˜ë¦¬ ëª…ë ¹
+         sb.append("insert into oneroomplanetreply(reply,addr,id) ");         
+         sb.append(" values(?,?,?)");
+
+         // System.out.println(sb.toString());
+
+         pstmt = conn.prepareStatement(sb.toString());
+         pstmt.setString(1, reply);
+         pstmt.setString(2, addr);
+         pstmt.setString(3, id);
+         //pstmt.setString(4, content);
+
+         result =pstmt.executeUpdate();
+         
+         
+
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         CloseUtil.close(rs);
+         CloseUtil.close(pstmt);
+         CloseUtil.close(conn);
+      } // try end
+
+      return result;
+      
+   }
+
+   public ArrayList getreplydata(String straddr) {
+      Connection conn = null;
+      PreparedStatement pstmt = null;
+      ResultSet rs = null;
+      ArrayList arr = new ArrayList();
+      
+      StringBuffer sb = new StringBuffer();      
+      int result=0;
+      try {
+         conn = getConnection();         
+         // insert ì²˜ë¦¬ ëª…ë ¹
+         sb.append("select *from oneroomplanetreply where addr = ?");         
+
+         // System.out.println(sb.toString());
+
+         pstmt = conn.prepareStatement(sb.toString());
+         pstmt.setString(1, straddr);
+         
+         rs =pstmt.executeQuery();
+         
+         if(rs.next()) {
+            do {
+               kakaoVO vo = new kakaoVO();
+               
+               vo.setLat(rs.getString("lat"));
+               vo.setLng(rs.getString("lng"));
+               vo.setAddr(rs.getString("addr"));               
+               vo.setContent("123");
+               
+               //list ê°ì²´ì— ë°ì´í„° ì €ì¥ë¹ˆì¸ BoardVO ê°ì²´ì— ì €ì¥
+               arr.add(vo);               
+            }while(rs.next());   
+         
+         }
+         
+         
+
+      } catch (Exception e) {
+         e.printStackTrace();
+      } finally {
+         CloseUtil.close(rs);
+         CloseUtil.close(pstmt);
+         CloseUtil.close(conn);
+      } // try end
+
+      return arr;
+      
+   }
+
+
 
 }
-
 
 
 
