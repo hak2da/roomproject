@@ -1,4 +1,6 @@
+﻿
 ﻿@@ -1,1721 +1 @@
+
 @font-face {
   font-family: 'icomoon';
   src: url("../fonts/icomoon/icomoon.eot?srf3rx");
@@ -13,6 +15,7 @@
 * ======================================================= */
 
 
+
 body {
   font-family: "Work Sans", Arial, sans-serif;
   font-weight: 400;
@@ -22,6 +25,7 @@ body {
   background: #fff;
     
 }
+
 
 .centered { display: table; margin-left: auto; margin-right: auto; }
 
@@ -1525,6 +1529,9 @@ element.style {
     margin-right: 10px;
 }
 
+
+
+
 .add-container .add-table td .btn-locatino-check {
     padding: 2px 10px 4px;
     border: 1px solid gray;
@@ -1535,6 +1542,7 @@ element.style {
 .add-container .add-table td .text.max {
     width: 100%;
 }
+
 .add-container h4 {
     margin: 30px 0 10px;
     font-size: 16px;
@@ -1543,12 +1551,17 @@ element.style {
 }
 .add-container .add-photo .item-photo {
     width: 605px;
+
     height: 90px;
+
     overflow: hidden;
 }
 
 element.style {
 }
+
+
+
 .add-container .add-photo .item-photo li .i-count {
     position: absolute;
     display: block;
@@ -1565,6 +1578,7 @@ element.style {
     font-weight: bold;
     letter-spacing: -1px;
 }
+
 
 .add-container .add-photo .item-photo li {
     position: relative;
@@ -1601,6 +1615,11 @@ element.style {
 
 .add-container .add-photo {
     border-top: 2px solid #333333;
+
+    color: #333333;
+}
+
+
     border-bottom: 1px solid #333333;
     color: #333333;
 }
@@ -1614,6 +1633,7 @@ element.style {
     height: 22px;
     border: 1px solid #a6a6a6;
 }
+
 select {
     height: 28px;
     box-sizing: border-box;
@@ -1623,7 +1643,9 @@ select {
     width: 60px;
 }
 .add-container .add-table td .text {
+
     width: 250px;
+
     height: 22px;
     border: 1px solid #a6a6a6;
 }
@@ -1669,6 +1691,10 @@ input {
     box-sizing: border-box;
 }
 
+
+
+
+
 .add-container .add-btn button {
     display: block;
     width: 260px;
@@ -1686,6 +1712,7 @@ input, button, select, a, textarea {
     margin: 0;
     padding: 0;
 }
+
 
 .add-container .add-btn {
     width: 630px;
@@ -1708,12 +1735,15 @@ input, button, select, a, textarea {
     box-sizing: border-box;
     overflow: hidden;
 }
+
+
+
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, address, em, img, sub, sup, u, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, figcaption, footer, header, hgroup, menu, nav, section, summary, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
     font: inherit;
-}
+
 
 body {
     line-height: 1.5em;
@@ -1726,7 +1756,11 @@ body {
 #add_room {
     margin-top: 20px;
 }
+
+
+
 #pyeong{
     width: 30px;
     margin-right: 5px;
 }
+

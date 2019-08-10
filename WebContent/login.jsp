@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -89,7 +92,7 @@
 							</ul>
 						</li>
 						<li class="active"><a href="contact.html">Contact</a></li>
-						<li class="btn-cta"><a href="login.html"><span>Login</span></a></li>
+						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -119,12 +122,24 @@
        <div class="centered">
         <div class="card card-signin my-5">
           <div class="card-body">
-            <h5 class="card-title text-center">회원가입</h5>
+            <h5 class="card-title text-center">로그인</h5>
+            <form class="form-signin" method="post" action="MemberLoginAction.to">
+              <div class="form-label-group">
+                <input type="text" name="id" class="form-control" placeholder="아이디" required autofocus>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" name="pwd" class="form-control" placeholder="비밀번호" required>
+              </div>
+
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">로그인</button>
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="location.href='register2.to'">일반 회원가입</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='search.html'">아이디/비밀번호 찾기</button>
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" onclick="location.href='register3.to'">업체 회원가입</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='register.html'">회원가입</button>
              
+            
+            </form>
           </div>
            </div>
         </div>
@@ -229,6 +244,21 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
+	
+	<c:set var="failMessage" value="${requestScope.fail}"/>
+		<c:if test="${failMessage!=null}">	
+			<c:if test="${ failMessage == 0 }">
+				<script type="text/javascript">
+					alert("아이디나 비밀번호가 틀렸습니다.")
+				</script>
+			</c:if>
+			<c:if test="${ failMessage == 1 }">
+				<script type="text/javascript">
+					alert("로그인 되었습니다.")
+				</script>
+			</c:if>
+		</c:if>
+	
 
 	</body>
 </html>
