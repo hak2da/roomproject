@@ -17,7 +17,7 @@ import org.json.simple.JSONObject;
 import map.bit.kakaomaptest.kakaoDAO;
 import map.bit.kakaomaptest.kakaoVO;
 
-@WebServlet("/ArrayServlet.do")
+@WebServlet("/ArrayServlet.do11")
 public class ArrayServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
