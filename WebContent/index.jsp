@@ -37,35 +37,29 @@
    <div class="fh5co-loader"></div>
    
    <div id="page">
-   <nav class="fh5co-nav" role="navigation">
-      <div class="container">
-         <div class="row">
-            <div class="col-xs-2">
-               <div id="fh5co-logo"><a href="index.html">2조</a></div>
-            </div>
-            <div class="col-xs-10 text-right menu-1">
-               <ul>
-                  <li class="active"><a href="index.html">Home</a></li>
-                  <li><a href="work.html">Work</a></li>
-                  <li><a href="about.html">About</a></li>
-                  <li class="has-dropdown">
-                     <a href="services.html">Services</a>
-                     <ul class="dropdown">
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">eCommerce</a></li>
-                        <li><a href="#">Branding</a></li>
-                        <li><a href="#">API</a></li>
-                     </ul>
-                  </li>
-                  <li class="has-dropdown">
-                     <a href="#">Tools</a>
-                     <ul class="dropdown">
-                        <li><a href="#">HTML5</a></li>
-                        <li><a href="#">CSS3</a></li>
-                        <li><a href="#">Sass</a></li>
-                        <li><a href="#">jQuery</a></li>
-                     </ul>
-                  </li>
+  <nav class="fh5co-nav" role="navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<div id="fh5co-logo"><a href="index.jsp">2조</a></div>
+				</div>
+				<div class="col-xs-10 text-right menu-1">
+					<ul>
+						<li class="active"><a href="index.jsp">Home</a></li>
+						<li class="has-dropdown">
+							<a href="">원룸</a>
+							<ul class="dropdown">
+								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
+								<li><a href="#">상세 검색</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
+							<a href="">방 내놓기</a>
+							<ul class="dropdown">
+								<li><a href="#">매물 보기</a></li>
+								<li><a href="out.jsp">내 방 내놓기</a></li>
+							</ul>
+						</li>
                   
                <c:if test="${sessionScope.sessionID==null}">
                   <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
@@ -97,7 +91,7 @@
             <div class="col-md-8 col-md-offset-2 text-center">
                <div class="display-t">
                   <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                     <h1>Start Your Journey</h1>
+                     <h1>OneRoom Planet</h1>
                      <h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
                      <div class="row">
                         <form class="form-inline" id="fh5co-header-subscribe">

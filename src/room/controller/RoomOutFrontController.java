@@ -33,7 +33,7 @@ public class RoomOutFrontController
 			System.out.println("RoomOutFrontController1");
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("out.html");
+			forward.setPath("out.jsp");
 		} else if (command.equals("/RoomOutAction.do")) {
 			action  = new RoomOutAction();
 			try {
