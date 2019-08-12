@@ -35,14 +35,15 @@ public class MemberDAO {
 
 			con = ds.getConnection();
 
-			sql = "insert into member(name,id,pwd,email,phone,usernum) values(?, ?, ?, ?, ?, ?)";
+			sql = "insert into member(name,id,pwd,email,phone, cname, usernum) values(?, ?, ?, ?, ?, ?, ?)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getName());
 			pstmt.setString(2, vo.getId());
 			pstmt.setString(3, vo.getPwd());
 			pstmt.setString(4, vo.getEmail());
 			pstmt.setString(5, vo.getPhone());
-			pstmt.setInt(6, vo.getUsernum());
+			pstmt.setString(6, vo.getCname());
+			pstmt.setInt(7, vo.getUsernum());
 			result = pstmt.executeUpdate();
 
 			if (result == 0)

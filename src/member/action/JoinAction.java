@@ -23,7 +23,12 @@ public class JoinAction implements Action {
 	   	vo.setPwd(request.getParameter("pwd1"));
 	   	vo.setEmail(request.getParameter("email"));
 	   	vo.setPhone(request.getParameter("phone"));
-	   	vo.setUsernum(1);
+	   	vo.setCname(request.getParameter("cname"));
+	   	if(request.getParameter("cname") == null) {
+	   		vo.setUsernum(1);
+	   	} else {
+	   		vo.setUsernum(2);
+	   	}
 	   	
 	   	result = dao.insert(vo);
    		

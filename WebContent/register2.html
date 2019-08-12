@@ -58,6 +58,7 @@
 	<script type="text/javascript">
 	
 		var checkId = 0;
+		var idOK;
 		
 		function nameCheck() {
 			var name = $( '#name' ).val();
@@ -78,10 +79,13 @@
 					if(result == 1 && id != "") {
 						$('#idCheckMessage').html('사용가능한 아이디입니다.').css("color", "green");
 						$("#id").css("background-color", "#B0F6AC");
+						idOK = id;
+						/* document.getElementById('id').readOnly = true; */
 						checkId = 1;
 					} else {
 						$('#idCheckMessage').html('이미 있는 아이디입니다.').css("color", "red");
 						$("#id").css("background-color", "#FFCECE");
+						checkId = 0;
 					}
 				}
 			})
@@ -144,14 +148,15 @@
 			}
 			if ($("#pwd1").val()!=($("#pwd2").val())) {
 			      alert("비밀번호가 다릅니다.");
+			      $("#pwd1").val("");
 			      $("#pwd2").val("");
-			      $("#pwd2").focus();
+			      $("#pwd1").focus();
 			      return false;
 			}
 			if(!getMail.test($("#email").val())){
 		        alert("올바른 이메일 주소를 입력해주세요.");
 		        $("#email").val("");
-		        $("#email").focus();
+		        $("#email").focus();	
 		        return false;
 		    }
 			if(!getPhone.test($("#phone").val())){
@@ -160,6 +165,10 @@
 		        $("#phone").focus();
 		        return false;
 		    }
+			if(idOK != ($("#id").val())){
+				alert("아이디 중복확인을 눌러주세요.");
+				return false;
+			}
 			if(checkId == 0) {
 				alert("아이디 중복확인을 해주세요.");
 				return false;
@@ -245,7 +254,7 @@
               </div>
              
               <div class="form-label-group">
-                <input type="text" name="id" id="id" class="form-control" placeholder="아이디 ※4~12자의 영문 대소문자와 숫자" maxlength="12" required autofocus>
+                <input type="text" name="id" id="id" class="form-control" placeholder="아이디 ※4~12자의 영문 대소문자와 숫자" maxlength="12" required>
                 <button type="button" onclick="idCheck()">중복확인</button><h5 id="idCheckMessage"></h5>
               </div>
 
@@ -258,18 +267,18 @@
               </div>
               
               <div class="form-label-group">
-                <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required autofocus>
+                <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
               </div>
               
               <div class="form-label-group">
-                <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required autofocus>
+                <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required>
               </div>
               
               <div class="form-label-group">
               <h5 style="color: red;" id="pwdCheckMessage"></h5>
               </div>
               
-              <button id="button" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">회원가입</button>
+              <button id="button" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >회원가입</button>
              
             
             </form>
