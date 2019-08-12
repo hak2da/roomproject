@@ -176,6 +176,12 @@
 				alert("아이디 중복확인을 해주세요.");
 				return false;
 			}
+			if($.trim($("#name").val()) !== $("#name").val()){
+				alert("공백은 입력이 불가능합니다.");
+				$("#name").val("");
+		        $("#name").focus();
+				return false;
+			}
 			
 			return true;
 		}
@@ -188,7 +194,6 @@
 	
 	<div class="fh5co-loader"></div>
 	
-	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
@@ -271,8 +276,9 @@
               
               <div class="form-label-group">
                 <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
+                <button type="button" onclick="window.open('email.to', 'email', 'left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-300)/2+', width=500%,height=300%')">이메일 인증</button>
               </div>
-              
+
               <div class="form-label-group">
                 <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required>
               </div>
