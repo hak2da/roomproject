@@ -4,14 +4,32 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class RoomVO {
-	private String ADDRESS, IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,ROOMTYPE,MPAY2,FLOOR,TITLE,CONTENT;
-	private int DEPOSIT,RENT,MPAY,RSIZE,PARKING,ELVE;
-	private Date RDATE;
-	public String getADDRESS() {
-		return ADDRESS;
+	private String RADDRESS,NADDRESS,ADDRESS2,ADDRESS3, IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,ROOMTYPE,MPAY2,FLOOR,RDATE,TITLE,CONTENT,MPAY,PARKING,ELVE;
+	private int DEPOSIT,RENT,RSIZE;
+	
+	public String getRADDRESS() {
+		return RADDRESS;
 	}
-	public void setADDRESS(String aDDRESS) {
-		ADDRESS = aDDRESS;
+	public void setRADDRESS(String rADDRESS) {
+		RADDRESS = rADDRESS;
+	}
+	public String getNADDRESS() {
+		return NADDRESS;
+	}
+	public void setNADDRESS(String nADDRESS) {
+		NADDRESS = nADDRESS;
+	}
+	public String getADDRESS2() {
+		return ADDRESS2;
+	}
+	public void setADDRESS2(String aDDRESS2) {
+		ADDRESS2 = aDDRESS2;
+	}
+	public String getADDRESS3() {
+		return ADDRESS3;
+	}
+	public void setADDRESS3(String aDDRESS3) {
+		ADDRESS3 = aDDRESS3;
 	}
 	public String getIMAGE1() {
 		return IMAGE1;
@@ -61,6 +79,12 @@ public class RoomVO {
 	public void setFLOOR(String fLOOR) {
 		FLOOR = fLOOR;
 	}
+	public String getRDATE() {
+		return RDATE;
+	}
+	public void setRDATE(String rDATE) {
+		RDATE = rDATE;
+	}
 	public String getTITLE() {
 		return TITLE;
 	}
@@ -72,6 +96,24 @@ public class RoomVO {
 	}
 	public void setCONTENT(String cONTENT) {
 		CONTENT = cONTENT;
+	}
+	public String getMPAY() {
+		return MPAY;
+	}
+	public void setMPAY(String mPAY) {
+		MPAY = mPAY;
+	}
+	public String getPARKING() {
+		return PARKING;
+	}
+	public void setPARKING(String pARKING) {
+		PARKING = pARKING;
+	}
+	public String getELVE() {
+		return ELVE;
+	}
+	public void setELVE(String eLVE) {
+		ELVE = eLVE;
 	}
 	public int getDEPOSIT() {
 		return DEPOSIT;
@@ -85,37 +127,10 @@ public class RoomVO {
 	public void setRENT(int rENT) {
 		RENT = rENT;
 	}
-	public int getMPAY() {
-		return MPAY;
-	}
-	public void setMPAY(int mPAY) {
-		MPAY = mPAY;
-	}
 	public int getRSIZE() {
 		return RSIZE;
 	}
 	public void setRSIZE(int rSIZE) {
 		RSIZE = rSIZE;
 	}
-	public int getPARKING() {
-		return PARKING;
-	}
-	public void setPARKING(int pARKING) {
-		PARKING = pARKING;
-	}
-	public int getELVE() {
-		return ELVE;
-	}
-	public void setELVE(int eLVE) {
-		ELVE = eLVE;
-	}
-	public Date getRDATE() {
-		return RDATE;
-	}
-	public void setRDATE(Date rDATE) {
-		RDATE = rDATE;
-	}
-	
-	
-	
 }

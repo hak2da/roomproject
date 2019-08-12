@@ -20,16 +20,11 @@ public class RoomDAO {
 		try{
 			Context init = new InitialContext();
 	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc:OracleDB");
+	  	    System.out.println("RoomDAO 연결 성공");
 		}catch(Exception ex){
-			System.out.println("DB 연결 실패 : " + ex);
+			System.out.println("RoomDAO 연결 실패");
 			return;
 		}
-	}
-	
-	private static RoomDAO instance = new RoomDAO();
-	
-	public static RoomDAO getInstance() {
-		return instance;
 	}
 	
 	//방정보 추가
@@ -39,30 +34,34 @@ public class RoomDAO {
 		int result=0;
 		
 		try {
-		sql = "INSERT INTO ROOMINFO (ADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			System.out.println("RoomDAO insert문 시작");
+			System.out.println(room.getNADDRESS());
+			System.out.println(room.getRADDRESS());
+		sql = "INSERT INTO ROOMINFO (NADDRESS,RADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES "
+				+ "					(       ?,       ?,     ?,     ?,     ?,     ?,     ?,      ?,   ?,       ?,   ?,    ?,    ?,      ?,   ?,    ?,    ?,    ?,      ?)";
 			
 		con = ds.getConnection();
 		pstmt = con.prepareStatement(sql);
-		rs = pstmt.executeQuery();
 		
-		pstmt.setString(1, room.getADDRESS());
-		pstmt.setString(2, room.getIMAGE1());
-		pstmt.setString(3, room.getIMAGE2());
-		pstmt.setString(4, room.getIMAGE3());
-		pstmt.setString(5, room.getIMAGE4());
-		pstmt.setString(6, room.getIMAGE5());
-		pstmt.setInt(7, room.getDEPOSIT());
-		pstmt.setInt(8, room.getRENT());
-		pstmt.setString(9, room.getROOMTYPE());
-		pstmt.setInt(10, room.getMPAY());
-		pstmt.setString(11, room.getMPAY2());
-		pstmt.setInt(12, room.getRSIZE());
-		pstmt.setInt(13, room.getPARKING());
-		pstmt.setInt(14, room.getELVE());
-		pstmt.setString(15, room.getFLOOR());
-		pstmt.setDate(16, (Date) room.getRDATE());
-		pstmt.setString(17, room.getTITLE());
-		pstmt.setString(18, room.getCONTENT());
+		pstmt.setString(1, room.getNADDRESS());
+		pstmt.setString(2, room.getRADDRESS());
+		pstmt.setString(3, room.getIMAGE1());
+		pstmt.setString(4, room.getIMAGE2());
+		pstmt.setString(5, room.getIMAGE3());
+		pstmt.setString(6, room.getIMAGE4());
+		pstmt.setString(7, room.getIMAGE5());
+		pstmt.setInt(8, room.getDEPOSIT());
+		pstmt.setInt(9, room.getRENT());
+		pstmt.setString(10, room.getROOMTYPE());
+		pstmt.setString(11, room.getMPAY());
+		pstmt.setString(12, room.getMPAY2());
+		pstmt.setInt(13, room.getRSIZE());
+		pstmt.setString(14, room.getPARKING());
+		pstmt.setString(15, room.getELVE());
+		pstmt.setString(16, room.getFLOOR());
+		pstmt.setString(17, room.getRDATE());
+		pstmt.setString(18, room.getTITLE());
+		pstmt.setString(19, room.getCONTENT());
 		
 		result=pstmt.executeUpdate();
 		if(result==0)return false;
