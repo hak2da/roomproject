@@ -182,6 +182,77 @@ $(function(){
 		}
 	});
 });
+//이미지
+
+	function preview(id, input, target) {
+		var idok = id;
+		if (input.files && input.files[0]) {
+			var fileName = input.files[0].name;
+			var ext = fileName.substr(fileName.length - 3, fileName.length);
+			var isCheck = false;
+			if (ext.toLowerCase() == 'jpg' || ext.toLowerCase() == 'gif'
+					|| ext.toLowerCase() == 'png') {
+				isCheck = true;
+			}
+			if (isCheck == false) {
+				alert("이미지 파일 아님");
+				jQuery(input).val("");
+				return;
+			}
+			var reader = new FileReader();
+			reader.readAsDataURL(input.files[0]);
+			reader.onload = function(e) {
+				jQuery(target).attr('src', e.target.result);
+				if (idok == "file") {
+					document.getElementById('btn-upload').style.visibility = 'hidden';
+					document.getElementById('select-del').style.visibility = 'visible';
+				} else if (idok == "file2") {
+					document.getElementById('btn-upload2').style.visibility = 'hidden';
+					document.getElementById('select-del2').style.visibility = 'visible';
+				} else if (idok == "file3") {
+					document.getElementById('btn-upload3').style.visibility = 'hidden';
+					document.getElementById('select-del3').style.visibility = 'visible';
+				} else if (idok == "file4") {
+					document.getElementById('btn-upload4').style.visibility = 'hidden';
+					document.getElementById('select-del4').style.visibility = 'visible';
+				} else if (idok == "file5") {
+					document.getElementById('btn-upload5').style.visibility = 'hidden';
+					document.getElementById('select-del5').style.visibility = 'visible';
+				}
+			}
+		}
+	}
+
+	function del() {
+		document.getElementById('file').value = "";
+		document.getElementById('image1').src = "";
+		document.getElementById('btn-upload').style.visibility = 'visible';
+		document.getElementById('select-del').style.visibility = 'hidden';
+	}
+	function del2() {
+		document.getElementById('file2').value = "";
+		document.getElementById('image2').src = "";
+		document.getElementById('btn-upload2').style.visibility = 'visible';
+		document.getElementById('select-del2').style.visibility = 'hidden';
+	}
+	function del3() {
+		document.getElementById('file3').value = "";
+		document.getElementById('image3').src = "";
+		document.getElementById('btn-upload3').style.visibility = 'visible';
+		document.getElementById('select-del3').style.visibility = 'hidden';
+	}
+	function del4() {
+		document.getElementById('file4').value = "";
+		document.getElementById('image4').src = "";
+		document.getElementById('btn-upload4').style.visibility = 'visible';
+		document.getElementById('select-del4').style.visibility = 'hidden';
+	}
+	function del5() {
+		document.getElementById('file5').value = "";
+		document.getElementById('image5').src = "";
+		document.getElementById('btn-upload5').style.visibility = 'visible';
+		document.getElementById('select-del5').style.visibility = 'hidden';
+	}
 </script>
 
 </head>
@@ -271,35 +342,74 @@ $(function(){
 							<ul class="ui-sortable">
 								<li id="li1" class="ui-sortable-handle"><span class="i-count">1</span>
 									<div>
-									<input class="i-btn" type="file" id="file" name="file"/>
-									<button class="i-btn" type="button" id="btn-upload">Image</button>
+									<input class="i-btn" type="file" id="file" name="file" onchange="preview(this.id,this, $('#image1'));"/>
+									<button class="i-btn" type="button" id="btn-upload" name="btn1">Image</button>
 									</div>
-									<em class="i-tit">대표사진</em>
-									</li>
+									<div class="selectable">
+										<div class="selectable-content">
+											<img src="" style="width:108px; height:81px;" id="image1">
+										</div>
+										<div class="selectable-layer">
+											<button id="select-del" class="selectable-del" type="button" onclick="del()" style="visibility:hidden">X</button>
+										</div>
+									</div>
+								</li>
 								<li id="li2" class="ui-sortable-handle"><span class="i-count">2</span>
 									<div>
-									<input class="i-btn" type="file" id="file2" name="file"/>
-									<button class="i-btn" type="button" id="btn-upload2">Image</button>
+									<input class="i-btn" type="file" id="file2" name="file" value = "2" onchange="preview(this.id,this, $('#image2'));"/>
+									<button class="i-btn" type="button" id="btn-upload2" name="btn2">Image</button>
 									</div>
-									<em class="i-tit">화장실</em></li>
+									<div class="selectable">
+										<div class="selectable-content">
+											<img src="" style="width:108px; height:81px; " id="image2">
+										</div>
+										<div class="selectable-layer">
+											<button id="select-del2" class="selectable-del" type="button" onclick="del2()" style="visibility:hidden">X</button>
+										</div>
+									</div>
+								</li>
 								<li id="li3" class="ui-sortable-handle"><span class="i-count">3</span>
 									<div>
-									<input class="i-btn" type="file" id="file3" name="file"/>
-									<button class="i-btn" type="button" id="btn-upload3">Image</button>
+									<input class="i-btn" type="file" id="file3" name="file" value = "3" onchange="preview(this.id,this, $('#image3'));"/>
+									<button class="i-btn" type="button" id="btn-upload3" name="btn3">Image</button>
 									</div>
-									<em class="i-tit">주방</em></li>
+									<div class="selectable">
+										<div class="selectable-content">
+											<img src="" style="width:108px; height:81px; " id="image3">
+										</div>
+										<div class="selectable-layer">
+											<button id="select-del3" class="selectable-del" type="button" onclick="del3()" style="visibility:hidden">X</button>
+										</div>
+									</div>
+								</li>
 								<li id="li4" class="ui-sortable-handle"><span class="i-count">4</span>
 									<div>
-									<input class="i-btn" type="file" id="file4" name="file"/>
-									<button class="i-btn" type="button" id="btn-upload4">Image</button>
+									<input class="i-btn" type="file" id="file4" name="file" value = "4" onchange="preview(this.id,this, $('#image4'));"/>
+									<button class="i-btn" type="button" id="btn-upload4" name="btn4">Image</button>
 									</div>
-									<em class="i-tit">방사진</em></li>
+									<div class="selectable">
+										<div class="selectable-content">
+											<img src="" style="width:108px; height:81px; " id="image4">
+										</div>
+										<div class="selectable-layer">
+											<button id="select-del4" class="selectable-del" type="button" onclick="del4()" style="visibility:hidden">X</button>
+										</div>
+									</div>
+								</li>
 								<li id="li5" class="ui-sortable-handle"><span class="i-count">5</span>
 									<div>
-									<input class="i-btn" type="file" id="file5" name="file"/>
-									<button class="i-btn" type="button" id="btn-upload5">Image</button>
+									<input class="i-btn" type="file" id="file5" name="file" value = "5" onchange="preview(this.id,this, $('#image5'));"/>
+									<button class="i-btn" type="button" id="btn-upload5" name="btn5">Image</button>
 									</div>
-									<em class="i-tit">방사진</em></li>
+									<div class="selectable">
+										<div class="selectable-content">
+											<img src="" style="width:108px; height:81px;" id="image5">
+										</div>
+										<div class="selectable-layer">
+											<button id="select-del5" class="selectable-del" type="button" onclick="del5()" style="visibility:hidden">X</button>
+										</div>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -322,7 +432,7 @@ $(function(){
 							</tr>
 							<tr>
 								<th>보증금</th>
-								<td><input type="text" class="text" name="DEPOSIT"> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
+								<td><input type="text" class="text" name="DEPOSIT" id="test"> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
 							</tr>
 							<tr>
 								<th>월세</th>
@@ -411,20 +521,21 @@ $(function(){
 							</tr>
 							<tr>
 								<th>주차</th>
-								<td class="has-col"><label><input type="radio"
-										name="PARKING" value="가능"> 가능</label> <label><input
-										type="radio" name="PARKING" value="없음"> 없음</label>
-									<div class="i-col">
-										<strong>엘리베이터</strong> <label><input type="radio"
-											name="ELVE" value="있음"> 있음</label> <label><input
-											type="radio" name="ELVE" value="없음">
-											없음</label>
-									</div></td>
+								<td class="has-col">
+								<label><input type="radio"name="PARKING" value="가능"> 가능</label> 
+								<label><input type="radio" name="PARKING" value="없음"> 없음</label>
+								<div class="i-col">
+									<strong>엘리베이터</strong>
+									<label><input type="radio" name="ELVE" value="있음"> 있음</label>
+									<label><input type="radio" name="ELVE" value="없음"> 없음</label>
+								</div>
+								</td>
 							</tr>
-							<tr></tr>
+
 							<tr>
 								<th>입주가능일</th>
-								<td><input type="text" class="text max" name="RDATE">
+								<td>
+								<input type="date" class="text max" name="RDATE">
 								</td>
 							</tr>
 							<tr>

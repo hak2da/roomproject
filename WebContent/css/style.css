@@ -1603,6 +1603,7 @@ element.style {
     border: 1px solid #666666;
     box-shadow: 0 -1px 0 #b6b6b6 inset;
     border-radius: 5px;
+    z-index:2;
 }
 
 
@@ -1846,3 +1847,34 @@ body {
         font-weight: 500;
         padding: 6px 12px;
       }
+      
+.selectable-layer button {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #fff;
+    font-size: 10px;
+    z-index:2;
+}
+
+.add-container .add-photo .item-photo li img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 106px;
+    height: 79px;
+    cursor: pointer;
+    z-index:1;
+}
+
+.add-container .add-photo .item-photo li .i-count {
+	z-index:2;
+}
+
+.add-container .add-photo .item-photo .i-tit {
+	z-index:2;
+}
