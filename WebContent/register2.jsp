@@ -104,6 +104,7 @@
 					if(result == 0) {	
 						alert('이미 인증된 이메일 입니다.');
 					} else {
+						
 						document.getElementById('incl').style.display = 'block';
 					}
 				}

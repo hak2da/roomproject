@@ -2,6 +2,7 @@ package member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.model.MemberDAO;
 import member.model.MemberVO;
@@ -25,7 +26,6 @@ public class EmailAction implements Action {
 		ActionForward forward = new ActionForward();
 
 		int result = dao.emailCheck(request.getParameter("email"));
-		System.out.println(result);
 		if (result == 0) { // 이미 있는 이메일
 			return null;
 		}
@@ -35,7 +35,10 @@ public class EmailAction implements Action {
 		String to = request.getParameter("email");
 		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
 		String content = "인증번호 : " + randomNum;
-
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("sessionRandomNum", randomNum);
+		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
 		p.put("mail.smtp.host", "smtp.googlemail.com");
