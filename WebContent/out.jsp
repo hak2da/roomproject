@@ -165,7 +165,7 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
-	
+
 //달력
 $(function(){
 	$("#date1").datepicker();
@@ -324,7 +324,7 @@ $(function(){
 			</div>
 		</header>
 
-		<form action="RoomOutAction.do" method="post" name="boardform">
+		<form action="RoomOutAction.do" method="post" name="boardform" enctype="multipart/form-data">
 			<div class="wrap-950 add-container">
 				<div class="content left-content">
 
@@ -344,7 +344,7 @@ $(function(){
 									</div>
 									<div class="selectable">
 										<div class="selectable-content">
-											<img src="" style="width:108px; height:81px; " id="image1">
+											<img src="" style="width:108px; height:81px;" id="image1">
 										</div>
 										<div class="selectable-layer">
 											<button id="select-del" class="selectable-del" type="button" onclick="del()" style="visibility:hidden">X</button>
@@ -544,10 +544,10 @@ $(function(){
 								<th>상세설명</th>
 								<td><textarea name="CONTENT" class="description"
 										placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다.
-														방의 위치와 교통, 주변 편의시설, 방의 특징과 장점, 보안시설, 옵션, 주차, 전체적인
-														방의 느낌 등을 작성해 주세요.      
-														다른 방에 대한 설명, 연락처, 홍보 메시지 등 해당 방과 관련없는 내용을 입력하거나 
-														해당 방에 대한 설명이 부적절할 경우 중개가 종료될 수 있습니다."></textarea>
+방의 위치와 교통, 주변 편의시설, 방의 특징과 장점, 보안시설, 옵션, 주차, 전체적인
+방의 느낌 등을 작성해 주세요.      
+다른 방에 대한 설명, 연락처, 홍보 메시지 등 해당 방과 관련없는 내용을 입력하거나 
+해당 방에 대한 설명이 부적절할 경우 중개가 종료될 수 있습니다."></textarea>
 
 								</td>
 							</tr>
