@@ -339,7 +339,7 @@ $(function(){
 							<ul class="ui-sortable">
 								<li id="li1" class="ui-sortable-handle"><span class="i-count">1</span>
 									<div>
-									<input class="i-btn" type="file" id="file" name="file" onchange="preview(this.id,this, $('#image1'));"/>
+									<input class="i-btn" type="file" id="file" name="file1" onchange="preview(this.id,this, $('#image1'));"/>
 									<button class="i-btn" type="button" id="btn-upload" name="btn1">Image</button>
 									</div>
 									<div class="selectable">
@@ -353,7 +353,7 @@ $(function(){
 								</li>
 								<li id="li2" class="ui-sortable-handle"><span class="i-count">2</span>
 									<div>
-									<input class="i-btn" type="file" id="file2" name="file" value = "2" onchange="preview(this.id,this, $('#image2'));"/>
+									<input class="i-btn" type="file" id="file2" name="file2" value = "2" onchange="preview(this.id,this, $('#image2'));"/>
 									<button class="i-btn" type="button" id="btn-upload2" name="btn2">Image</button>
 									</div>
 									<div class="selectable">
@@ -367,7 +367,7 @@ $(function(){
 								</li>
 								<li id="li3" class="ui-sortable-handle"><span class="i-count">3</span>
 									<div>
-									<input class="i-btn" type="file" id="file3" name="file" value = "3" onchange="preview(this.id,this, $('#image3'));"/>
+									<input class="i-btn" type="file" id="file3" name="file3" value = "3" onchange="preview(this.id,this, $('#image3'));"/>
 									<button class="i-btn" type="button" id="btn-upload3" name="btn3">Image</button>
 									</div>
 									<div class="selectable">
@@ -381,7 +381,7 @@ $(function(){
 								</li>
 								<li id="li4" class="ui-sortable-handle"><span class="i-count">4</span>
 									<div>
-									<input class="i-btn" type="file" id="file4" name="file" value = "4" onchange="preview(this.id,this, $('#image4'));"/>
+									<input class="i-btn" type="file" id="file4" name="file4" value = "4" onchange="preview(this.id,this, $('#image4'));"/>
 									<button class="i-btn" type="button" id="btn-upload4" name="btn4">Image</button>
 									</div>
 									<div class="selectable">
@@ -395,7 +395,7 @@ $(function(){
 								</li>
 								<li id="li5" class="ui-sortable-handle"><span class="i-count">5</span>
 									<div>
-									<input class="i-btn" type="file" id="file5" name="file" value = "5" onchange="preview(this.id,this, $('#image5'));"/>
+									<input class="i-btn" type="file" id="file5" name="file5" value = "5" onchange="preview(this.id,this, $('#image5'));"/>
 									<button class="i-btn" type="button" id="btn-upload5" name="btn5">Image</button>
 									</div>
 									<div class="selectable">
