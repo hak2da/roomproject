@@ -21,7 +21,7 @@ public class RoomOutAction implements Action{
 		RoomDAO dao = new RoomDAO();
 		RoomVO vo = new RoomVO();
 		ActionForward forward=new ActionForward();
-		String realFolder="";
+		String realFolder="C:\\KHT\\JSP workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
    		String saveFolder="/image";
 		
 		boolean result=false;
@@ -67,11 +67,11 @@ public class RoomOutAction implements Action{
 			System.out.println("RoomOutAction");
 			vo.setNADDRESS(NADDRESS);
 			vo.setRADDRESS(RADDRESS);
-			vo.setIMAGE1(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-			vo.setIMAGE2(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-			vo.setIMAGE3(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-			vo.setIMAGE4(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-			vo.setIMAGE5(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			vo.setIMAGE1(multi.getFilesystemName("FILE1"));
+			vo.setIMAGE2(multi.getFilesystemName("FILE2"));
+			vo.setIMAGE3(multi.getFilesystemName("FILE3"));
+			vo.setIMAGE4(multi.getFilesystemName("FILE4"));
+			vo.setIMAGE5(multi.getFilesystemName("FILE5"));
 			vo.setDEPOSIT(Integer.parseInt(multi.getParameter("DEPOSIT")));
 			vo.setRENT(Integer.parseInt(multi.getParameter("RENT")));
 			vo.setROOMTYPE(multi.getParameter("ROOMTYPE"));
