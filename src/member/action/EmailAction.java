@@ -57,7 +57,7 @@ public class EmailAction implements Action {
 		} catch(Exception e){
 		    e.printStackTrace();
 		}
-        
+		
         forward.setRedirect(true);
    		forward.setPath("./email.to");
    		return forward;

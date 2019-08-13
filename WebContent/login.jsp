@@ -145,7 +145,7 @@
 									찾기</button>
 
 								<button class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="button" onclick="location.href='register.html'">회원가입</button>
+									type="button" onclick="location.href='register.to'">회원가입</button>
 
 
 							</form>
@@ -234,7 +234,7 @@
 					</p>
 					<p>
 					<ul class="fh5co-social-icons">
-						<li><a href="#"><i class="icon-twitter"></i></a></li>
+						<li><a href="#"><i class="icon-t\witter"></i></a></li>
 						<li><a href="#"><i class="icon-facebook"></i></a></li>
 						<li><a href="#"><i class="icon-linkedin"></i></a></li>
 						<li><a href="#"><i class="icon-dribbble"></i></a></li>

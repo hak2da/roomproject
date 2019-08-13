@@ -43,8 +43,6 @@ public class RoomOutAction implements Action{
 			String MPAY3 ="";
 			int count = 0;
 			String[] value = multi.getParameterValues("MPAY2");
-			System.out.println(value);
-			System.out.println(multi.getParameterValues("MPAY2"));
 			for (String val : value) {
 				count ++;
 				if(value.length == 1) {
@@ -62,9 +60,19 @@ public class RoomOutAction implements Action{
 			if(MPAY4 == null) {
 				MPAY4 = "없음";
 			}
-			String NADDRESS = multi.getParameter("NADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
-			String RADDRESS = multi.getParameter("RADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
-			System.out.println("RoomOutAction");
+			
+			String NADDRESS = "";
+			String RADDRESS = "";
+			if (multi.getParameter("NADDRESS") == null) {
+				NADDRESS = "없음";
+			} else {
+				NADDRESS = multi.getParameter("NADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
+			}
+			if (multi.getParameter("RADDRESS") == null) {
+				RADDRESS = "없음";
+			} else {
+				RADDRESS = multi.getParameter("RADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
+			}
 			vo.setNADDRESS(NADDRESS);
 			vo.setRADDRESS(RADDRESS);
 			vo.setIMAGE1(multi.getFilesystemName("FILE1"));

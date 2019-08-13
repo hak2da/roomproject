@@ -10,10 +10,14 @@
 	function check() {
 		var email = $('#email').val();
 		var id = $('#id').val();
+		console.log(email);
+		console.log(id); 
+		/* alert(email + " , " + id) */
+		
 		$.ajax({
 			type: 'post',
 			url: 'EmailAction.to',
-			data: {email : email, id : id},
+			data: { "email" : email, "id" : id},
 			success: function(result) {
 				if(result == 1) {
 					
@@ -22,12 +26,13 @@
 		})
 	}
 </script>
+
 <body>
-	<center>
 		<br /><br />
 		<h5>인증 번호 7자리를 입력하세요</h5>
 		
 		<div>
+		이쪽 타는지?<br>
 			<form method="post" name="" onSubmit="return check();">
 				<input type="button" value="이메일 발송"><br /><br />
 				<input type="text" name="input">

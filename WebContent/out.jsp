@@ -429,7 +429,7 @@ $(function(){
 							</tr>
 							<tr>
 								<th>보증금</th>
-								<td><input type="text" class="text" name="DEPOSIT" id="test"> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
+								<td><input type="text" class="text" name="DEPOSIT" id="test" required> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
 							</tr>
 							<tr>
 								<th>월세</th>
@@ -448,7 +448,7 @@ $(function(){
 
 							<tr>
 								<th>관리비</th>
-								<td><input type="text" class="text" name="MPAY" id="MPAY"> 만원
+								<td><input type="text" class="text" name="MPAY" id="MPAY" required> 만원
 									&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp; 
 									<label><input type="checkbox" id="MPAY_none" name="MPAY_none" onClick="checkDisable(this.form)"> 없음</label>
 									<p class="i-gray">

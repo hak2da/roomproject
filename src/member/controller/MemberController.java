@@ -34,6 +34,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("register2.jsp");
+         
       } else if (command.equals("/JoinAction.to")) {
          action = new JoinAction();
          try {
@@ -45,10 +46,12 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
           forward = new ActionForward();
           forward.setRedirect(false);
           forward.setPath("register3.jsp");
+          
        } else if (command.equals("/email.to")) {
            forward = new ActionForward();
            forward.setRedirect(false);
            forward.setPath("email.jsp");
+           
         } else if (command.equals("/EmailAction.to")) {
            action = new EmailAction();
            try {
@@ -56,11 +59,8 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
            } catch (Exception e) {
               e.printStackTrace();
            }
+           
         } else if (command.equals("/login.to")) {
-         forward = new ActionForward();
-         forward.setRedirect(false);
-         forward.setPath("login.jsp");
-      } else if (command.equals("/login.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("login.jsp");
@@ -90,13 +90,16 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          String id = request.getParameter("id");
          response.getWriter().write(new MemberDAO().idCheck(id) + "");
       }
-
+      System.out.println("나감????");
+      System.out.println(forward);
       if (forward != null) {
          if (forward.isRedirect()) {
             response.sendRedirect(forward.getPath());
+            System.out.println("실행");
          } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
             dispatcher.forward(request, response);
+            System.out.println("안됨");
          }
       }
 
