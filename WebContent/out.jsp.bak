@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+=======
+>>>>>>> hyuntae
 <html style="overflow-y: hidden !important">
 <head>
 <meta charset="utf-8">
@@ -15,6 +19,7 @@
 
 <!-- 
 	//////////////////////////////////////////////////////
+
 	FREE HTML5 TEMPLATE 
 	DESIGNED & DEVELOPED by FreeHTML5.co
 		
@@ -22,6 +27,7 @@
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
 	Facebook: 		https://www.facebook.com/fh5co
+
 	//////////////////////////////////////////////////////
 	 -->
 
@@ -113,10 +119,12 @@ function sample4_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
             // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var extraRoadAddr = ''; // 참고 항목 변수
+
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
             if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -130,6 +138,7 @@ function sample4_execDaumPostcode() {
             if(extraRoadAddr !== ''){
                 extraRoadAddr = ' (' + extraRoadAddr + ')';
             }
+
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('sample4_postcode').value = data.zonecode;
             document.getElementById("sample4_roadAddress").value = roadAddr;
@@ -141,12 +150,14 @@ function sample4_execDaumPostcode() {
             } else {
                 document.getElementById("sample4_extraAddress").value = '';
             }
+
             var guideTextBox = document.getElementById("guide");
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
             if(data.autoRoadAddress) {
                 var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
                 guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
                 guideTextBox.style.display = 'block';
+
             } else if(data.autoJibunAddress) {
                 var expJibunAddr = data.autoJibunAddress;
                 guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
@@ -158,6 +169,11 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
+<<<<<<< HEAD
+	
+=======
+
+>>>>>>> hyuntae
 //달력
 $(function(){
 	$("#date1").datepicker();
@@ -176,7 +192,10 @@ $(function(){
 		}
 	});
 });
+<<<<<<< HEAD
+=======
 //이미지
+
 	function preview(id, input, target) {
 		var idok = id;
 		if (input.files && input.files[0]) {
@@ -215,6 +234,7 @@ $(function(){
 			}
 		}
 	}
+
 	function del() {
 		document.getElementById('file').value = "";
 		document.getElementById('image1').src = "";
@@ -245,6 +265,7 @@ $(function(){
 		document.getElementById('btn-upload5').style.visibility = 'visible';
 		document.getElementById('select-del5').style.visibility = 'hidden';
 	}
+>>>>>>> hyuntae
 </script>
 
 </head>
@@ -257,7 +278,11 @@ $(function(){
 <input type="text" name="date" id="date3" size="12" />
 <input type="button" value="달력" onclick="$('#date3').datepicker('show');" /> -->
 
-		  <nav class="fh5co-nav" role="navigation">
+<<<<<<< HEAD
+		<div class="fh5co-loader"></div>
+	
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
@@ -269,18 +294,18 @@ $(function(){
 						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">
-								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
+								<li><a href="#">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown">
-							<a href="">방 내놓기</a>
+							<a href="#">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
-								<li><a href="out.jsp">내 방 내놓기</a></li>
+								<li><a href="out.html">내 방 내놓기</a></li>
 							</ul>
 						</li>
-                  
+					      
                <c:if test="${sessionScope.sessionID==null}">
                   <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
                
@@ -293,16 +318,57 @@ $(function(){
                   <li class="btn-cta"><a href="logout.to"><span>로그아웃</span></a></li>
                
                     </c:if>
-                     
-               </ul>
-               
-               
-               
-            </div>
-         </div>
-         
-      </div>
-   </nav>
+					
+					</ul>
+					
+					
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+
+	
+	
+=======
+	<div id="page">
+		<nav class="fh5co-nav" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2">
+						<div id="fh5co-logo">
+							<a href="index.html">King.</a>
+						</div>
+					</div>
+					<div class="col-xs-10 text-right menu-1">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="work.html">Work</a></li>
+							<li><a href="about.html">About</a></li>
+							<li class="has-dropdown"><a href="services.html">Services</a>
+								<ul class="dropdown">
+									<li><a href="#">Web Design</a></li>
+									<li><a href="#">eCommerce</a></li>
+									<li><a href="#">Branding</a></li>
+									<li><a href="#">API</a></li>
+								</ul></li>
+							<li class="has-dropdown"><a href="#">Tools</a>
+								<ul class="dropdown">
+									<li><a href="#">HTML5</a></li>
+									<li><a href="#">CSS3</a></li>
+									<li><a href="#">Sass</a></li>
+									<li><a href="#">jQuery</a></li>
+								</ul></li>
+							<li class="active"><a href="contact.html">Contact</a></li>
+							<li class="btn-cta"><a href="#"><span>Login</span></a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+
+>>>>>>> hyuntae
 		<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm"
 			role="banner" style="background-image: url(images/img_bg_2.jpg);">
 			<div class="overlay"></div>
@@ -323,7 +389,13 @@ $(function(){
 			</div>
 		</header>
 
+<<<<<<< HEAD
+
+		<form action="RoomOutAction.do" method="post" name="boardform">
+
+=======
 		<form action="RoomOutAction.do" method="post" name="boardform" enctype="multipart/form-data">
+>>>>>>> hyuntae
 			<div class="wrap-950 add-container">
 				<div class="content left-content">
 
@@ -338,6 +410,37 @@ $(function(){
 							<ul class="ui-sortable">
 								<li id="li1" class="ui-sortable-handle"><span class="i-count">1</span>
 									<div>
+<<<<<<< HEAD
+									<input class="i-btn" type="file" id="file" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload">Image</button>
+									</div>
+									<em class="i-tit">대표사진</em>
+									</li>
+								<li id="li2" class="ui-sortable-handle"><span class="i-count">2</span>
+									<div>
+									<input class="i-btn" type="file" id="file2" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload2">Image</button>
+									</div>
+									<em class="i-tit">화장실</em></li>
+								<li id="li3" class="ui-sortable-handle"><span class="i-count">3</span>
+									<div>
+									<input class="i-btn" type="file" id="file3" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload3">Image</button>
+									</div>
+									<em class="i-tit">주방</em></li>
+								<li id="li4" class="ui-sortable-handle"><span class="i-count">4</span>
+									<div>
+									<input class="i-btn" type="file" id="file4" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload4">Image</button>
+									</div>
+									<em class="i-tit">방사진</em></li>
+								<li id="li5" class="ui-sortable-handle"><span class="i-count">5</span>
+									<div>
+									<input class="i-btn" type="file" id="file5" name="file"/>
+									<button class="i-btn" type="button" id="btn-upload5">Image</button>
+									</div>
+									<em class="i-tit">방사진</em></li>
+=======
 									<input class="i-btn" type="file" id="file" name="file1" onchange="preview(this.id,this, $('#image1'));"/>
 									<button class="i-btn" type="button" id="btn-upload" name="btn1">Image</button>
 									</div>
@@ -406,6 +509,7 @@ $(function(){
 										</div>
 									</div>
 								</li>
+>>>>>>> hyuntae
 							</ul>
 						</div>
 					</div>
@@ -428,7 +532,11 @@ $(function(){
 							</tr>
 							<tr>
 								<th>보증금</th>
+<<<<<<< HEAD
+								<td><input type="text" class="text" name="DEPOSIT"> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
+=======
 								<td><input type="text" class="text" name="DEPOSIT" id="test"> 만원 <span class="fc-red1">※무보증일 경우, 한 달 월세를 입력하세요</span></td>
+>>>>>>> hyuntae
 							</tr>
 							<tr>
 								<th>월세</th>
@@ -517,6 +625,22 @@ $(function(){
 							</tr>
 							<tr>
 								<th>주차</th>
+<<<<<<< HEAD
+								<td class="has-col"><label><input type="radio"
+										name="PARKING" value="가능"> 가능</label> <label><input
+										type="radio" name="PARKING" value="없음"> 없음</label>
+									<div class="i-col">
+										<strong>엘리베이터</strong> <label><input type="radio"
+											name="ELVE" value="있음"> 있음</label> <label><input
+											type="radio" name="ELVE" value="없음">
+											없음</label>
+									</div></td>
+							</tr>
+							<tr></tr>
+							<tr>
+								<th>입주가능일</th>
+								<td><input type="text" class="text max" name="RDATE">
+=======
 								<td class="has-col">
 								<label><input type="radio"name="PARKING" value="가능"> 가능</label> 
 								<label><input type="radio" name="PARKING" value="없음"> 없음</label>
@@ -532,6 +656,7 @@ $(function(){
 								<th>입주가능일</th>
 								<td>
 								<input type="date" class="text max" name="RDATE">
+>>>>>>> hyuntae
 								</td>
 							</tr>
 							<tr>
@@ -543,10 +668,17 @@ $(function(){
 								<th>상세설명</th>
 								<td><textarea name="CONTENT" class="description"
 										placeholder="해당 방에 대한 특징과 소개를 최소 50자 이상 입력해야 합니다.
+<<<<<<< HEAD
+														방의 위치와 교통, 주변 편의시설, 방의 특징과 장점, 보안시설, 옵션, 주차, 전체적인
+														방의 느낌 등을 작성해 주세요.      
+														다른 방에 대한 설명, 연락처, 홍보 메시지 등 해당 방과 관련없는 내용을 입력하거나 
+														해당 방에 대한 설명이 부적절할 경우 중개가 종료될 수 있습니다."></textarea>
+=======
 방의 위치와 교통, 주변 편의시설, 방의 특징과 장점, 보안시설, 옵션, 주차, 전체적인
 방의 느낌 등을 작성해 주세요.      
 다른 방에 대한 설명, 연락처, 홍보 메시지 등 해당 방과 관련없는 내용을 입력하거나 
 해당 방에 대한 설명이 부적절할 경우 중개가 종료될 수 있습니다."></textarea>
+>>>>>>> hyuntae
 
 								</td>
 							</tr>
