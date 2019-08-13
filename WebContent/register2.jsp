@@ -96,14 +96,15 @@
 		
 		function emailOK() {
 			var email = $('#email').val();
-			var id = $('#id').val();
 			$.ajax({
 				type: 'post',
 				url: 'EmailAction.to',
-				data: {email : email, id : id},
+				data: {email : email},
 				success: function(result) {
-					if(result == 1) {
-						
+					if(result == 0) {	
+						alert('이미 인증된 이메일 입니다.');
+					} else {
+						document.getElementById('incl').style.display = 'block';
 					}
 				}
 			})
@@ -290,10 +291,14 @@
               </div>
               
               <div class="form-label-group">
-                <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
-                <button type="button" onclick="location.href='javascript:void(window.open('email.to', 'email', 'left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-300)/2+', width=500%,height=300%'))'">이메일 인증</button>
+                <input type=email name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
+                <button type="button" onclick="emailOK()">이메일 인증</button>
               </div>
-              href="javascript:void(window.open('주소', '팝업창 이름','width=#, height=#'))"
+              
+              <div class="form-label-group" id="incl" style="display:none">
+                <input type="text" name="in" id="in" class="form-control">
+                <button type="button" onclick="">인증확인</button>
+             </div>
               
               <div class="form-label-group">
                 <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required>

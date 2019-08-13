@@ -14,7 +14,7 @@ import member.action.EmailAction;
 import member.action.JoinAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
-import room.model.MemberDAO;
+import member.model.MemberDAO;
 
 @WebServlet("*.to")
 public class MemberController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
@@ -34,6 +34,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("register2.jsp");
+         
       } else if (command.equals("/JoinAction.to")) {
          action = new JoinAction();
          try {
@@ -49,29 +50,34 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
            forward = new ActionForward();
            forward.setRedirect(false);
            forward.setPath("email.jsp");
+           
         } else if (command.equals("/EmailAction.to")) {
-           action = new EmailAction();
-           try {
-              forward = action.execute(request, response);
-           } catch (Exception e) {
-              e.printStackTrace();
-           }
-        } else if (command.equals("/login.to")) {
+            action = new EmailAction();
+            try {
+               forward = action.execute(request, response);
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
+         } else if (command.equals("/emailOk.to")) {
+             forward = new ActionForward();
+             forward.setRedirect(false);
+             forward.setPath("emailOk.jsp");
+             
+          } else if (command.equals("/login.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("login.jsp");
-      } else if (command.equals("/login.to")) {
-         forward = new ActionForward();
-         forward.setRedirect(false);
-         forward.setPath("login.jsp");
-      } else if (command.equals("/register.to")) {
+         
+      }  else if (command.equals("/register.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("register.jsp");
+         
       } else if (command.equals("/index.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("index.jsp");
+         
       } else if (command.equals("/logout.to")) {
          action = new MemberLogoutAction();
          try {
