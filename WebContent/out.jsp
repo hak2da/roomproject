@@ -186,8 +186,6 @@ $(function(){
 });
 //이미지
 
-
-
 	function preview(id, input, target) {
 		var idok = id;
 		if (input.files && input.files[0]) {
