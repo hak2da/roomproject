@@ -46,7 +46,6 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
           forward.setRedirect(false);
           forward.setPath("register3.jsp");
        } else if (command.equals("/email.to")) {
-    	   System.out.println("email");
            forward = new ActionForward();
            forward.setRedirect(false);
            forward.setPath("email.jsp");

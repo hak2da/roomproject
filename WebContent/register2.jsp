@@ -94,6 +94,21 @@
 			})
 		}
 		
+		function emailOK() {
+			var email = $('#email').val();
+			var id = $('#id').val();
+			$.ajax({
+				type: 'post',
+				url: 'EmailAction.to',
+				data: {email : email, id : id},
+				success: function(result) {
+					if(result == 1) {
+						
+					}
+				}
+			})
+		}
+		
 		function pwdCheck() {
 			var pwd1 = $( '#pwd1' ).val();
 			var pwd2 = $( '#pwd2' ).val();
@@ -263,7 +278,7 @@
              
               <div class="form-label-group">
                 <input type="text" name="id" id="id" class="form-control" placeholder="아이디 ※4~12자의 영문 대소문자와 숫자" maxlength="12" required>
-                <button type="button" onclick="idCheck()">중복확인</button><h5 id="idCheckMessage"></h5>
+                <button type="button" onclick="idCheck()">중복확인</button><h3 id="idCheckMessage"></h3	>
               </div>
 
               <div class="form-label-group">
@@ -276,9 +291,10 @@
               
               <div class="form-label-group">
                 <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
-                <button type="button" onclick="window.open('email.to', 'email', 'left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-300)/2+', width=500%,height=300%')">이메일 인증</button>
+                <button type="button" onclick="location.href='javascript:void(window.open('email.to', 'email', 'left='+(screen.availWidth-500)/2+',top='+(screen.availHeight-300)/2+', width=500%,height=300%'))'">이메일 인증</button>
               </div>
-
+              href="javascript:void(window.open('주소', '팝업창 이름','width=#, height=#'))"
+              
               <div class="form-label-group">
                 <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required>
               </div>
