@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.action.Action;
 import member.action.ActionForward;
-import member.action.CJoinAction;
+import member.action.EmailAction;
 import member.action.JoinAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
@@ -41,7 +41,22 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          } catch (Exception e) {
             e.printStackTrace();
          }
-      } else if (command.equals("/login.to")) {
+      } else if (command.equals("/register3.to")) {
+          forward = new ActionForward();
+          forward.setRedirect(false);
+          forward.setPath("register3.jsp");
+       } else if (command.equals("/email.to")) {
+           forward = new ActionForward();
+           forward.setRedirect(false);
+           forward.setPath("email.jsp");
+        } else if (command.equals("/EmailAction.to")) {
+           action = new EmailAction();
+           try {
+              forward = action.execute(request, response);
+           } catch (Exception e) {
+              e.printStackTrace();
+           }
+        } else if (command.equals("/login.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("login.jsp");
@@ -53,13 +68,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("register.jsp");
-      } else if (command.equals("/CJoinAction.to")) {
-         action = new CJoinAction();
-         try {
-            forward = action.execute(request, response);
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
+
       } else if (command.equals("/index.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);
