@@ -69,11 +69,10 @@
 			type: 'post',
 			url: 'idSearch.to',
 			data: {"name" : name, "email" : email, "phone" : phone},
-			async:false,
 			success: function(data) {
-				consol.log(data+'asdasd');
 				if(id != null) {
 					alert('찾은 아이디 : '+data+' 입니다.');
+					location.href='login.to';
 				} else {
 					alert('아이디가 없습니다.');
 				}
@@ -145,7 +144,7 @@
 						<div class="card card-signin my-5">
 							<div class="card-body">
 								<h5 class="card-title text-center">아이디 찾기</h5>
-								<form class="form-signin" method="post" onsubmit="idSearch();" autocomplete="off">
+								<form class="form-signin" method="post" autocomplete="off">
 
 									<div class="form-label-group">
 										<input type="text" id="name" name="name" class="form-control"
@@ -163,7 +162,7 @@
 									</div>
 
 									<button class="btn btn-lg btn-primary btn-block text-uppercase"
-										type="submit">찾기</button>
+										type="submit" onclick="idSearch();">찾기</button>
 
 
 								</form>

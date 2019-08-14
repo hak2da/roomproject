@@ -401,7 +401,7 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				result = rs.getString("id");
-				System.out.println("MemberDAO "+result);
+				System.out.println("MemberDAO123 "+result);
 			} else {
 				result = null;
 			}
