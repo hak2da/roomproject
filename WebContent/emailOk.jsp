@@ -7,6 +7,8 @@
 <title>JSP</title>
 </head>
 <body>
-
+	<script type="text/javascript">
+		alert('인증번호가 다릅니다.');
+	</script>
 </body>
 </html>

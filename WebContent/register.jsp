@@ -59,7 +59,9 @@
 		
 	<div class="fh5co-loader"></div>
 	
-	 <nav class="fh5co-nav" role="navigation">
+
+	<nav class="fh5co-nav" role="navigation">
+
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">

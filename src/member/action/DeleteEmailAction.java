@@ -1,4 +1,4 @@
-﻿package member.action;
+package member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +15,7 @@ import javax.mail.Authenticator;
 
 import java.util.Properties;
 
-public class EmailAction implements Action {
+public class DeleteEmailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -23,8 +23,8 @@ public class EmailAction implements Action {
 		MemberDAO dao = new MemberDAO();
 		ActionForward forward = new ActionForward();
 
-		int result = dao.emailCheck(request.getParameter("email"));
-		if (result == 0) { // 이미 있는 이메일
+		int result = dao.emailCheck(request.getParameter("id"), request.getParameter("email"));
+		if (result == 0) {
 			return null;
 		}
 		
@@ -34,7 +34,6 @@ public class EmailAction implements Action {
 		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
 		String content = "인증번호 : " + randomNum;
 		
-
 		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
@@ -46,7 +45,7 @@ public class EmailAction implements Action {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-		
+
 		try {
 			Authenticator auth = new Gmail();
 			Session ses = Session.getInstance(p, auth);
@@ -62,7 +61,7 @@ public class EmailAction implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("randomNum", randomNum);
+
 		forward.setRedirect(true);
 		forward.setPath("./emailOk.to");
 		return forward;

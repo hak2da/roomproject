@@ -1,6 +1,5 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
@@ -124,9 +123,9 @@
             <h5 class="card-title text-center">아이디/비밀번호 찾기</h5>
             
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='search_id.html'">아이디 찾기</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='search_id.to'">아이디 찾기</button>
               
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='search_password.html'">비밀번호 찾기</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" onclick="location.href='search_password.to'">비밀번호 찾기</button>
              
             
            
@@ -237,4 +236,3 @@
 
 	</body>
 </html>
-

@@ -59,9 +59,12 @@
 	<![endif]-->
 	
 	<script type="text/javascript">
-	
+		var randomNum;
 		var checkId = 0;
 		var idOK;
+		var numCheck = 0;
+		var emailOK;
+		var numOK;
 		
 		function nameCheck() {
 			var name = $( '#name' ).val();
@@ -95,15 +98,18 @@
 		}
 		
 		function emailOK() {
+			randomNum = Math.floor(Math.random() * 100000001) + 1000000;;
 			var email = $('#email').val();
 			$.ajax({
 				type: 'post',
 				url: 'EmailAction.to',
-				data: {email : email},
+				data: {"email" : email, "randomNum" : randomNum},
 				success: function(result) {
 					if(result == 0) {	
 						alert('이미 인증된 이메일 입니다.');
 					} else {
+						alert('이메일이 발송되었습니다.');
+						emailOK = email;
 						document.getElementById('incl').style.display = 'block';
 					}
 				}
@@ -113,14 +119,21 @@
 		
 		function randomCheck() {
 			var inputNum = $('#inputNum').val();
-			<% int randomNum = (int) request.getAttribute("randomNum"); %>
-			alert(randomNum);
-			/* if(inputNum == randomNum) {
-				alert('인증됨');
+
+			if(inputNum == randomNum) {
+				alert('인증되었습니다.');
+				numOK = inputNum;
+				$("#email").css("background-color", "#B0F6AC");
+				$("#inputNum").css("background-color", "#B0F6AC");
+				numCheck = 1;
+
 			} else {
-				alert('인증안됨');
-			} */
-		}
+				alert('인증번호가 다릅니다.');
+				$("#email").css("background-color", "#FFCECE");
+				$("#inputNum").css("background-color", "#FFCECE");
+				numCheck = 0;
+			}
+		} 
 		
 		function pwdCheck() {
 			var pwd1 = $( '#pwd1' ).val();
@@ -135,15 +148,6 @@
 				$("#pwd2").css("background-color", "#FFCECE");
 			}
 		}
-		
-		/* function emailCheck() {
-			var email = $( '#email' ).val();
-			if(email != ""){
-				$("#email").css("background-color", "#B0F6AC");
-			} else {
-				$("#email").css("background-color", "#FFCECE");
-			}
-		} */
 		
 		function phoneCheck() {
 			var phone = $( '#phone' ).val();
@@ -196,18 +200,30 @@
 		        $("#phone").focus();
 		        return false;
 		    }
-			if(idOK != ($("#id").val())){
-				alert("아이디 중복확인을 눌러주세요.");
-				return false;
-			}
 			if(checkId == 0) {
 				alert("아이디 중복확인을 해주세요.");
+				return false;
+			}
+			if(idOK != ($("#id").val())){
+				alert("아이디 중복확인을 눌러주세요.");
 				return false;
 			}
 			if($.trim($("#name").val()) !== $("#name").val()){
 				alert("공백은 입력이 불가능합니다.");
 				$("#name").val("");
 		        $("#name").focus();
+				return false;
+			}
+			if(emailOK != ($("#email").val())){
+				alert("이메일 인증을 눌러주세요.");
+				return false;
+			}
+			if(numOK != ($("#inputNum").val())){
+				alert("이메일 인증을 눌러주세요.");
+				return false;
+			}
+			if(numCheck == 0) { // 인증이 되면 넘어감
+				alert("이메일 인증확인을 해주세요.");
 				return false;
 			}
 			
@@ -246,6 +262,7 @@
 								<li><a href="out.jsp">내 방 내놓기</a></li>
 							</ul>
 						</li>
+
                   
                <c:if test="${sessionScope.sessionID==null}">
                   <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
@@ -271,6 +288,7 @@
    </nav>
 
 
+
 	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_2.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
@@ -289,13 +307,13 @@
 	
 	<div id="fh5co-contact">
 	 <div class="container">
->
+
     <div class="row">
        <div class="centered">
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">일반 회원가입</h5>
-            <form class="form-signin" action="JoinAction.to" method="post" onsubmit="return check();">
+            <form class="form-signin" action="JoinAction.to" method="post" onsubmit="return check();" autocomplete="off">
              
              <div class="form-label-group">
                 <input type="text" name="name" id="name" oninput="nameCheck()" class="form-control" placeholder="이름" required autofocus>

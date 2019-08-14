@@ -62,15 +62,17 @@
 						</li>
                   
                <c:if test="${sessionScope.sessionID==null}">
-                  <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
-               
-                        <li class="btn-cta"><a href="register.to"><span>회원가입</span></a></li> 
-                    </c:if>
+                    <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
+               		<li class="btn-cta"><a href="search.to"><span>아이디/비밀번호 찾기</span></a></li> 
+                    <li class="btn-cta"><a href="register.to"><span>회원가입</span></a></li> 
+                         
+               </c:if>
                     
                     <c:if test="${sessionScope.sessionID!=null}">
                          
                   <li class="btn-cta"><span style="font-size: 30px">${sessionScope.sessionID }님</span></li> 
                   <li class="btn-cta"><a href="logout.to"><span>로그아웃</span></a></li>
+                  <li class="btn-cta"><a href="registerDelete.to"><span>회원 탈퇴</span></a></li>
                
                     </c:if>
                      
