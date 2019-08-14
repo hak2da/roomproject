@@ -17,6 +17,7 @@ public class MemberDeleteAction implements Action{
 			   	boolean result=false;
 			   	boolean usercheck=false;
 			   	String id = request.getParameter("id");
+			   	System.out.println(id);
 			   	
 			   	MemberDAO memberdao=new MemberDAO();
 			   	System.out.println("2222");

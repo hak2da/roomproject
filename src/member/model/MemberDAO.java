@@ -266,7 +266,7 @@ public class MemberDAO {
 	
 	public List getMemberList(){
 	      System.out.println("getMemberList() 시작");
-	      String member_list_sql="select * from member";
+	      String member_list_sql="select * from member where usernum=1 or usernum=2";
 	      
 	      List list = new ArrayList();
 	      
@@ -311,7 +311,7 @@ public class MemberDAO {
 			pstmt=con.prepareStatement(member_delete_sql);
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
-			if(result.equals(id))return true;
+			if(result != id)return true;
 			System.out.println("4444");
 			return false;
 		}catch(Exception ex){
@@ -325,5 +325,6 @@ public class MemberDAO {
 			
 		}
 		
-		return true;
+		return false;
 	}
+}

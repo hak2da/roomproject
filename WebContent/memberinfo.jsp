@@ -91,22 +91,21 @@
    </header>
    
    <div style="width:60%; margin:auto;" >
-
+	<form action='Delete.to'>
    <table class="table table-bordered">
       <tr>
          <th style="text-align:center; font-size:40px" colspan="7">회원관리</th>
       </tr>
       <tr>
          <td align="center">회원번호</td>
-         <td align="center">아이디</td>
          <td align="center">이름</td>
+         <td align="center">아이디</td>
          <td align="center">이메일</td>
          <td align="center">핸드폰번호</td>
          <td align="center">업체명</td>
          <td align="center">관리</td>
       </tr>
-      
-   <c:forEach var="vo" items="${memberlist }">
+   <c:forEach var="vo" items="${memberlist}">
     <tr align="center" valign="middle" bordercolor="#333333"
         onmouseover="this.style.backgroundColor='F8F8F8'"
         onmouseout="this.style.backgroundColor=''">
@@ -129,13 +128,13 @@
             <div align="center">${vo.cname }</div>
         </td>
         <td>
-	<a href="Delete.to"><input class="btn btn-default" type="button" value="삭제"></a>
+			<button type="submit" name="id" value="${vo.id }">삭제</button>
         </td>
     </tr>
     </c:forEach>
 
    </table>
-
+</form>
    </div>
    
    <footer id="fh5co-footer" role="contentinfo">
