@@ -1,21 +1,11 @@
 package room.model;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 public class BoardVO {
-	private int boardnum;
 	private String id,pwd,title,content;
 	private float average;
-	private Timestamp bdate;
-	
-	
-	public int getBoardnum() {
-		return boardnum;
-	}
-	public void setBoardnum(int boardnum) {
-		this.boardnum = boardnum;
-	}
+	private Date bdate;
 	
 	public String getId() {
 		return id;
@@ -47,10 +37,10 @@ public class BoardVO {
 	public void setAverage(float average) {
 		this.average = average;
 	}
-	public Timestamp getBdate() {
+	public Date getBdate() {
 		return bdate;
 	}
-	public void setBdate(Timestamp bdate) {
+	public void setBdate(Date bdate) {
 		this.bdate = bdate;
 	}
 	

@@ -2,6 +2,8 @@ package com.Action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -14,99 +16,254 @@ import org.apache.catalina.tribes.util.Arrays;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import map.bit.kakaomaptest.kakaoDAO;
-import map.bit.kakaomaptest.kakaoVO;
+import map.bit.kakaomap.kakaoDAO;
+import map.bit.kakaomap.kakaoVO;
+import map.bit.kakaomap.replyVO;
+import room.model.RoomVO;
 
-@WebServlet("/ArrayServlet.do11")
+@WebServlet("/ArrayServlet.do")
 public class ArrayServlet extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	public ArrayServlet() {
 		super();
 	}
-	
+
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
 		if (request.getParameterValues("string[]") != null) {
 			String[] arrayStr = request.getParameterValues("string[]");
-			System.out.println(Arrays.toString(arrayStr) + "here!");
+			//System.out.println(Arrays.toString(arrayStr) + "here!");
 
 			kakaoVO vo = new kakaoVO(arrayStr[1], arrayStr[0], arrayStr[2], "123");
 			int result = kakaoDAO.getInstance().insert(vo);
 
-			System.out.println("data save success!" + result);
+			//System.out.println("data save success!" + result);
 
 			PrintWriter out = response.getWriter();
 			out.write("[\"" + arrayStr[2] + "\",\"" + result + "\"]");
 			out.close();
-		}		
+		}
 
 		if (request.getParameter("latlng") != null) {
 			String latlng = request.getParameter("latlng");
-			//System.out.println(latlng);
-			ArrayList<kakaoVO> clusterarr =new ArrayList<kakaoVO>();
+			// System.out.println(latlng);
+			ArrayList<kakaoVO> clusterarr = new ArrayList<kakaoVO>();
 			clusterarr = kakaoDAO.getInstance().getdb_to_markercluster(latlng);
-			
-			System.out.println("map¿¡¼­ °¡Á®¿Â Å¬·¯½ºÅÍ µ¥ÀÌÅÍ ="+clusterarr.size());
-			
-			
-	        //personÀÇ JSONÁ¤º¸¸¦ ´ãÀ» Array ¼±¾ğ
-	        JSONArray personArray = new JSONArray();
-	        //personÀÇ ÇÑ¸í Á¤º¸°¡ µé¾î°¥ JSONObject ¼±¾ğ
-	        
-	      //  JSONObject personInfo = new JSONObject();
-	        //Á¤º¸ ÀÔ·Â
-	        //JSONA
-	        
-	        JSONObject personInfoinner= null;
+
+			//System.out.println("mapì—ì„œ ê°€ì ¸ì˜¨ í´ëŸ¬ìŠ¤í„° ë°ì´í„° =" + clusterarr.size());
+
+			// personì˜ JSONì •ë³´ë¥¼ ë‹´ì„ Array ì„ ì–¸
+			JSONArray personArray = new JSONArray();
+			// personì˜ í•œëª… ì •ë³´ê°€ ë“¤ì–´ê°ˆ JSONObject ì„ ì–¸
+
+			JSONObject personInfoinner = null;
 			for (int i = 0; i < clusterarr.size(); i++) {
-	        	JSONObject personInfo= new JSONObject();
-	        	personInfo.put("lat", clusterarr.get(i).getLat());
-		        personInfo.put("lng", clusterarr.get(i).getLng());
-		        personInfoinner = new JSONObject();
-		        personInfoinner.put("position", personInfo);
-		        personInfoinner.put("text", clusterarr.get(i).getAddr());
-		        personArray.add(personInfoinner);
-		        	
+				JSONObject personInfo = new JSONObject();
+				personInfo.put("lat", clusterarr.get(i).getLat());
+				personInfo.put("lng", clusterarr.get(i).getLng());
+				personInfoinner = new JSONObject();
+				personInfoinner.put("position", personInfo);
+
+				String text = clusterarr.get(i).getAddr();
+				text = URLEncoder.encode(text, "UTF-8"); // jsonì´ë‚˜ jsonarray ê°ì²´ë¥¼ ë„˜ê¸¸ë•Œ ì¸ì½”ë”©ì„ í•´ì¤˜ì•¼ í•œê¸€ì´ ë„˜ì–´ê°„ë‹¤.
+
+				personInfoinner.put("text", text);
+				personArray.add(personInfoinner);
+
 			}
-			System.out.println();
-			System.out.println(personArray.toJSONString());
-			System.out.println();
-			
 			/*
-			 * if(personArray != null){ PrintWriter out = response.getWriter(); //Iterable
-			 * it = (Iterable)personInfoinner.keySet().iterator();
-			 * out.write("[\""+personInfoinner+"\"]"); out.close(); }
-			 */      
-			
+			 * System.out.println(); System.out.println(personArray.toJSONString());
+			 System.out.println();*/
+
 			PrintWriter out = response.getWriter();
 			out.println(personArray);
 			out.flush();
 			out.close();
-			/*
-			 * out.write("[\"" + "123" + "\",\"" + "234" + "\"]"); out.close();
-			 */
-			
-			
-			 
-			
-			
-			
-			//¸Ê¿¡º¸ÀÌ´Â ÃÖ´ë  ÁÂÃø»ó´Ü ÁÂÃøÇÏ´Ü ¿ìÃø»ó´Ü ¿ìÃøÇÏ´Ü¿¡ ÁÂÇ¥°ªÀ» º¸³»°í ÇØ´çÁÂÇ¥°ª¾È¿¡ÀÖ´Â ¸¶Ä¿Å¬·¯½ºÅÍµ¥ÀÌÅÍ
-			//¸¦  kakaoVOÀÇ ArrayList·Î º¸³½´Ù.			
-			
-			
-			//´ÙÀ½ÇØ¾ßÇÒ°Å´Â ArrayList¸¦ jsp·Î º¸³»¼­ ¸¶Ä¿Å¬·¯½ºÅÍ Âï´Â°Í
-			
-			
-			
-			
-			
+
+			// ë§µì—ë³´ì´ëŠ” ìµœëŒ€ ì¢Œì¸¡ìƒë‹¨ ì¢Œì¸¡í•˜ë‹¨ ìš°ì¸¡ìƒë‹¨ ìš°ì¸¡í•˜ë‹¨ì— ì¢Œí‘œê°’ì„ ë³´ë‚´ê³  í•´ë‹¹ì¢Œí‘œê°’ì•ˆì—ìˆëŠ” ë§ˆì»¤í´ëŸ¬ìŠ¤í„°ë°ì´í„°
+			// ë¥¼ kakaoVOì˜ ArrayListë¡œ ë³´ë‚¸ë‹¤.
+
+		}
+		if (request.getParameterValues("reply[]") != null) { // ë¦¬í”Œë°ì´í„°ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì— ì €ì¥í•˜ëŠ” í•¨ìˆ˜
+			String[] arraystr = request.getParameterValues("reply[]");
+			//System.out.println(Arrays.toString(arraystr) + "here! 101");
+			// 0 ,1 ,2 , 3 ,4
+			// ë¦¬í”Œë°ì´í„°,ì£¼ì†Œ,id,lng,lat
+
+			String lat = arraystr[4];
+			String lng = arraystr[3];
+			String addr = arraystr[1];
+			String id = arraystr[2];
+			String reply = arraystr[0];
+
+			// replyVO vo = new replyVO(reply, addr);
+
+			// replyVO vo = new replyVO(reply, addr, id);
+			int count = kakaoDAO.getInstance().getRecordCount(arraystr[1]); // í´ë¦­ëœ ë§ˆì»¤í´ëŸ¬ìŠ¤í„°ì— ì €ì¥ëœ ì •ë³´ê°€ìˆëŠ”ì§€ ë°˜í™˜í•œë‹¤.
+			//System.out.println("count is " + count);
+			if (count > 0) { // ë§Œì•½ì— oneroomplanet í…Œì´ë¸”ì— ì €ì¥ëœê°’ì´ì—†ë‹¤ë©´ ê°’ì„ ì¶”ê°€í•œë‹¤.
+
+			} else {
+				kakaoVO vo = new kakaoVO(lat, lng, addr, id);
+				// ë§Œì•½ì— oneroomplanet í…Œì´ë¸”ì— ì €ì¥ëœ ë°ì´í„°ê°€ ìˆë‹¤ë©´ oneroomplanetreplyë°ì´í„°ì— ì¶”ê°€í•œë‹¤.
+				// public kakaoVO(String lat, String lng, String addr, String content) {
+				int result = kakaoDAO.getInstance().insert(vo);
+			}
+
+			int maxnum = kakaoDAO.getInstance().getidaddrfrommaxnum(addr, id);
+
+			replyVO vo = new replyVO(reply, addr, id, maxnum + 1);
+			int result = kakaoDAO.getInstance().replysavedb(vo);
+
+			//System.out.println("data save success!" + result);
+
 		}
 
+		if (request.getParameterValues("addr") != null) { // ì£¼ì†Œê°’ì„ jspì—ì„œ ë³´ë‚´ë©´ ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ë¦¬í”Œë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
+			String straddr = request.getParameter("addr");
+			System.out.println(straddr + "here! 121");
+
+			ArrayList<replyVO> replyArray = kakaoDAO.getInstance().getreplydata(straddr);
+
+			// System.out.println("data save success!" + result);
+
+			// replyì˜ JSONì •ë³´ë¥¼ ë‹´ì„ Array ì„ ì–¸
+			JSONArray replydataArray = new JSONArray();
+
+			for (int i = 0; i < replyArray.size(); i++) {
+				JSONObject replydata = new JSONObject();
+
+				String addr = "", id = "", reply = "";
+				addr = decodeutf8(replyArray.get(i).getAddr());
+				id = decodeutf8(replyArray.get(i).getId());
+				reply = decodeutf8(replyArray.get(i).getReply());
+
+				replydata.put("addr", addr);
+				replydata.put("id", id);
+				replydata.put("reply", reply);
+				replydata.put("sutja", replyArray.get(i).getSutja());
+
+				replydataArray.add(replydata);
+
+			}
+			/*
+			 * System.out.println(); System.out.println(replydataArray.toJSONString());
+			 * System.out.println();
+			 */
+
+			PrintWriter out = response.getWriter();
+			out.println(replydataArray);
+			out.flush();
+			out.close();
+		}
+
+		if (request.getParameterValues("addrtodetail") != null) { // ì£¼ì†Œê°’ì„ jspì—ì„œ ë³´ë‚´ë©´ ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ë¦¬í”Œë°ì´í„°ë¥¼ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
+			
+			System.out.println("PRE straddr ");
+			String straddr1 = request.getParameter("addrtodetail");
+			
+			System.out.println("straddr ="+straddr1);
+
+			ArrayList<RoomVO> detailArray = kakaoDAO.getInstance().getdetaildata(straddr1);
+
+			if (detailArray.size() > 0) {
+				System.out.println("detailarray = " + detailArray.get(0).getRADDRESS());
+			} else {
+				System.out.println("addrtodetail ì—ì´ì ìŠ¤ì—ì„œ detailarrayê°’ì´ ì—†ìŠµë‹ˆë‹¤.");
+			}
+
+			// System.out.println("data save success!" + result);
+
+			// replyì˜ JSONì •ë³´ë¥¼ ë‹´ì„ Array ì„ ì–¸
+			JSONArray replydataArray = new JSONArray();
+
+			JSONObject replydata = new JSONObject();
+
+			for (int i = 0; i < detailArray.size(); i++) {
+
+				// String addr="",id="",reply="";
+				ArrayList<String> jsondetail = new ArrayList<String>();
+
+				jsondetail.add(decodeutf8(detailArray.get(i).getNADDRESS())); // 1
+				jsondetail.add(decodeutf8(detailArray.get(i).getRADDRESS())); // 2
+
+				jsondetail.add(decodeutf8(detailArray.get(i).getIMAGE1())); // 3
+				jsondetail.add(decodeutf8(detailArray.get(i).getIMAGE2())); // 4
+				jsondetail.add(decodeutf8(detailArray.get(i).getIMAGE3())); // 5
+				jsondetail.add(decodeutf8(detailArray.get(i).getIMAGE4())); // 6
+				jsondetail.add(decodeutf8(detailArray.get(i).getIMAGE5())); // 7
+				jsondetail.add(decodeutf8(detailArray.get(i).getROOMTYPE())); // 8
+				jsondetail.add(decodeutf8(detailArray.get(i).getMPAY())); // 9
+				jsondetail.add(decodeutf8(detailArray.get(i).getMPAY2())); // 10
+				jsondetail.add(decodeutf8(detailArray.get(i).getPARKING())); // 11
+				jsondetail.add(decodeutf8(detailArray.get(i).getELVE())); // 12
+				jsondetail.add(decodeutf8(detailArray.get(i).getFLOOR())); // 13
+				jsondetail.add(decodeutf8(detailArray.get(i).getRDATE())); // 14
+				jsondetail.add(decodeutf8(detailArray.get(i).getTITLE())); // 15
+				jsondetail.add(decodeutf8(detailArray.get(i).getCONTENT())); // 16
+				jsondetail.add(decodeutf8(String.valueOf(detailArray.get(i).getDEPOSIT()))); // 17
+				jsondetail.add(decodeutf8(String.valueOf(detailArray.get(i).getRENT()))); // 18
+				jsondetail.add(decodeutf8(String.valueOf(detailArray.get(i).getRSIZE()))); // 19
+
+				replydata.put("naddress", jsondetail.get(0));
+				replydata.put("raddress", jsondetail.get(1));
+				replydata.put("image1", jsondetail.get(2));
+				replydata.put("image2", jsondetail.get(3));
+				replydata.put("image3", jsondetail.get(4));
+				replydata.put("image4", jsondetail.get(5));
+				replydata.put("image5", jsondetail.get(6));
+				replydata.put("roomtype", jsondetail.get(7));
+				replydata.put("mpay", jsondetail.get(8));
+				replydata.put("mpay2", jsondetail.get(9));
+				replydata.put("parking", jsondetail.get(10));
+				replydata.put("elve", jsondetail.get(11));
+				replydata.put("floor", jsondetail.get(12));
+				replydata.put("rdate", jsondetail.get(13));
+				replydata.put("title", jsondetail.get(14));
+				replydata.put("content", jsondetail.get(15));
+				replydata.put("deposit", jsondetail.get(16));
+				replydata.put("rent", jsondetail.get(17));
+				replydata.put("rsize", jsondetail.get(18));
+
+				/*
+				 * addr =decodeutf8(replyArray.get(i).getAddr()); id=
+				 * decodeutf8(replyArray.get(i).getId());
+				 * reply=decodeutf8(replyArray.get(i).getReply());
+				 */
+
+				// replydata.put("sutja", replyArray.get(i).getSutja());
+
+				replydataArray.add(replydata);
+
+			}
+			/*
+			 * System.out.println(); System.out.println("replydata.toJSONString() = " +
+			 * replydata.toJSONString()); System.out.println();
+			 */
+			PrintWriter out = response.getWriter();
+			out.println(replydata);
+			out.flush();
+			out.close();
+		}
+
+	}
+
+	public String decodeutf8(String str) {
+
+		if (str == null) {
+			str = "ë‚´ìš© ì—†ìŒ";
+		}
+
+		try {
+			str = URLEncoder.encode(str, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			System.out.println("utf-8 ì¸ì½”ë”©ì¤‘ ì—ëŸ¬ë°œìƒ");
+			e.printStackTrace();
+		}
+		return str;
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

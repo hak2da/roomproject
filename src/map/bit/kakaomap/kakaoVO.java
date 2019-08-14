@@ -1,7 +1,7 @@
-package map.bit.kakaomaptest;
+package map.bit.kakaomap;
 
 public class kakaoVO {
-	String lat="",lng="",addr="",content="";//À§µµ,°æµµ,ÁÖ¼Ò,³»¿ë
+	String lat="",lng="",addr="",content="";//ï¿½ï¿½ï¿½ï¿½,ï¿½æµµ,ï¿½Ö¼ï¿½,ï¿½ï¿½ï¿½ï¿½
 
 	public String getLat() {
 		return lat;
