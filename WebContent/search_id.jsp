@@ -61,23 +61,28 @@
 
 </head>
 <script type="text/javascript">
-	function idSearch() {
+	function check() {
 		var name = $( '#name' ).val();
 		var email = $( '#email' ).val();
 		var phone = $( '#phone' ).val();
+		var result =false;
 		$.ajax({
 			type: 'post',
 			url: 'idSearch.to',
 			data: {"name" : name, "email" : email, "phone" : phone},
+			dataType: 'text',
+			async : false,
 			success: function(data) {
-				if(id != null) {
-					alert('찾은 아이디 : '+data+' 입니다.');
-					location.href='login.to';
+				if(data != "") {
+					alert('찾은 아이디 : "'+data+'" 입니다.');
+					result = true;
 				} else {
 					alert('아이디가 없습니다.');
+					result = false;
 				}
 			}
-		})
+		});
+		return result;
 	}
 </script>
 <body>
@@ -144,7 +149,7 @@
 						<div class="card card-signin my-5">
 							<div class="card-body">
 								<h5 class="card-title text-center">아이디 찾기</h5>
-								<form class="form-signin" method="post" autocomplete="off">
+								<form class="form-signin" method="post" action="login.to" onsubmit="return check()" autocomplete="off">
 
 									<div class="form-label-group">
 										<input type="text" id="name" name="name" class="form-control"
@@ -161,8 +166,7 @@
 											placeholder="전화번호" required>
 									</div>
 
-									<button class="btn btn-lg btn-primary btn-block text-uppercase"
-										type="submit" onclick="idSearch();">찾기</button>
+									<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">찾기</button>
 
 
 								</form>

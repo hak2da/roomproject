@@ -16,6 +16,7 @@ import member.action.JoinAction;
 import member.action.MemberDeleteAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
+import member.action.PwdEmailAction;
 import member.model.MemberDAO;
 
 
@@ -69,6 +70,14 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 
 		} else if (command.equals("/EmailAction.to")) {
 			action = new EmailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/PwdEmailAction.to")) {
+			action = new PwdEmailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -139,11 +148,16 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 		} else if (command.equals("/pwdCheck.to")) {
 			response.getWriter()
 					.write(new MemberDAO().pwdCheck(request.getParameter("id") + "", request.getParameter("pwd")) + "");
+			
 
 		} else if (command.equals("/idSearch.to")) {
 			response.getWriter()
 			.write(new MemberDAO().idSearch(request.getParameter("name") + "", request.getParameter("email") + "", request.getParameter("phone") + ""));
-
+			return ;
+		} else if (command.equals("/pwdSearch.to")) {
+			response.getWriter()
+			.write(new MemberDAO().pwdSearch(request.getParameter("name") + "", request.getParameter("id") + "", request.getParameter("email") + "", request.getParameter("phone") + ""));
+			return ;
 		}
 
       if (forward != null) {

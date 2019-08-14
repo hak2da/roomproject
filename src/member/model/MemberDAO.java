@@ -387,7 +387,7 @@ public class MemberDAO {
 	
 	public String idSearch(String name, String email, String phone) {
 		
-		String result = null;
+		String result = "";
 		
 		try {
 			String sql = "select id from member where name=? and email=? and phone=?";
@@ -401,9 +401,53 @@ public class MemberDAO {
 			
 			if(rs.next()) {
 				result = rs.getString("id");
-				System.out.println("MemberDAO123 "+result);
 			} else {
-				result = null;
+				result = "";
+			}
+			
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		
+		return result;
+	}
+	
+	public String pwdSearch(String name, String id, String email, String phone) {
+		
+		String result = "";
+		
+		try {
+			String sql = "select * from member where name=? and id=? and email=? and phone=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, id);
+			pstmt.setString(3, email);
+			pstmt.setString(4, phone);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getString("pwd");
+			} else {
+				result = "";
 			}
 			
 
