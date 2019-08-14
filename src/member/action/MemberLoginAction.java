@@ -30,6 +30,8 @@ public class MemberLoginAction implements Action {
 				session.setAttribute("sessionID", id);
 				forward.setRedirect(true);
 				forward.setPath("admin.to");
+				System.out.println("여기로옴");
+				return forward;
 			}
 			session.setAttribute("sessionID", id);
 

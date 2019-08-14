@@ -163,7 +163,6 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("admin.jsp");
-		}
 
 
       } else if(command.equals("/memberlist.to")){

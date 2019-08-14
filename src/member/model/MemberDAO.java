@@ -332,7 +332,6 @@ public class MemberDAO {
 		
 		return false;
 	}
-}
 
 	public int pwdCheck(String id, String pwd) {
 		int result = 0;

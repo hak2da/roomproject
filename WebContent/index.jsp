@@ -212,7 +212,7 @@
    <script src="js/bootstrap.min.js"></script>
    <!-- Waypoints -->
    <script src="js/jquery.waypoints.min.js"></script>
-   <!-- Main -->
+   <!-- Main -->	
    <script src="js/main.js"></script>
    </body>
 </html>
