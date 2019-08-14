@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.action.Action;
 import member.action.ActionForward;
+import member.action.DeleteEmailAction;
 import member.action.EmailAction;
 import member.action.JoinAction;
+import member.action.MemberDeleteAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
 import member.model.MemberDAO;
@@ -30,73 +32,102 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
       ActionForward forward = null;
       Action action = null;
 
-      if (command.equals("/register2.to")) {
-         forward = new ActionForward();
-         forward.setRedirect(false);
-         forward.setPath("register2.jsp");
-         
-      } else if (command.equals("/JoinAction.to")) {
-         action = new JoinAction();
-         try {
-            forward = action.execute(request, response);
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
-      } else if (command.equals("/register3.to")) {
-          forward = new ActionForward();
-          forward.setRedirect(false);
-          forward.setPath("register3.jsp");
-       } else if (command.equals("/email.to")) {
-           forward = new ActionForward();
-           forward.setRedirect(false);
-           forward.setPath("email.jsp");
-           
-        } else if (command.equals("/EmailAction.to")) {
-            action = new EmailAction();
+		if (command.equals("/register2.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("register2.jsp");
+
+		} else if (command.equals("/JoinAction.to")) {
+			action = new JoinAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/register3.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("register3.jsp");
+		} else if (command.equals("/email.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("email.jsp");
+
+		} else if (command.equals("/EmailAction.to")) {
+			action = new EmailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/DeleteEmailAction.to")) {
+            action = new DeleteEmailAction();
             try {
                forward = action.execute(request, response);
             } catch (Exception e) {
                e.printStackTrace();
             }
-         } else if (command.equals("/emailOk.to")) {
-             forward = new ActionForward();
-             forward.setRedirect(false);
-             forward.setPath("emailOk.jsp");
-             
-          } else if (command.equals("/login.to")) {
-         forward = new ActionForward();
-         forward.setRedirect(false);
-         forward.setPath("login.jsp");
-         
-      }  else if (command.equals("/register.to")) {
-         forward = new ActionForward();
-         forward.setRedirect(false);
-         forward.setPath("register.jsp");
-         
-      } else if (command.equals("/index.to")) {
-         forward = new ActionForward();
-         forward.setRedirect(false);
-         forward.setPath("index.jsp");
-         
-      } else if (command.equals("/logout.to")) {
-         action = new MemberLogoutAction();
-         try {
-            forward = action.execute(request, response);
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
-      } else if (command.equals("/MemberLoginAction.to")) {
-         action = new MemberLoginAction();
-         try {
-            forward = action.execute(request, response);
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
-      } else if (command.equals("/idCheck.to")) {
-         String id = request.getParameter("id");
-         response.getWriter().write(new MemberDAO().idCheck(id) + "");
-         
-      }
+            
+		} else if (command.equals("/MemberDeleteAction.to")) {
+            action = new MemberDeleteAction();
+            try {
+               forward = action.execute(request, response);
+            } catch (Exception e) {
+               e.printStackTrace();
+            }
+            
+		} else if (command.equals("/emailOk.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("emailOk.jsp");
+
+		} else if (command.equals("/login.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("login.jsp");
+
+		} else if (command.equals("/register.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("register.jsp");
+
+		} else if (command.equals("/index.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("index.jsp");
+
+		} else if (command.equals("/registerDelete.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("registerDelete.jsp");
+
+		} else if (command.equals("/logout.to")) {
+			action = new MemberLogoutAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/MemberLoginAction.to")) {
+			action = new MemberLoginAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else if (command.equals("/idCheck.to")) {
+			String id = request.getParameter("id");
+			response.getWriter().write(new MemberDAO().idCheck(id) + "");
+
+		} else if (command.equals("/pwdCheck.to")) {
+			response.getWriter()
+					.write(new MemberDAO().pwdCheck(request.getParameter("id") + "", request.getParameter("pwd")) + "");
+
+		}
 
       if (forward != null) {
          if (forward.isRedirect()) {

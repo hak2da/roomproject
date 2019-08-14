@@ -62,7 +62,6 @@
 		var randomNum;
 		var checkId = 0;
 		var idOK;
-		var num
 		var numCheck = 0;
 		var emailOK;
 		var numOK;
@@ -118,6 +117,7 @@
 					if(result == 0) {	
 						alert('이미 인증된 이메일 입니다.');
 					} else {
+						alert('이메일이 발송되었습니다.');
 						emailOK = email;
 						document.getElementById('incl').style.display = 'block';
 					}
@@ -205,16 +205,12 @@
 		        $("#phone").focus();
 		        return false;
 		    }
-			if(idOK != ($("#id").val())){
-				alert("중복확인을 눌러주세요.");
-				return false;
-			}
 			if(checkId == 0) {
 				alert("아이디 중복확인을 해주세요.");
 				return false;
 			}
-			if(numCheck == 0) { // 인증이 되면 넘어감
-				alert("이메일 인증확인을 해주세요.");
+			if(idOK != ($("#id").val())){
+				alert("중복확인을 눌러주세요.");
 				return false;
 			}
 			if(emailOK != ($("#email").val())){
@@ -223,6 +219,10 @@
 			}
 			if(numOK != ($("#inputNum").val())){
 				alert("이메일 인증을 눌러주세요.");
+				return false;
+			}
+			if(numCheck == 0) { // 인증이 되면 넘어감
+				alert("이메일 인증확인을 해주세요.");
 				return false;
 			}
 			
@@ -237,7 +237,6 @@
 	
 	<div class="fh5co-loader"></div>
 	
-	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
@@ -268,7 +267,7 @@
 							</ul>
 						</li>
 						<li class="active"><a href="contact.html">Contact</a></li>
-						<li class="btn-cta"><a href="login.html"><span>Login</span></a></li>
+						<li class="btn-cta"><a href="login.to"><span>Login</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -299,7 +298,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">업체 회원가입</h5>
-            <form class="form-signin" action="JoinAction.to" method="post" onsubmit="return check();">
+            <form class="form-signin" action="JoinAction.to" method="post" onsubmit="return check();" autocomplete="off">
              
              <div class="form-label-group">
                 <input type="text" name="name" id="name" oninput="nameCheck()" class="form-control" placeholder="이름" required autofocus>

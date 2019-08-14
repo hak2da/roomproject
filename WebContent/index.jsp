@@ -77,6 +77,7 @@
                          
                   <li class="btn-cta"><span style="font-size: 30px">${sessionScope.sessionID }님</span></li> 
                   <li class="btn-cta"><a href="logout.to"><span>로그아웃</span></a></li>
+                  <li class="btn-cta"><a href="registerDelete.to"><span>회원 탈퇴</span></a></li>
                
                     </c:if>
                      

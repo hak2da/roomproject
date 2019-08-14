@@ -125,8 +125,7 @@
 					<div class="card card-signin my-5">
 						<div class="card-body">
 							<h5 class="card-title text-center">로그인</h5>
-							<form class="form-signin" method="post"
-								action="MemberLoginAction.to">
+							<form class="form-signin" method="post" action="MemberLoginAction.to" autocomplete="off">
 								<div class="form-label-group">
 									<input type="text" name="id" class="form-control"
 										placeholder="아이디" required autofocus>

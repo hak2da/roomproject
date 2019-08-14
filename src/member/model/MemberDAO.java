@@ -4,21 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
 
-import javax.mail.Address;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
-
-import member.action.Gmail;
 
 public class MemberDAO {
 	DataSource ds;
@@ -235,7 +224,7 @@ public class MemberDAO {
 
 		try {
 
-			String sql = "SELECT email FROM MEMBER WHERE email=?";
+			String sql = "SELECT EMAIL FROM MEMBER WHERE EMAIL=?";
 
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
@@ -269,6 +258,131 @@ public class MemberDAO {
 		}
 
 		return result;
+	}
+	
+	public int pwdCheck(String id, String pwd) {
+		int result = 0;
+		String dbPwd = "";
+		
+		try {
+
+			String sql = "SELECT PWD FROM MEMBER WHERE ID=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dbPwd = rs.getString("pwd");
+				if (pwd.equals(dbPwd)) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+			} else {
+				result = 0;
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		
+		return result;
+	}
+	
+	public int emailCheck(String id, String email) {
+		int result = 0;
+		String dbEmail = "";
+		try {
+
+			String sql = "SELECT * FROM MEMBER WHERE ID=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dbEmail = rs.getString("email");
+				if(email.equals(dbEmail)) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+			} else {
+				result = 0;
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		
+		return result;
+	}
+	
+	public void delete(String id) {
+		try {
+			String sql = "delete FROM MEMBER WHERE ID=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+	
 	}
 
 }
