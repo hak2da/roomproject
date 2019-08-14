@@ -7,8 +7,6 @@
 <title>JSP</title>
 </head>
 <body>
-	<script type="text/javascript">
-		alert('인증됨');
-	</script>
+
 </body>
 </html>
