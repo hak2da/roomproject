@@ -17,13 +17,11 @@
 <p style="margin-top: 25px" height=150px>
 <form action="javascript:searchaddr()" name="incruitpart">
 
-<div class="col-md-8 col-md-offset-2">
-                              <div class="form-group">
 	<input type="text" width=50px name="searchcontent" id="searchcontent">
 	<input type="submit" height=250px value="검색">
-	</div></div>
 
 </form>
+
 </p>
 <style>
 .map_wrap {
@@ -80,25 +78,39 @@
 			<!-- <font type="hidden" id="latid" name="lntname"></font><br> 
 			<font type="hidden" id="lngid">헬로우</font><br>
 			<font type="hidden"  id="addrid">헬로우</font><br> 
-			 --><input type="hidden"
-				id="latlngid" value="확인" onClick="javascript:check()"><br>
-			
+			 -->
+			<input type="hidden" id="latlngid" value="확인"
+				onClick="javascript:check()"><br>
+
 			<!-- <font type="hidden" id="markid">헬로우</font><br> -->
 			<hr>
-			<font size=6 id="detailhead"><B>상세정보</B></font><br><hr>
-			<font size=4 id="detailcontent"></font><br><hr>
+			<font size=6 id="detailhead"><B>상세정보</B></font><br>
+			<hr>
+			<font size=4 id="detailcontent"></font><br>
+			<hr>
+
+			<font size=6 id="replynotice"><B>세입자들의 한줄평</B></font><br>
+			<hr>
+</form>
+			<!-- javascript:replydbsave() -->
 			
-			<form action="javascript:replydbsave()" name="incruitpart2">
-			<font size=6 id="replynotice"><B>세입자들의 한줄평</B></font><br><hr>
-			<input type="text" id="replyid" name="replyname"> <input
-				type="submit" id="replyok" value="리뷰남기기"><br>
-				</form>
-				<hr>
-			<font size=5 id="addrfont"></font><br><hr>
+		
+			
+			
+
+		<form action="javascript:replydbsave()" name="replypart">
+
+	<input type="text" width=50px name="replyname" id="replyid">
+	<input type="submit" height=250px value="검색">
+
+</form>
+
+			<hr>
+			<font size=5 id="addrfont"></font><br>
+			<hr>
 			<font size=5 id="replycontent"></font><br>
-			
-			
-		</form>
+
+		
 	</div>
 	<div id="map" style="width: 70%; height: 850px; float: left;"></div>
 
@@ -112,14 +124,14 @@
 	        center : new kakao.maps.LatLng(37.570508045762345, 126.98536939847243), // 지도의 중심좌표 lat이 위도 36  lng이 경도 127
 	        level : 2 // 지도의 확대 레벨 
 	    });
-	    change2();
-	  kakao.maps.event.addListener(map, 'zoom_changed', function(){ change2.call() }); ///줌을 바꾸거나
+	    mapchange();
+	  kakao.maps.event.addListener(map, 'zoom_changed', function(){ mapchange.call() }); ///줌을 바꾸거나
     
-      kakao.maps.event.addListener(map, 'dragend', function(){ change2.call() }); ///드래그가 끝나거나
+      kakao.maps.event.addListener(map, 'dragend', function(){ mapchange.call() }); ///드래그가 끝나거나
       
-      kakao.maps.event.addListener(map, 'bounds_changed', function () {change2.call()}); //맵의 영역이 바뀌었을때 
+      kakao.maps.event.addListener(map, 'bounds_changed', function () {mapchange.call()}); //맵의 영역이 바뀌었을때 
       
-      function change2(){ ///바뀐 영역 안에있는  db데이터를 가져온다.
+      function mapchange(){ ///바뀐 영역 안에있는  db데이터를 가져온다.
 			var bounds = map.getBounds();
 	        
 	        //그냥 정보가져오기.
@@ -219,11 +231,12 @@
       
       
       function replydbsave(){ //마커의 리플을 저장할때 결과처리하기
+    	  //alert("오긴오냐");
     	  var addrtodb = decodeaddr; //주소
-    	  var replycont = document.replyform.replyname.value; //리플
+    	  var replycont = document.replypart.replyname.value; //리플
     	  var id ="123"; //저장을 할 id
     	  //alert("lng = "+lng+"\nlat"+lat);
-    	  if(replycont!=''&& addrtodb!=''){
+    	  if(replycont!=''&& addrtodb!=''&&addrtodb!=null&&replycont!=null){
     		$.ajax(
     				{
     					url : "<%=request.getContextPath()%>/ArrayServlet.do",
@@ -234,6 +247,8 @@
     						var as = eval(data);//객체 변환
     						/* alert("데이터 저장성공 :\n"
     								+"지번주소 : "+ as[0] + "\n " + as[1]+" 개 데이터 저장"); */
+    								alert("한줄평등록성공");
+    								getreplyajax(addrtodb);
     					},
     					error:function(msg,error){
     						alert(error+"addrtodb = "+addrtodb+"\nreplycont = "+replycont);
@@ -491,7 +506,8 @@
 				type : "get",
 				dataType : "json",
 				data : {
-					"addrtodetail" : addrtoaddr //상세정보를 가져오기위해 detail파라미터에 주소값을 넣어준다.
+					"addrtodetail" : addrtoaddr
+				//상세정보를 가져오기위해 detail파라미터에 주소값을 넣어준다.
 				}, //여기서 데이터를 바로보내준다ㅋㅋㅋ
 				header : {
 					"Content-Type" : "application/json", //Content-Type 설정
@@ -500,98 +516,93 @@
 				success : function(data) {
 					//var as = eval(data);//객체 변환
 					setdetail(data);
-					
+
 					//alert(data.toString());
 
 				},
 				error : function(msg, error) {
-					alert("getdetailajax() "+error);
-					
+					alert("getdetailajax() " + error);
+
 				}
 			});
 		};
-		
-		
+
 		function setdetail(data) {
-			
+
 			console.log(data);
-			
-			document.getElementById('detailcontent').innerHTML ="";
-			
-			var text="";
-			
+
+			document.getElementById('detailcontent').innerHTML = "";
+
+			var text = "";
+
 			//var obj = JSON.parse(data);
 
-			text +="제목 : "+encodeutf8(data.title)+"<br>"; 
-			text +="상세 설명 : "+encodeutf8(data.content)+"<br>";
-			text +="입주 가능일 : "+encodeutf8(data.rdate)+"<br>";
-			text +="지번 주소 : <br>"+encodeutf8(data.naddress)+"<br>";
-			text +="도로명 주소 : <br>"+encodeutf8(data.raddress)+"<br>"; 
-			text +="방 구조 : "+encodeutf8(data.roomtype)+"<br>"; 
-			text +="보증금 : "+encodeutf8(data.deposit)+"<br>"; 
-			text +="월세 : "+encodeutf8(data.rent)+"<br>";
-			text +="관리비 : "+encodeutf8(data.mpay)+"<br>"; 
-			text +="관리비포함항목 : "+encodeutf8(data.mpay2)+"<br>"; 
-			text +="주차 : "+encodeutf8(data.parking)+"<br>"; 
-			text +="엘리베이터 : "+encodeutf8(data.elve)+"<br>"; 
-			text +="층수 : "+encodeutf8(data.floor)+"<br>"; 
-			text +="크기 : "+encodeutf8(data.rsize)+"<br>";
-			 
-			 
-			
-			
+			text += "제목 : " + encodeutf8(data.title) + "<br>";
+			text += "상세 설명 : " + encodeutf8(data.content) + "<br>";
+			text += "입주 가능일 : " + encodeutf8(data.rdate) + "<br>";
+			text += "지번 주소 : <br>" + encodeutf8(data.naddress) + "<br>";
+			text += "도로명 주소 : <br>" + encodeutf8(data.raddress) + "<br>";
+			text += "방 구조 : " + encodeutf8(data.roomtype) + "<br>";
+			text += "보증금 : " + encodeutf8(data.deposit) + "<br>";
+			text += "월세 : " + encodeutf8(data.rent) + "<br>";
+			text += "관리비 : " + encodeutf8(data.mpay) + "<br>";
+			text += "관리비포함항목 : " + encodeutf8(data.mpay2) + "<br>";
+			text += "주차 : " + encodeutf8(data.parking) + "<br>";
+			text += "엘리베이터 : " + encodeutf8(data.elve) + "<br>";
+			text += "층수 : " + encodeutf8(data.floor) + "<br>";
+			text += "크기 : " + encodeutf8(data.rsize) + "<br>";
+
 			document.getElementById('detailcontent').innerHTML = text;
 
-			
 			//document.getElementById('replycontent').innerHTML=text;
 		}
-		
+
 		function setreply(data) {
 			var text = "";
 			var addr;
 			$.each(data, function(index, list) {
 				var text1 = "12 12";
-				
+
 				/* text += "<input type='button' value='삭제하기' onClick=aa('"+encodeutf8_2(list.addr)+"') >&nbsp;";
 				text += "<input type='button' value='수정하기' onClick=aa('"+encodeutf8_2(list.addr)+"') ><br>";
 				text += "주소는 = " + encodeutf8(list.addr); */
-				addr=encodeutf8(list.addr);
+				addr = encodeutf8(list.addr);
 				text += "<br>한줄평 = " + encodeutf8(list.reply);
 				text += "<br>작성자 = " + encodeutf8(list.id) + "<br><br><hr>";
-				
+
 			});
 			//document.getElementById('show').innerHTML = text;
-			
+
 			setaddr(addr);
-			document.getElementById('replycontent').innerHTML=text;
+			document.getElementById('replycontent').innerHTML = text;
 		}
-		
-		function detailnull(){
-			
-			document.getElementById('detailcontent').innerHTML="";
+
+		function detailnull() {
+
+			document.getElementById('detailcontent').innerHTML = "";
 		}
-		
-		function setaddr(addr){ //화면의 폰트를 주소로 출력해준다.
-			addr="주소 : "+addr;
-			document.getElementById('addrfont').innerHTML=addr;
+
+		function setaddr(addr) { //화면의 폰트를 주소로 출력해준다.
+			addr = "주소 : " + addr;
+			document.getElementById('addrfont').innerHTML = addr;
 			setreplynull();
 			detailnull();
 		}
-		
-		function setreplynull(){
-			document.getElementById('replycontent').innerHTML="";
+
+		function setreplynull() {
+			document.getElementById('replycontent').innerHTML = "";
 		}
-		
-		function aa(data){
+
+		function aa(data) {
 			//alert(+"\""+data+"\"");
 			var ca = /\+/g;
-			data.replace(ca , " ");
+			data.replace(ca, " ");
 			alert(data);
 			//document.getElementById('replycontent').innerHTML=" ";
 		}
 		function encodeutf8(str) {
 			var ca = /\+/g;
-			str = decodeURIComponent(str.replace(ca," "));
+			str = decodeURIComponent(str.replace(ca, " "));
 			return str;
 		}
 		function encodeutf8_2(str) {
@@ -601,6 +612,6 @@
 		}
 	</script>
 
-	
+
 </body>
 </html>
