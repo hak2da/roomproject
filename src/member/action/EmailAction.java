@@ -2,10 +2,8 @@ package member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import member.model.MemberDAO;
-import member.model.MemberVO;
 
 import javax.mail.Transport;
 import javax.mail.Message;
@@ -29,14 +27,13 @@ public class EmailAction implements Action {
 		if (result == 0) { // 이미 있는 이메일
 			return null;
 		}
-
-		String randomNum = random();
+		
+		String randomNum = request.getParameter("randomNum");
 		String from = "jinsan654321@gmail.com";
 		String to = request.getParameter("email");
 		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
 		String content = "인증번호 : " + randomNum;
 		
-		document.cookie = randomNum;
 		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
@@ -68,15 +65,6 @@ public class EmailAction implements Action {
 		forward.setRedirect(true);
 		forward.setPath("./emailOk.to");
 		return forward;
-	}
-
-	public String random() {
-		StringBuffer random = new StringBuffer();
-		for (int i = 0; i < 6; i++) {
-			int n = (int) (Math.random() * 10);
-			random.append(n);
-		}
-		return random.toString();
 	}
 
 }

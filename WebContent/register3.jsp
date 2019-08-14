@@ -59,9 +59,13 @@
 	<![endif]-->
 	
 	<script type="text/javascript">
-	
+		var randomNum;
 		var checkId = 0;
 		var idOK;
+		var num
+		var numCheck = 0;
+		var emailOK;
+		var numOK;
 		
 		function nameCheck() {
 			var name = $( '#name' ).val();
@@ -103,6 +107,40 @@
 			})
 		}
 		
+		function emailOK() {
+			randomNum = Math.floor(Math.random() * 100000001) + 1000000;;
+			var email = $('#email').val();
+			$.ajax({
+				type: 'post',
+				url: 'EmailAction.to',
+				data: {"email" : email, "randomNum" : randomNum},
+				success: function(result) {
+					if(result == 0) {	
+						alert('이미 인증된 이메일 입니다.');
+					} else {
+						emailOK = email;
+						document.getElementById('incl').style.display = 'block';
+					}
+				}
+			})
+		}
+		
+		function randomCheck() {
+			var inputNum = $('#inputNum').val();
+			if(inputNum == randomNum) {
+				alert('인증되었습니다.');
+				numOK = inputNum;
+				$("#email").css("background-color", "#B0F6AC");
+				$("#inputNum").css("background-color", "#B0F6AC");
+				numCheck = 1;
+			} else {
+				alert('인증번호가 다릅니다.');
+				$("#email").css("background-color", "#FFCECE");
+				$("#inputNum").css("background-color", "#FFCECE");
+				numCheck = 0;
+			}
+		} 
+		
 		function pwdCheck() {
 			var pwd1 = $( '#pwd1' ).val();
 			var pwd2 = $( '#pwd2' ).val();
@@ -114,15 +152,6 @@
 				$('#pwdCheckMessage').html('비밀번호가 서로 일치하지 않습니다.');
 				$("#pwd1").css("background-color", "#FFCECE");
 				$("#pwd2").css("background-color", "#FFCECE");
-			}
-		}
-		
-		function emailCheck() {
-			var email = $( '#email' ).val();
-			if(email != ""){
-				$("#email").css("background-color", "#B0F6AC");
-			} else {
-				$("#email").css("background-color", "#FFCECE");
 			}
 		}
 		
@@ -182,6 +211,18 @@
 			}
 			if(checkId == 0) {
 				alert("아이디 중복확인을 해주세요.");
+				return false;
+			}
+			if(numCheck == 0) { // 인증이 되면 넘어감
+				alert("이메일 인증확인을 해주세요.");
+				return false;
+			}
+			if(emailOK != ($("#email").val())){
+				alert("이메일 인증을 눌러주세요.");
+				return false;
+			}
+			if(numOK != ($("#inputNum").val())){
+				alert("이메일 인증을 눌러주세요.");
 				return false;
 			}
 			
@@ -282,8 +323,14 @@
               </div>
               
               <div class="form-label-group">
-                <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
+                <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required>
+                <button type="button" onclick="emailOK()">이메일 인증</button>
               </div>
+              
+              <div class="form-label-group" id="incl" style="display:none">
+                <input type="text" name="inputNum" id="inputNum" class="form-control">
+                <button type="button" onclick="randomCheck()">인증확인</button>
+             </div>
               
               <div class="form-label-group">
                 <input type="text" name="phone" id="phone" oninput="phoneCheck()" class="form-control" placeholder="전화번호 ※010-1111-1111" required>

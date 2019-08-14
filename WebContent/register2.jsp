@@ -59,9 +59,13 @@
 	<![endif]-->
 	
 	<script type="text/javascript">
-	
+		var randomNum;
 		var checkId = 0;
 		var idOK;
+		var num
+		var numCheck = 0;
+		var emailOK;
+		var numOK;
 		
 		function nameCheck() {
 			var name = $( '#name' ).val();
@@ -95,15 +99,17 @@
 		}
 		
 		function emailOK() {
+			randomNum = Math.floor(Math.random() * 100000001) + 1000000;;
 			var email = $('#email').val();
 			$.ajax({
 				type: 'post',
 				url: 'EmailAction.to',
-				data: {email : email},
+				data: {"email" : email, "randomNum" : randomNum},
 				success: function(result) {
 					if(result == 0) {	
 						alert('이미 인증된 이메일 입니다.');
 					} else {
+						emailOK = email;
 						document.getElementById('incl').style.display = 'block';
 					}
 				}
@@ -112,14 +118,19 @@
 		
 		function randomCheck() {
 			var inputNum = $('#inputNum').val();
-			var randomNum = "<%=session.getAttribute('sessionRandomNum') %>";
-			alert(randomNum);
-			/* if(inputNum == randomNum) {
-				alert('인증됨');
+			if(inputNum == randomNum) {
+				alert('인증되었습니다.');
+				numOK = inputNum;
+				$("#email").css("background-color", "#B0F6AC");
+				$("#inputNum").css("background-color", "#B0F6AC");
+				numCheck = 1;
 			} else {
-				alert('인증안됨');
-			} */
-		}
+				alert('인증번호가 다릅니다.');
+				$("#email").css("background-color", "#FFCECE");
+				$("#inputNum").css("background-color", "#FFCECE");
+				numCheck = 0;
+			}
+		} 
 		
 		function pwdCheck() {
 			var pwd1 = $( '#pwd1' ).val();
@@ -134,15 +145,6 @@
 				$("#pwd2").css("background-color", "#FFCECE");
 			}
 		}
-		
-		/* function emailCheck() {
-			var email = $( '#email' ).val();
-			if(email != ""){
-				$("#email").css("background-color", "#B0F6AC");
-			} else {
-				$("#email").css("background-color", "#FFCECE");
-			}
-		} */
 		
 		function phoneCheck() {
 			var phone = $( '#phone' ).val();
@@ -207,6 +209,18 @@
 				alert("공백은 입력이 불가능합니다.");
 				$("#name").val("");
 		        $("#name").focus();
+				return false;
+			}
+			if(numCheck == 0) { // 인증이 되면 넘어감
+				alert("이메일 인증확인을 해주세요.");
+				return false;
+			}
+			if(emailOK != ($("#email").val())){
+				alert("이메일 인증을 눌러주세요.");
+				return false;
+			}
+			if(numOK != ($("#inputNum").val())){
+				alert("이메일 인증을 눌러주세요.");
 				return false;
 			}
 			
