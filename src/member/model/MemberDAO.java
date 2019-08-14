@@ -1,13 +1,24 @@
-package room.model;
+package member.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+
+import member.action.Gmail;
 
 public class MemberDAO {
 	DataSource ds;
@@ -191,6 +202,48 @@ public class MemberDAO {
 
 			if (rs.next() || id.equals("")) {
 				result = 0; //이미 있는 아이디
+			} else {
+				result = 1;
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+
+		return result;
+	}
+	
+	public int emailCheck(String email) {
+
+		int result = 0;
+
+		try {
+
+			String sql = "SELECT email FROM MEMBER WHERE email=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+
+			if (rs.next() || email.equals("")) {
+				result = 0; //이미 있는 이메일
 			} else {
 				result = 1;
 			}

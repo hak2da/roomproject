@@ -96,14 +96,16 @@
 		
 		function emailOK() {
 			var email = $('#email').val();
-			var id = $('#id').val();
 			$.ajax({
 				type: 'post',
 				url: 'EmailAction.to',
-				data: {"email" : email, "id" : id},
+				data: {email : email},
 				success: function(result) {
-					if(result == 1) {
+					if(result == 0) {	
+						alert('이미 인증된 이메일 입니다.');
+					} else {
 						
+						document.getElementById('incl').style.display = 'block';
 					}
 				}
 			})
@@ -291,13 +293,13 @@
               </div>
               
               <div class="form-label-group">
-                <input type="email" name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
-              	<button type="button" onclick="emailOK()">인증번호 보내기</button>
+                <input type=email name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
+                <button type="button" onclick="emailOK()">이메일 인증</button>
               </div>
               
-             <div class="form-label-group" id="incl" style="display:none">
-             	<input type="text" name="in" id="in" class="form-control">
-             	<button type="button" onclick="">인증확인</button>
+              <div class="form-label-group" id="incl" style="display:none">
+                <input type="text" name="in" id="in" class="form-control">
+                <button type="button" onclick="">인증확인</button>
              </div>
               
               <div class="form-label-group">
