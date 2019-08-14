@@ -18,6 +18,7 @@ import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
 import member.model.MemberDAO;
 
+
 @WebServlet("*.to")
 public class MemberController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
@@ -31,7 +32,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
       String command = RequestURI.substring(contextPath.length());
       ActionForward forward = null;
       Action action = null;
-
+      	
 		if (command.equals("/register2.to")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -45,6 +46,18 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 				e.printStackTrace();
 			}
 
+		} else if (command.equals("/search.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("search.jsp");
+		} else if (command.equals("/search_id.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("search_id.jsp");
+		} else if (command.equals("/search_password.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("search_password.jsp");
 		} else if (command.equals("/register3.to")) {
 			forward = new ActionForward();
 			forward.setRedirect(false);
@@ -126,6 +139,10 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 		} else if (command.equals("/pwdCheck.to")) {
 			response.getWriter()
 					.write(new MemberDAO().pwdCheck(request.getParameter("id") + "", request.getParameter("pwd")) + "");
+
+		} else if (command.equals("/idSearch.to")) {
+			response.getWriter()
+			.write(new MemberDAO().idSearch(request.getParameter("name") + "", request.getParameter("email") + "", request.getParameter("phone") + ""));
 
 		}
 

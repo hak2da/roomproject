@@ -384,5 +384,50 @@ public class MemberDAO {
 		}
 	
 	}
+	
+	public String idSearch(String name, String email, String phone) {
+		
+		String result = null;
+		
+		try {
+			String sql = "select id from member where name=? and email=? and phone=?";
+
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			pstmt.setString(3, phone);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getString("id");
+				System.out.println("MemberDAO "+result);
+			} else {
+				result = null;
+			}
+			
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (SQLException ex) {
+				}
+			if (pstmt != null)
+				try {
+					pstmt.close();
+				} catch (SQLException ex) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (SQLException ex) {
+				}
+		}
+		
+		return result;
+	}
 
 }

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -58,7 +61,6 @@
 		
 		<div class="fh5co-loader"></div>
 	
-	<div id="page">
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
@@ -119,22 +121,22 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">비밀번호 찾기</h5>
-            <form class="form-signin" action="login.html" method="post">
+            <form class="form-signin" action="login.html" method="post" autocomplete="off">
              
              <div class="form-label-group">
                 <input type="text" id="inputEmail" class="form-control" placeholder="이름" required autofocus>
               </div>
              
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="아이디" required autofocus>
+                <input type="text" id="inputEmail" class="form-control" placeholder="아이디" required>
               </div>
               
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="이메일" required autofocus>
+                <input type="email" id="inputEmail" class="form-control" placeholder="이메일" required>
               </div>
               
               <div class="form-label-group">
-                <input type="text" id="inputEmail" class="form-control" placeholder="전화번호" required autofocus>
+                <input type="text" id="inputEmail" class="form-control" placeholder="전화번호" required>
               </div>
               
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">찾기</button>
@@ -248,4 +250,3 @@
 
 	</body>
 </html>
-
