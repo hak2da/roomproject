@@ -36,8 +36,6 @@ public class EmailAction implements Action {
 		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
 		String content = "인증번호 : " + randomNum;
 		
-		document.cookie = randomNum;
-		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
 		p.put("mail.smtp.host", "smtp.googlemail.com");
@@ -48,7 +46,7 @@ public class EmailAction implements Action {
 		p.put("mail.smtp.socketFactory.port", "465");
 		p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		p.put("mail.smtp.socketFactory.fallback", "false");
-
+		
 		try {
 			Authenticator auth = new Gmail();
 			Session ses = Session.getInstance(p, auth);
@@ -64,6 +62,7 @@ public class EmailAction implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("randomNum", randomNum);
 		forward.setRedirect(true);
 		forward.setPath("./emailOk.to");
 		return forward;

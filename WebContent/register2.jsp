@@ -113,7 +113,7 @@
 		
 		function randomCheck() {
 			var inputNum = $('#inputNum').val();
-			var randomNum = "<%=session.getAttribute('sessionRandomNum') %>";
+			<% int randomNum = (int) request.getAttribute("randomNum"); %>
 			alert(randomNum);
 			/* if(inputNum == randomNum) {
 				alert('인증됨');
