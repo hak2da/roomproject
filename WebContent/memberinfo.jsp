@@ -90,34 +90,53 @@
 			</div>
 		</div>
 	</header>
+	
+	<div style="width:60%; margin:auto;" >
 
-<c:choose>
-    <tr align="center" valign="middle">
-        <td colspan="4">회원관리</td>
+	<table class="table table-bordered">
+		<tr>
+			<th style="text-align:center; font-size:40px" colspan="6">회원관리</th>
+		</tr>
+		<tr>
+			<td align="center">회원번호</td>
+			<td align="center">아이디</td>
+			<td align="center">이름</td>
+			<td align="center">이메일</td>
+			<td align="center">핸드폰번호</td>
+			<td align="center">업체명</td>
+		</tr>
+		
+	<c:forEach var="vo" items="${memberlist }">
+    <tr align="center" valign="middle" bordercolor="#333333"
+        onmouseover="this.style.backgroundColor='F8F8F8'"
+        onmouseout="this.style.backgroundColor=''">
+        <td height="23" style="font-family:Tahoma;font-size:10pt;">
+            ${vo.BOARD_NUM }
+        </td>
+        <td style="font-family:Tahoma;font-size:10pt;">
+            <div align="center">${vo.usernum }</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:10pt;">
+            <div align="center">${vo.name }</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:10pt;">
+            <div align="center">${vo.id }</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:10pt;">
+            <div align="center">${vo.email }</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:10pt;">
+            <div align="center">${vo.phone }</div>
+        </td>    
+        <td style="font-family:Tahoma;font-size:10pt;">
+            <div align="center">${vo.cname }</div>
+        </td>
     </tr>
-    
-    <tr align="center" valign="middle" bordercolor="#333333">
-    	<td style="font-family:Tahoma;font-size:8pt;" width="5%">
-            <div align="center">회원번호</div>
-        </td>
-        <td style="font-family:Tahoma;font-size:8pt;" width="15%" height="26">
-            <div align="center">이름</div>
-        </td>
-        <td style="font-family:Tahoma;font-size:8pt;" width="20%">
-            <div align="center">ID</div>
-        </td>
-        <td style="font-family:Tahoma;font-size:8pt;" width="20%">
-            <div align="center">이메일</div>
-        </td>
-        <td style="font-family:Tahoma;font-size:8pt;" width="20%">
-            <div align="center">핸드폰번호</div>
-        </td>
-        <td style="font-family:Tahoma;font-size:8pt;" width="25%">
-            <div align="center">업체명</div>
-        </td>
-    </tr>
-</c:choose>
+    </c:forEach>
+	</table>
 
+	</div>
+	
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
 			<div class="row row-pb-md">

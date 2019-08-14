@@ -262,40 +262,37 @@ public class MemberDAO {
 		return result;
 	}
 	
+	public List getMemberList(){
 		
-		//글 목록 보기
-		public List getBoardList(int page,int limit){
+		String board_list_sql="select * from member;";
 		
-			String member_list_sql="select * from member;";
+		List list = new ArrayList();
+		
+		try{
+			con = ds.getConnection();
+			pstmt = con.prepareStatement(board_list_sql);
 			
-			List list = new ArrayList();
-		
-			try{
-				con = ds.getConnection();
-				pstmt = con.prepareStatement(member_list_sql);
-				rs = pstmt.executeQuery();
-				
-				while(rs.next()){
-					MemberVO member = new MemberVO();
-					member.setUsernum(rs.getInt("usernum"));
-					member.setName(rs.getString("name"));
-					member.setId(rs.getString("id"));
-					member.setPwd(rs.getString("pwd"));
-					member.setEmail(rs.getString("email"));
-					member.setPhone(rs.getString("phone"));
-					member.setCname(rs.getString("cname"));
-					list.add(member);
-				}
-				
-				return list;
-			}catch(Exception ex){
-				System.out.println("getMemberList 에러 : " + ex);
-			}finally{
-				if(rs!=null) try{rs.close();}catch(SQLException ex){}
-				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
-				if(con!=null) try{con.close();}catch(SQLException ex){}
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				MemberVO member = new MemberVO();
+				member.setUsernum(rs.getInt("usernum"));
+				member.setName(rs.getString("name"));
+				member.setId(rs.getString("id"));
+				member.setEmail(rs.getString("email"));
+				member.setPhone(rs.getString("phone"));
+				member.setCname(rs.getString("cname"));
+				list.add(member);
 			}
-			return null;
+			
+			return list;
+		}catch(Exception ex){
+			System.out.println("getMemberList 에러 : " + ex);
+		}finally{
+			if(rs!=null) try{rs.close();}catch(SQLException ex){}
+			if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+			if(con!=null) try{con.close();}catch(SQLException ex){}
 		}
-
+		return null;
+	}
 }
