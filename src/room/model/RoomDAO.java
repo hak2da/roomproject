@@ -1,4 +1,4 @@
-package room.model;
+﻿package room.model;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -72,6 +72,4 @@ public class RoomDAO {
 		}
 		return false;
 	}
-	
-	
 }

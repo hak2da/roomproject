@@ -1,4 +1,4 @@
-package room.action;
+﻿package room.action;
 
 import java.util.Date;
 
@@ -110,5 +110,6 @@ public class RoomOutAction implements Action{
 		}
 		return null;
 	}
+
 
 }

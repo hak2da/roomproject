@@ -14,7 +14,6 @@
 
 	<!-- 
 	//////////////////////////////////////////////////////
-
 	FREE HTML5 TEMPLATE 
 	DESIGNED & DEVELOPED by FreeHTML5.co
 		
@@ -22,7 +21,6 @@
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
 	Facebook: 		https://www.facebook.com/fh5co
-
 	//////////////////////////////////////////////////////
 	 -->
 
@@ -61,41 +59,52 @@
 		
 	<div class="fh5co-loader"></div>
 	
-	<div id="page">
-	<nav class="fh5co-nav" role="navigation">
+	 <nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-2">
-					<div id="fh5co-logo"><a href="index.html">2조</a></div>
+					<div id="fh5co-logo"><a href="index.jsp">2조</a></div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
-						<li class="active"><a href="index.html">Home</a></li>
+						<li class="active"><a href="index.jsp">Home</a></li>
 						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">
-								<li><a href="#">원룸 검색</a></li>
+								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown">
-							<a href="#">방 내놓기</a>
+							<a href="">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
-								<li><a href="out.html">내 방 내놓기</a></li>
+								<li><a href="out.jsp">내 방 내놓기</a></li>
 							</ul>
 						</li>
-					
-						<li class="btn-cta"><a href="login.jsp"><span>Login</span></a></li>
-                        <li class="btn-cta"><a href="register.html"><span>register</span></a></li>     
-					</ul>
-					
-					
-				</div>
-			</div>
-			
-		</div>
-	</nav>
+                  
+               <c:if test="${sessionScope.sessionID==null}">
+                  <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
+               
+                        <li class="btn-cta"><a href="register.to"><span>회원가입</span></a></li> 
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.sessionID!=null}">
+                         
+                  <li class="btn-cta"><span style="font-size: 30px">${sessionScope.sessionID }님</span></li> 
+                  <li class="btn-cta"><a href="logout.to"><span>로그아웃</span></a></li>
+               
+                    </c:if>
+                     
+               </ul>
+               
+               
+               
+            </div>
+         </div>
+         
+      </div>
+   </nav>
 
 
 	<header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner" style="background-image:url(images/img_bg_2.jpg);">
