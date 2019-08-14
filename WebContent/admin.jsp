@@ -57,7 +57,6 @@
 							<ul class="dropdown">
 								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
-								<li><a href="MemberList.to">회원 정보</a>
 							</ul>
 						</li>
 						
