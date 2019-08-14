@@ -258,5 +258,32 @@ public class MemberDAO {
 	      }
 	      return null;
 	   }
+
+	public boolean memberDelete(String id) {
+		String member_delete_sql="delete from member where id=?";
+		
+		String result = "";
+		System.out.println("3333");
+		try{
+			con = ds.getConnection();
+			pstmt=con.prepareStatement(member_delete_sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			if(result.equals(id))return true;
+			System.out.println("4444");
+			return false;
+		}catch(Exception ex){
+			System.out.println("boardDelete 에러 : "+ex);
+		}	finally{
+			try{
+				if(pstmt!=null)pstmt.close();
+				if(con!=null) con.close();
+				}
+				catch(Exception ex){}
+			
+		}
+		
+		return true;
+	}
 		
 }

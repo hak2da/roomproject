@@ -288,7 +288,7 @@ $(function(){
 							</ul>
 						</li>
 						<li class="has-dropdown">
-							<a href="">방 내놓기</a>
+							<a href="">방 내놓기dd</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
 								<li><a href="out.jsp">내 방 내놓기</a></li>

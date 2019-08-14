@@ -95,7 +95,7 @@
 
    <table class="table table-bordered">
       <tr>
-         <th style="text-align:center; font-size:40px" colspan="6">회원관리</th>
+         <th style="text-align:center; font-size:40px" colspan="7">회원관리</th>
       </tr>
       <tr>
          <td align="center">회원번호</td>
@@ -104,6 +104,7 @@
          <td align="center">이메일</td>
          <td align="center">핸드폰번호</td>
          <td align="center">업체명</td>
+         <td align="center">관리</td>
       </tr>
       
    <c:forEach var="vo" items="${memberlist }">
@@ -127,6 +128,9 @@
         </td>    
         <td style="font-family:Tahoma;font-size:10pt;">
             <div align="center">${vo.cname }</div>
+        </td>
+        <td>
+	<a href="Delete.to"><input class="btn btn-default" type="button" value="삭제"></a>
         </td>
     </tr>
     </c:forEach>

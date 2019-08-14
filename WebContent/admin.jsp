@@ -47,9 +47,9 @@
 					<ul>
 						<li class="active"><a href="index.jsp">Home</a></li>
 						<li class="has-dropdown">
-							<a href="">관지라메뉴</a>
+							<a href="">관리자메뉴</a>
 							<ul class="dropdown">
-								<li><a href="MemberList.to">회원 목록보기</a></li>
+								<li><a href="memberlist.to">회원 목록보기</a></li>
 							</ul>
 						</li>
 						<li class="has-dropdown">
