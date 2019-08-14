@@ -61,14 +61,14 @@ public class RoomOutAction implements Action{
 				MPAY4 = "없음";
 			}
 			
-			String NADDRESS = "";
-			String RADDRESS = "";
-			if (multi.getParameter("NADDRESS") == null) {
+			String NADDRESS;
+			String RADDRESS;
+			if (multi.getParameter("NADDRESS").isEmpty()) {
 				NADDRESS = "없음";
 			} else {
 				NADDRESS = multi.getParameter("NADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
 			}
-			if (multi.getParameter("RADDRESS") == null) {
+			if (multi.getParameter("RADDRESS").isEmpty()) {
 				RADDRESS = "없음";
 			} else {
 				RADDRESS = multi.getParameter("RADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
