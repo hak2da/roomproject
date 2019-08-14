@@ -27,7 +27,7 @@ public class RoomOutFrontController
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(command.equals("/Out.do")){
+		if(command.equals("/out.do")){
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("out.jsp");

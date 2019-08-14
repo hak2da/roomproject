@@ -110,9 +110,6 @@
     <tr align="center" valign="middle" bordercolor="#333333"
         onmouseover="this.style.backgroundColor='F8F8F8'"
         onmouseout="this.style.backgroundColor=''">
-        <td height="23" style="font-family:Tahoma;font-size:10pt;">
-            ${vo.BOARD_NUM }
-        </td>
         <td style="font-family:Tahoma;font-size:10pt;">
             <div align="center">${vo.usernum }</div>
         </td>
@@ -194,13 +191,11 @@
 						<li><a href="#"><i class="icon-linkedin"></i></a></li>
 						<li><a href="#"><i class="icon-dribbble"></i></a></li>
 					</ul>
-					</p>
 				</div>
 			</div>
 
 		</div>
 	</footer>
-	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>

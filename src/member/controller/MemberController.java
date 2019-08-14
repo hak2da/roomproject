@@ -97,7 +97,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
       } else if (command.equals("/idCheck.to")) {
          String id = request.getParameter("id");
          response.getWriter().write(new MemberDAO().idCheck(id) + "");
-      } else if(command.equals("/MemberList.do")){
+      } else if(command.equals("/MemberList.to")){
 			action = new MemberListAction();
 			try{
 				forward=action.execute(request, response);
@@ -105,16 +105,13 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 				e.printStackTrace();
 			}
       }
-      System.out.println("나감????");
       System.out.println(forward);
       if (forward != null) {
          if (forward.isRedirect()) {
             response.sendRedirect(forward.getPath());
-            System.out.println("실행");
          } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher(forward.getPath());
             dispatcher.forward(request, response);
-            System.out.println("안됨");
          }
       }
 

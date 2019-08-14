@@ -264,25 +264,29 @@ public class MemberDAO {
 	
 	public List getMemberList(){
 		
-		String board_list_sql="select * from member;";
+		System.out.println("getMemberList() 시작");
+		String member_list_sql="select * from member";
 		
 		List list = new ArrayList();
 		
 		try{
+			System.out.println("여기는감?");
 			con = ds.getConnection();
-			pstmt = con.prepareStatement(board_list_sql);
-			
+			pstmt = con.prepareStatement(member_list_sql);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
+				System.out.println("시작은함?");
 				MemberVO member = new MemberVO();
-				member.setUsernum(rs.getInt("usernum"));
 				member.setName(rs.getString("name"));
 				member.setId(rs.getString("id"));
 				member.setEmail(rs.getString("email"));
 				member.setPhone(rs.getString("phone"));
 				member.setCname(rs.getString("cname"));
+				member.setUsernum(rs.getInt("usernum"));
 				list.add(member);
+				System.out.println("리스트");
+				System.out.println(list);
 			}
 			
 			return list;

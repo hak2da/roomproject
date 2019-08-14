@@ -14,9 +14,17 @@ public class MemberListAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		MemberDAO memberdao=new MemberDAO();
-		List memberlist=new ArrayList();
 		
+		System.out.println("memberlistAction 시작");
+		List memberlist=new ArrayList();
 		memberlist = memberdao.getMemberList();
+		
+		request.setAttribute("memberlist", memberlist);
+		
+		System.out.println("getMemberList 끝");
+		
+		forward.setRedirect(false);
+ 		forward.setPath("/memberinfo.jsp");
 		return forward;
 	}
 }
