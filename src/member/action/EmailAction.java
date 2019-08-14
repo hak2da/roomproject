@@ -36,8 +36,7 @@ public class EmailAction implements Action {
 		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
 		String content = "인증번호 : " + randomNum;
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("sessionRandomNum", randomNum);
+		document.cookie = randomNum;
 		
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);

@@ -104,12 +104,22 @@
 					if(result == 0) {	
 						alert('이미 인증된 이메일 입니다.');
 					} else {
-						
 						document.getElementById('incl').style.display = 'block';
 					}
 				}
 			})
 			document.getElementById('incl').style.display = 'block';
+		}
+		
+		function randomCheck() {
+			var inputNum = $('#inputNum').val();
+			var randomNum = "<%=session.getAttribute('sessionRandomNum') %>";
+			alert(randomNum);
+			/* if(inputNum == randomNum) {
+				alert('인증됨');
+			} else {
+				alert('인증안됨');
+			} */
 		}
 		
 		function pwdCheck() {
@@ -126,14 +136,14 @@
 			}
 		}
 		
-		function emailCheck() {
+		/* function emailCheck() {
 			var email = $( '#email' ).val();
 			if(email != ""){
 				$("#email").css("background-color", "#B0F6AC");
 			} else {
 				$("#email").css("background-color", "#FFCECE");
 			}
-		}
+		} */
 		
 		function phoneCheck() {
 			var phone = $( '#phone' ).val();
@@ -293,13 +303,13 @@
               </div>
               
               <div class="form-label-group">
-                <input type=email name="email" id="email" oninput="emailCheck()" class="form-control" placeholder="이메일" required>
+                <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required>
                 <button type="button" onclick="emailOK()">이메일 인증</button>
               </div>
               
               <div class="form-label-group" id="incl" style="display:none">
-                <input type="text" name="in" id="in" class="form-control">
-                <button type="button" onclick="">인증확인</button>
+                <input type="text" name="inputNum" id="inputNum" class="form-control">
+                <button type="button" onclick="randomCheck()">인증확인</button>
              </div>
               
               <div class="form-label-group">
