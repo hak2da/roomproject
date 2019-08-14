@@ -4,21 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Properties;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.mail.Address;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
-
-import member.action.Gmail;
 
 public class MemberDAO {
 	DataSource ds;
@@ -270,5 +261,41 @@ public class MemberDAO {
 
 		return result;
 	}
+	
+		
+		//글 목록 보기
+		public List getBoardList(int page,int limit){
+		
+			String member_list_sql="select * from member;";
+			
+			List list = new ArrayList();
+		
+			try{
+				con = ds.getConnection();
+				pstmt = con.prepareStatement(member_list_sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					MemberVO member = new MemberVO();
+					member.setUsernum(rs.getInt("usernum"));
+					member.setName(rs.getString("name"));
+					member.setId(rs.getString("id"));
+					member.setPwd(rs.getString("pwd"));
+					member.setEmail(rs.getString("email"));
+					member.setPhone(rs.getString("phone"));
+					member.setCname(rs.getString("cname"));
+					list.add(member);
+				}
+				
+				return list;
+			}catch(Exception ex){
+				System.out.println("getMemberList 에러 : " + ex);
+			}finally{
+				if(rs!=null) try{rs.close();}catch(SQLException ex){}
+				if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+				if(con!=null) try{con.close();}catch(SQLException ex){}
+			}
+			return null;
+		}
 
 }

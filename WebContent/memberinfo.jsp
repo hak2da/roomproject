@@ -91,22 +91,32 @@
 		</div>
 	</header>
 
-	<div id="fh5co-contact">
-		<div class="container">
-			<div class="row">
-				<div class="centered">
-					<div class="card card-signin my-5">
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-
-
-
-	
+<c:choose>
+    <tr align="center" valign="middle">
+        <td colspan="4">회원관리</td>
+    </tr>
+    
+    <tr align="center" valign="middle" bordercolor="#333333">
+    	<td style="font-family:Tahoma;font-size:8pt;" width="5%">
+            <div align="center">회원번호</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:8pt;" width="15%" height="26">
+            <div align="center">이름</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:8pt;" width="20%">
+            <div align="center">ID</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:8pt;" width="20%">
+            <div align="center">이메일</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:8pt;" width="20%">
+            <div align="center">핸드폰번호</div>
+        </td>
+        <td style="font-family:Tahoma;font-size:8pt;" width="25%">
+            <div align="center">업체명</div>
+        </td>
+    </tr>
+</c:choose>
 
 	<footer id="fh5co-footer" role="contentinfo">
 		<div class="container">
