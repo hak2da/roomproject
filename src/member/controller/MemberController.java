@@ -98,12 +98,14 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          String id = request.getParameter("id");
          response.getWriter().write(new MemberDAO().idCheck(id) + "");
       } else if(command.equals("/MemberList.to")){
+
 			action = new MemberListAction();
 			try{
 				forward=action.execute(request, response);
 			}catch(Exception e){
 				e.printStackTrace();
 			}
+
       }
       System.out.println(forward);
       if (forward != null) {

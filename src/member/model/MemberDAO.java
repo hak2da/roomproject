@@ -1,4 +1,4 @@
-package member.model;
+﻿package member.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,8 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import member.model.*;
 
 public class MemberDAO {
 	DataSource ds;
@@ -300,3 +302,4 @@ public class MemberDAO {
 		return null;
 	}
 }
+

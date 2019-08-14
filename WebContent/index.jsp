@@ -57,7 +57,7 @@
 							<a href="">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
-								<li><a href="out.jsp">내 방 내놓기</a></li>
+								<li><a href="out.do">내 방 내놓기</a></li>
 							</ul>
 						</li>
                   
