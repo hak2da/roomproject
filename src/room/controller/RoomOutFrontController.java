@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.action.JoinAction;
 import room.action.Action;
 import room.action.ActionForward;
 import room.action.RoomOutAction;

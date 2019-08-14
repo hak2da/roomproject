@@ -3,8 +3,8 @@ package member.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import room.model.MemberDAO;
-import room.model.MemberVO;
+import member.model.MemberDAO;
+import member.model.MemberVO;
 
 public class JoinAction implements Action {
 

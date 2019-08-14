@@ -69,7 +69,7 @@
 			<div class="row">
 				<div class="col-xs-2">
 					<div id="fh5co-logo">
-						<a href="index.html">2조</a>
+						<a href="index.jsp">2조</a>
 					</div>
 				</div>
 				<div class="col-xs-10 text-right menu-1">
@@ -141,11 +141,11 @@
 									type="submit">로그인</button>
 
 								<button class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="button" onclick="location.href='search.html'">아이디/비밀번호
+									type="button" onclick="location.href='search.jsp'">아이디/비밀번호
 									찾기</button>
 
 								<button class="btn btn-lg btn-primary btn-block text-uppercase"
-									type="button" onclick="location.href='register.html'">회원가입</button>
+									type="button" onclick="location.href='register.jsp'">회원가입</button>
 
 
 							</form>

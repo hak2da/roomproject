@@ -12,7 +12,7 @@ import javax.mail.Authenticator;
 
 import java.util.Properties;
 
-import room.model.MemberDAO;
+import member.model.MemberDAO;
 
 public class EmailAction implements Action {
 

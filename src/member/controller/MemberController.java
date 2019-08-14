@@ -14,7 +14,7 @@ import member.action.EmailAction;
 import member.action.JoinAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
-import room.model.MemberDAO;
+import member.model.MemberDAO;
 
 @WebServlet("*.to")
 public class MemberController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
@@ -68,7 +68,6 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          forward = new ActionForward();
          forward.setRedirect(false);
          forward.setPath("register.jsp");
-
       } else if (command.equals("/index.to")) {
          forward = new ActionForward();
          forward.setRedirect(false);

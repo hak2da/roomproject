@@ -21,14 +21,14 @@ public class RoomOutAction implements Action{
       RoomDAO dao = new RoomDAO();
       RoomVO vo = new RoomVO();
       ActionForward forward=new ActionForward();
-      String realFolder="C:\\2019java\\jsp\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
+      String realFolder="C:\\KHT\\JSP workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
          String saveFolder="/image";
       
       boolean result=false;
       
       int fileSize=5*1024*1024;
          
-      realFolder=request.getRealPath(saveFolder);
+         realFolder=request.getRealPath(saveFolder);
       
       try{
          
@@ -111,4 +111,3 @@ public class RoomOutAction implements Action{
       return null;
    }
 
-}

@@ -6,7 +6,7 @@
    <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>King &mdash; Free Website Template, Free HTML5 Template by gettemplates.co</title>
+   <title>King &mdash; OneRoom Planet</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -97,8 +97,9 @@
                         <form class="form-inline" id="fh5co-header-subscribe">
                            <div class="col-md-8 col-md-offset-2">
                               <div class="form-group">
+                              
                                  <input type="text" class="form-control" id="email" placeholder="Enter your email">
-                                 <button type="submit" class="btn btn-default">Join Now</button>
+                                 <button type="submit" class="btn btn-default"><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">검색</a></button>
                               </div>
                            </div>
                         </form>
@@ -211,6 +212,8 @@
    <script src="js/jquery.waypoints.min.js"></script>
    <!-- Main -->
    <script src="js/main.js"></script>
-
    </body>
 </html>
+
+
+
