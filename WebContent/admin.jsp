@@ -47,12 +47,19 @@
 					<ul>
 						<li class="active"><a href="index.jsp">Home</a></li>
 						<li class="has-dropdown">
+							<a href="">관지라메뉴</a>
+							<ul class="dropdown">
+								<li><a href="MemberList.to">회원 목록보기</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">
 								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
+						
 						<li class="has-dropdown">
 							<a href="">방 내놓기</a>
 							<ul class="dropdown">

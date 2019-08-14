@@ -4,10 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import member.model.*;
 
 public class MemberDAO {
 	DataSource ds;
@@ -217,5 +221,42 @@ public class MemberDAO {
 
 		return result;
 	}
-
+	public List getMemberList(){
+	      
+	      System.out.println("getMemberList() 시작");
+	      String member_list_sql="select * from member";
+	      
+	      List list = new ArrayList();
+	      
+	      try{
+	         System.out.println("여기는감?");
+	         con = ds.getConnection();
+	         pstmt = con.prepareStatement(member_list_sql);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()){
+	            System.out.println("시작은함?");
+	            MemberVO member = new MemberVO();
+	            member.setName(rs.getString("name"));
+	            member.setId(rs.getString("id"));
+	            member.setEmail(rs.getString("email"));
+	            member.setPhone(rs.getString("phone"));
+	            member.setCname(rs.getString("cname"));
+	            member.setUsernum(rs.getInt("usernum"));
+	            list.add(member);
+	            System.out.println("리스트");
+	            System.out.println(list);
+	         }
+	         
+	         return list;
+	      }catch(Exception ex){
+	         System.out.println("getMemberList 에러 : " + ex);
+	      }finally{
+	         if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	         if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	         if(con!=null) try{con.close();}catch(SQLException ex){}
+	      }
+	      return null;
+	   }
+		
 }
