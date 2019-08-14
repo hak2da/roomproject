@@ -97,8 +97,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
       } else if (command.equals("/idCheck.to")) {
          String id = request.getParameter("id");
          response.getWriter().write(new MemberDAO().idCheck(id) + "");
-      }
-      else if(command.equals("/MemberList.do")){
+      } else if(command.equals("/MemberList.do")){
 			action = new MemberListAction();
 			try{
 				forward=action.execute(request, response);
