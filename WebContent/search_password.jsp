@@ -72,7 +72,6 @@
 				dataType: 'text',
 				async : false,
 				success: function(data) {
-					alert(data+"asdasd");
 					if(data == "") {
 						alert('해당 계정이 없습니다.');
 						result = false;

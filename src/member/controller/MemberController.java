@@ -158,6 +158,10 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 			response.getWriter()
 			.write(new MemberDAO().pwdSearch(request.getParameter("name") + "", request.getParameter("id") + "", request.getParameter("email") + "", request.getParameter("phone") + ""));
 			return ;
+		} else if (command.equals("/admin.to")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("admin.jsp");
 		}
 
       if (forward != null) {
