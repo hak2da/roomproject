@@ -12,6 +12,7 @@ import member.action.Action;
 import member.action.ActionForward;
 import member.action.EmailAction;
 import member.action.JoinAction;
+import member.action.MemberDeleteAction;
 import member.action.MemberListAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
@@ -97,15 +98,22 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
       } else if (command.equals("/idCheck.to")) {
          String id = request.getParameter("id");
          response.getWriter().write(new MemberDAO().idCheck(id) + "");
-      } else if(command.equals("/MemberList.to")){
 
-			action = new MemberListAction();
-			try{
-				forward=action.execute(request, response);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-
+      } else if(command.equals("/memberlist.to")){
+         action = new MemberListAction();
+         try{
+            forward=action.execute(request, response);
+         }catch(Exception e){
+            e.printStackTrace();
+         } 
+      } else if (command.equals("/Delete.to")) {
+          action = new MemberDeleteAction();
+          System.out.println("1111");
+          try {
+             forward = action.execute(request, response);
+          } catch (Exception e) {
+             e.printStackTrace();
+          }
       }
       System.out.println(forward);
       if (forward != null) {
