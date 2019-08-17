@@ -22,7 +22,7 @@ public class RoomOutAction implements Action{
 		RoomVO vo = new RoomVO();
 		ActionForward forward=new ActionForward();
 
-		String realFolder="C:\\KHT\\JSP workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
+		String realFolder="D:\\jee-2019-03\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
 
    		String saveFolder="/image";
 		
