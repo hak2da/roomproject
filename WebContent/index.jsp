@@ -8,7 +8,6 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <title>King &mdash; OneRoom Planet</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content="Free HTML5 Website Template by gettemplates.co" />
    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
    <meta name="author" content="gettemplates.co" />
 
@@ -47,17 +46,24 @@
 					<ul>
 						<li class="active"><a href="index.jsp">Home</a></li>
 						<li class="has-dropdown">
+							<a href="">관리자메뉴</a>
+							<ul class="dropdown">
+								<li><a href="memberlist.to">회원 목록보기</a></li>
+							</ul>
+						</li>
+						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">
 								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
+						
 						<li class="has-dropdown">
 							<a href="">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
-								<li><a href="Out.do">내 방 내놓기</a></li>
+								<li><a href="out.jsp">내 방 내놓기</a></li>
 							</ul>
 						</li>
                   
@@ -92,17 +98,7 @@
                <div class="display-t">
                   <div class="display-tc animate-box" data-animate-effect="fadeIn">
                      <h1>OneRoom Planet</h1>
-                     <h2>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></h2>
                      <div class="row">
-                        <form class="form-inline" id="fh5co-header-subscribe">
-                           <div class="col-md-8 col-md-offset-2">
-                              <div class="form-group">
-                              
-                                 <input type="text" class="form-control" id="email" placeholder="Enter your email">
-                                 <button type="submit" class="btn btn-default"><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">검색</a></button>
-                              </div>
-                           </div>
-                        </form>
                      </div>
                   </div>
                </div>
@@ -112,91 +108,13 @@
    </header>
 
    
-
-   
    
 
 
 
-   <div id="fh5co-started">
-      <div class="container">
-         <div class="row animate-box">
-            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-               <h2>Lets Get Started</h2>
-               <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-            </div>
-         </div>
-         <div class="row animate-box">
-            <div class="col-md-8 col-md-offset-2">
-               <form class="form-inline">
-                  <div class="col-md-6 col-md-offset-3 col-sm-6">
-                     <button type="submit" class="btn btn-default btn-block">Get In Touch</button>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
 
-   <footer id="fh5co-footer" role="contentinfo">
-      <div class="container">
-         <div class="row row-pb-md">
-            <div class="col-md-4 fh5co-widget">
-               <h3>King.</h3>
-               <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-               <p><a href="#">Learn More</a></p>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-               <ul class="fh5co-footer-links">
-                  <li><a href="#">About</a></li>
-                  <li><a href="#">Help</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Terms</a></li>
-                  <li><a href="#">Meetups</a></li>
-               </ul>
-            </div>
 
-            <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-               <ul class="fh5co-footer-links">
-                  <li><a href="#">Shop</a></li>
-                  <li><a href="#">Privacy</a></li>
-                  <li><a href="#">Testimonials</a></li>
-                  <li><a href="#">Handbook</a></li>
-                  <li><a href="#">Held Desk</a></li>
-               </ul>
-            </div>
 
-            <div class="col-md-2 col-sm-4 col-xs-6 col-md-push-1">
-               <ul class="fh5co-footer-links">
-                  <li><a href="#">Find Designers</a></li>
-                  <li><a href="#">Find Developers</a></li>
-                  <li><a href="#">Teams</a></li>
-                  <li><a href="#">Advertise</a></li>
-                  <li><a href="#">API</a></li>
-               </ul>
-            </div>
-         </div>
-
-         <div class="row copyright">
-            <div class="col-md-12 text-center">
-               <p>
-                  <small class="block">&copy; 2016 Free HTML5. All Rights Reserved.</small> 
-                  <small class="block">Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small>
-               </p>
-               <p>
-                  <ul class="fh5co-social-icons">
-                     <li><a href="#"><i class="icon-twitter"></i></a></li>
-                     <li><a href="#"><i class="icon-facebook"></i></a></li>
-                     <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                     <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                  </ul>
-               </p>
-            </div>
-         </div>
-
-      </div>
-   </footer>
-   </div>
 
    <div class="gototop js-top">
       <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>

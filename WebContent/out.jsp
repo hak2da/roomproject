@@ -318,25 +318,22 @@ $(function(){
       </div>
    </nav>
 
-      <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm"
-         role="banner" style="background-image: url(images/img_bg_2.jpg);">
-         <div class="overlay"></div>
-         <div class="container">
-            <div class="row">
-               <div class="col-md-8 col-md-offset-2 text-center">
-                  <div class="display-t">
-                     <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                        <h1>Contact Us</h1>
-                        <h2>
-                           Free html5 templates Made by <a href="http://freehtml5.co"
-                              target="_blank">freehtml5.co</a>
-                        </h2>
+     <header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/img_bg_2.jpg);">
+      <div class="overlay"></div>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+               <div class="display-t">
+                  <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                     <h1>OneRoom Planet</h1>
+                     <div class="row">
                      </div>
                   </div>
                </div>
             </div>
          </div>
-      </header>
+      </div>
+   </header>
 
       <form action="RoomOutAction.do" method="post" name="boardform" enctype="multipart/form-data">
          <div class="wrap-950 add-container">
