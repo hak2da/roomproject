@@ -9,6 +9,16 @@
     <res-auth>Container</res-auth>
   </resource-ref>
   
+  <filter>
+                <filter-name>LoginCheck</filter-name>
+                <filter-class>
+                        member.filter.LoginCheckFilter
+                </filter-class>
+        </filter>
+        <filter-mapping>
+                <filter-name>LoginCheck</filter-name>
+                <url-pattern>/roomProject/*</url-pattern>
+        </filter-mapping>
 
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
