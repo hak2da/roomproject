@@ -46,12 +46,6 @@
 					<ul>
 						<li class="active"><a href="index.jsp">Home</a></li>
 						<li class="has-dropdown">
-							<a href="">관리자메뉴</a>
-							<ul class="dropdown">
-								<li><a href="memberlist.to">회원 목록보기</a></li>
-							</ul>
-						</li>
-						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">
 								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
