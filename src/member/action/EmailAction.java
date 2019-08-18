@@ -1,18 +1,16 @@
 ﻿package member.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Properties;
 
-import member.model.MemberDAO;
-
-import javax.mail.Transport;
-import javax.mail.Message;
 import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.Session;
-import javax.mail.Authenticator;
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import member.model.MemberDAO;
 

@@ -1,3 +1,10 @@
+package member.action;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import member.model.MemberDAO;
+
 public class MemberDeleteAction implements Action {
 
 	@Override
@@ -16,4 +23,4 @@ public class MemberDeleteAction implements Action {
 	}
 
 
-]
+}

@@ -20,7 +20,6 @@ public class RoomDAO {
 		try{
 			Context init = new InitialContext();
 	  	    ds = (DataSource) init.lookup("java:comp/env/jdbc:OracleDB");
-d
 		}catch(Exception ex){
 			return;
 		}
