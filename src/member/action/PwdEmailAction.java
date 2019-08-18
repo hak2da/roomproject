@@ -1,41 +1,33 @@
-﻿package member.action;
+package member.action;
 
+import java.util.Properties;
+
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import member.model.MemberDAO;
 
-import javax.mail.Transport;
-import javax.mail.Message;
-import javax.mail.Address;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.Session;
-import javax.mail.Authenticator;
-
-import java.util.Properties;
-
-
-import member.model.MemberDAO;
-
-public class EmailAction implements Action {
+public class PwdEmailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		MemberDAO dao = new MemberDAO();
 		ActionForward forward = new ActionForward();
-
-		int result = dao.emailCheck(request.getParameter("email"));
-		if (result == 0) { // 이미 있는 이메일
-			return null;
-		}
 		
-		String randomNum = request.getParameter("randomNum");
+		String pwd = dao.pwdSearch(request.getParameter("name"), request.getParameter("id"), request.getParameter("email"), request.getParameter("phone"));
+		
 		String from = "jinsan654321@gmail.com";
 		String to = request.getParameter("email");
-		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
-		String content = "인증번호 : " + randomNum;
+		String subject = request.getParameter("id") + "님의 비밀번호 입니다.";
+		String content = "비밀번호 : " + pwd;
 		
 		
 		Properties p = new Properties();
@@ -66,7 +58,7 @@ public class EmailAction implements Action {
 		}
 
 		forward.setRedirect(true);
-		forward.setPath("./emailOk.to");
+		forward.setPath("./login.to");
 		return forward;
 	}
 

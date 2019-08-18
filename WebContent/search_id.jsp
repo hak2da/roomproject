@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+﻿
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
@@ -60,6 +62,31 @@
 	<![endif]-->
 
 </head>
+<script type="text/javascript">
+	function check() {
+		var name = $( '#name' ).val();
+		var email = $( '#email' ).val();
+		var phone = $( '#phone' ).val();
+		var result =false;
+		$.ajax({
+			type: 'post',
+			url: 'idSearch.to',
+			data: {"name" : name, "email" : email, "phone" : phone},
+			dataType: 'text',
+			async : false,
+			success: function(data) {
+				if(data != "") {
+					alert('찾은 아이디 : "'+data+'" 입니다.');
+					result = true;
+				} else {
+					alert('아이디가 없습니다.');
+					result = false;
+				}
+			}
+		});
+		return result;
+	}
+</script>
 <body>
 	<div class="fh5co-loader"></div>
 
@@ -121,25 +148,24 @@
 						<div class="card card-signin my-5">
 							<div class="card-body">
 								<h5 class="card-title text-center">아이디 찾기</h5>
-								<form class="form-signin" action="login.html" method="post">
+								<form class="form-signin" method="post" action="login.to" onsubmit="return check()" autocomplete="off">
 
 									<div class="form-label-group">
-										<input type="text" id="inputEmail" class="form-control"
+										<input type="text" id="name" name="name" class="form-control"
 											placeholder="이름" required autofocus>
 									</div>
 
 									<div class="form-label-group">
-										<input type="email" id="inputEmail" class="form-control"
-											placeholder="이메일" required autofocus>
+										<input type="email" id="email" name="email" class="form-control"
+											placeholder="이메일" required>
 									</div>
 
 									<div class="form-label-group">
-										<input type="text" id="inputEmail" class="form-control"
-											placeholder="전화번호" required autofocus>
+										<input type="text" id="phone" name="phone" class="form-control"
+											placeholder="전화번호" required>
 									</div>
 
-									<button class="btn btn-lg btn-primary btn-block text-uppercase"
-										type="submit">찾기</button>
+									<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">찾기</button>
 
 
 								</form>
@@ -258,4 +284,3 @@
 
 </body>
 </html>
-

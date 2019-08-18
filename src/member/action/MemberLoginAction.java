@@ -26,6 +26,11 @@ public class MemberLoginAction implements Action {
 			forward.setPath("login.to");
 		} else {
 			// 로그인 성공 -> 세션에 아이디를 저장
+			if(id.equals("admin")) {
+				session.setAttribute("sessionID", id);
+				forward.setRedirect(true);
+				forward.setPath("admin.to");
+			}
 			session.setAttribute("sessionID", id);
 
 			// 로그인 성공후 메인화면으로 이동

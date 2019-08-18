@@ -1,4 +1,4 @@
-﻿package member.action;
+package member.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +15,7 @@ import javax.mail.Authenticator;
 
 import java.util.Properties;
 
-
-import member.model.MemberDAO;
-
-public class EmailAction implements Action {
+public class DeleteEmailAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -26,8 +23,8 @@ public class EmailAction implements Action {
 		MemberDAO dao = new MemberDAO();
 		ActionForward forward = new ActionForward();
 
-		int result = dao.emailCheck(request.getParameter("email"));
-		if (result == 0) { // 이미 있는 이메일
+		int result = dao.emailCheck(request.getParameter("id"), request.getParameter("email"));
+		if (result == 0) {
 			return null;
 		}
 		
