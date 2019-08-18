@@ -19,7 +19,6 @@ import member.action.PwdEmailAction;
 import member.action.MemberListAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
-import member.action.PwdEmailAction;
 
 
 @WebServlet("*.to")
