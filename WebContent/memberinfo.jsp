@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
@@ -7,12 +7,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>King &mdash; Free Website Template, Free HTML5 Template
-   by gettemplates.co</title>
+	by gettemplates.co</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
-   content="Free HTML5 Website Template by gettemplates.co" />
+	content="Free HTML5 Website Template by gettemplates.co" />
 <meta name="keywords"
-   content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 <meta name="author" content="gettemplates.co" />
 
 <!-- Animate.css -->
@@ -29,12 +29,11 @@
 <script src="js/modernizr-2.6.2.min.js"></script>
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
-   <script src="js/respond.min.js"></script>
-   <![endif]-->
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
 </head>
 <body>
-
    <div class="fh5co-loader"></div>
 
    <nav class="fh5co-nav" role="navigation">
@@ -89,22 +88,21 @@
    </header>
    
    <div style="width:60%; margin:auto;" >
-
+	<form action='Delete.to'>
    <table class="table table-bordered">
       <tr>
          <th style="text-align:center; font-size:40px" colspan="7">회원관리</th>
       </tr>
       <tr>
          <td align="center">회원번호</td>
-         <td align="center">아이디</td>
          <td align="center">이름</td>
+         <td align="center">아이디</td>
          <td align="center">이메일</td>
          <td align="center">핸드폰번호</td>
          <td align="center">업체명</td>
          <td align="center">관리</td>
       </tr>
-      
-   <c:forEach var="vo" items="${memberlist }">
+   <c:forEach var="vo" items="${memberlist}">
     <tr align="center" valign="middle" bordercolor="#333333"
         onmouseover="this.style.backgroundColor='F8F8F8'"
         onmouseout="this.style.backgroundColor=''">
@@ -127,12 +125,13 @@
             <div align="center">${vo.cname }</div>
         </td>
         <td>
-	<a href="Delete.to"><input class="btn btn-default" type="button" value="삭제"></a>
+			<button type="submit" name="id" value="${vo.id }">삭제</button>
         </td>
     </tr>
     </c:forEach>
-   </table>
 
+   </table>
+</form>
    </div>
    
    <footer id="fh5co-footer" role="contentinfo">

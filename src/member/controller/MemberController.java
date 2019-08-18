@@ -1,4 +1,4 @@
-package member.controller;
+﻿package member.controller;
 
 import java.io.IOException;
 
@@ -14,12 +14,14 @@ import member.action.DeleteEmailAction;
 import member.action.EmailAction;
 import member.action.JoinAction;
 import member.action.MemberDeleteAction;
-
+import member.model.MemberDAO;
+import member.action.PwdEmailAction;
 import member.action.MemberListAction;
 import member.action.MemberLoginAction;
 import member.action.MemberLogoutAction;
-import member.model.MemberDAO;
 import member.action.PwdEmailAction;
+
+
 @WebServlet("*.to")
 public class MemberController extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 
@@ -38,8 +40,6 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("register2.jsp");
-
-
 		} else if (command.equals("/JoinAction.to")) {
 			action = new JoinAction();
 			try {
@@ -87,7 +87,6 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 
 		} else if (command.equals("/DeleteEmailAction.to")) {
             action = new DeleteEmailAction();
-
             try {
                forward = action.execute(request, response);
             } catch (Exception e) {
@@ -165,9 +164,25 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("admin.jsp");
-		}
 
 
+      } else if(command.equals("/memberlist.to")){
+         action = new MemberListAction();
+         try{
+            forward=action.execute(request, response);
+         }catch(Exception e){
+            e.printStackTrace();
+         } 
+      } else if (command.equals("/Delete.to")) {
+          action = new MemberDeleteAction();
+          System.out.println("1111");
+          try {
+             forward = action.execute(request, response);
+          } catch (Exception e) {
+             e.printStackTrace();
+          }
+      }
+      System.out.println(forward);
       if (forward != null) {
          if (forward.isRedirect()) {
             response.sendRedirect(forward.getPath());
@@ -188,5 +203,4 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
          throws ServletException, IOException {
       doProcess(request, response);
    }
-
 }

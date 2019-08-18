@@ -12,9 +12,6 @@
    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
    <meta name="author" content="gettemplates.co" />
 
-
-
-   
    <!-- Animate.css -->
    <link rel="stylesheet" href="css/animate.css">
    <!-- Icomoon Icon Fonts-->
@@ -64,7 +61,7 @@
 							<a href="">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
-								<li><a href="out.jsp">내 방 내놓기</a></li>
+								<li><a href="out.do">내 방 내놓기</a></li>
 							</ul>
 						</li>
                   

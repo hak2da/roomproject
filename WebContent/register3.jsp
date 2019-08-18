@@ -233,7 +233,7 @@
 	</head>
 	<body>
 	
-<div class="fh5co-loader"></div>
+	<div class="fh5co-loader"></div>
 
 	<nav class="fh5co-nav" role="navigation">
 
@@ -259,10 +259,6 @@
 								<li><a href="out.jsp">내 방 내놓기</a></li>
 							</ul>
 						</li>
-                  
-            
-               
-               
                
             </div>
          </div>

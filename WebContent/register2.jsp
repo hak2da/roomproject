@@ -114,16 +114,19 @@
 					}
 				}
 			})
+			document.getElementById('incl').style.display = 'block';
 		}
 		
 		function randomCheck() {
 			var inputNum = $('#inputNum').val();
+
 			if(inputNum == randomNum) {
 				alert('인증되었습니다.');
 				numOK = inputNum;
 				$("#email").css("background-color", "#B0F6AC");
 				$("#inputNum").css("background-color", "#B0F6AC");
 				numCheck = 1;
+
 			} else {
 				alert('인증번호가 다릅니다.');
 				$("#email").css("background-color", "#FFCECE");
@@ -260,11 +263,6 @@
 								<li><a href="out.jsp">내 방 내놓기</a></li>
 							</ul>
 						</li>
-                  
-            
-               
-               
-               
             </div>
          </div>
          
@@ -291,7 +289,7 @@
 	
 	<div id="fh5co-contact">
 	 <div class="container">
->
+
     <div class="row">
        <div class="centered">
         <div class="card card-signin my-5">
@@ -319,7 +317,6 @@
               </div>
               
               <div class="form-label-group">
-
                 <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required>
                 <button type="button" onclick="emailOK()">이메일 인증</button>
 
@@ -342,7 +339,6 @@
               <button id="button" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" >회원가입</button>
 
              
-            
             </form>
           </div>
            </div>

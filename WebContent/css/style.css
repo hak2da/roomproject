@@ -36,6 +36,13 @@ body {
     width: 500px;
 }
 
+.card-signin2 {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    width: 1000px;
+}
+
 .card-signin .card-title .card-addr{
   margin-bottom: 2rem;
   font-weight: 300;
@@ -1499,7 +1506,6 @@ h1, h2, h3, h4, h5, h6, figure {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
 }
-
 
 
 /*# sourceMappingURL=style.css.map */

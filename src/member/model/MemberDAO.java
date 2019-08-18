@@ -5,9 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import member.model.*;
+
 
 public class MemberDAO {
 	DataSource ds;
@@ -125,11 +133,11 @@ public class MemberDAO {
 
 	public int loginCheck(String id, String pwd) {
 
-		String dbPW = ""; // db¿¡¼­ ²¨³½ ºñ¹Ğ¹øÈ£¸¦ ´ãÀ» º¯¼ö
+		String dbPW = ""; // dbì—ì„œ êº¼ë‚¸ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹´ì„ ë³€ìˆ˜
 		int x = 0;
 
 		try {
-			// Äõ¸® - ¸ÕÀú ÀÔ·ÂµÈ ¾ÆÀÌµğ·Î DB¿¡¼­ ºñ¹Ğ¹øÈ£¸¦ Á¶È¸ÇÑ´Ù.
+			// ì¿¼ë¦¬ - ë¨¼ì € ì…ë ¥ëœ ì•„ì´ë””ë¡œ DBì—ì„œ ë¹„ë°€ë²ˆí˜¸ë¥¼ ì¡°íšŒí•œë‹¤.
 			String sql = "SELECT PWD FROM MEMBER WHERE ID=?";
 
 			con = ds.getConnection();
@@ -137,19 +145,18 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
-			if (rs.next()) // ÀÔ·ÁµÈ ¾ÆÀÌµğ¿¡ ÇØ´çÇÏ´Â ºñ¹ø ÀÖÀ»°æ¿ì
+			if (rs.next()) // ì…ë ¤ëœ ì•„ì´ë””ì— í•´ë‹¹í•˜ëŠ” ë¹„ë²ˆ ìˆì„ê²½ìš°
 			{
-				dbPW = rs.getString("pwd"); // ºñ¹øÀ» º¯¼ö¿¡ ³Ö´Â´Ù.
+				dbPW = rs.getString("pwd"); // ë¹„ë²ˆì„ ë³€ìˆ˜ì— ë„£ëŠ”ë‹¤.
 				if (dbPW.equals(pwd)) {
-					x = 1; // ³Ñ°Ü¹ŞÀº ºñ¹ø°ú ²¨³»¿Â ºñ¹ø ºñ±³. °°À¸¸é ÀÎÁõ¼º°ø
+					x = 1; // ë„˜ê²¨ë°›ì€ ë¹„ë²ˆê³¼ êº¼ë‚´ì˜¨ ë¹„ë²ˆ ë¹„êµ. ê°™ìœ¼ë©´ ì¸ì¦ì„±ê³µ
 
 				} else {
-					x = 0; // DBÀÇ ºñ¹Ğ¹øÈ£¿Í ÀÔ·Â¹ŞÀº ºñ¹Ğ¹øÈ£ ´Ù¸§, ÀÎÁõ½ÇÆĞ
+					x = 0; // DBì˜ ë¹„ë°€ë²ˆí˜¸ì™€ ì…ë ¥ë°›ì€ ë¹„ë°€ë²ˆí˜¸ ë‹¤ë¦„, ì¸ì¦ì‹¤íŒ¨
 
 				}
 			} else {
-
-				x = 0; // ÇØ´ç ¾ÆÀÌµğ°¡ ¾øÀ» °æ¿ì
+				x = 0; // í•´ë‹¹ ì•„ì´ë””ê°€ ì—†ì„ ê²½ìš°
 			}
 
 			return x;
@@ -190,7 +197,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next() || id.equals("")) {
-				result = 0; //ÀÌ¹Ì ÀÖ´Â ¾ÆÀÌµğ
+				result = 0; //ì´ë¯¸ ìˆëŠ” ì•„ì´ë””
 			} else {
 				result = 1;
 			}
@@ -232,7 +239,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 
 			if (rs.next() || email.equals("")) {
-				result = 0; //ÀÌ¹Ì ÀÖ´Â ÀÌ¸ŞÀÏ
+				result = 0; //ì´ë¯¸ ìˆëŠ” ì´ë©”ì¼
 			} else {
 				result = 1;
 			}
@@ -260,6 +267,71 @@ public class MemberDAO {
 		return result;
 	}
 	
+
+	public List getMemberList(){
+	      System.out.println("getMemberList() ï¿½ë–†ï¿½ì˜‰");
+	      String member_list_sql="select * from member where usernum=1 or usernum=2";
+	      
+	      List list = new ArrayList();
+	      
+	      try{
+	         System.out.println("ï¿½ë¿¬æ¹²ê³•ë’—åª›ï¿½?");
+	         con = ds.getConnection();
+	         pstmt = con.prepareStatement(member_list_sql);
+	         rs = pstmt.executeQuery();
+	         
+	         while(rs.next()){
+	            System.out.println("ï¿½ë–†ï¿½ì˜‰ï¿½ï¿½ï¿½ë¸¿?");
+	            MemberVO member = new MemberVO();
+	            member.setName(rs.getString("name"));
+	            member.setId(rs.getString("id"));
+	            member.setEmail(rs.getString("email"));
+	            member.setPhone(rs.getString("phone"));
+	            member.setCname(rs.getString("cname"));
+	            member.setUsernum(rs.getInt("usernum"));
+	            list.add(member);
+	            System.out.println("ç”±ÑŠë’ªï¿½ë“ƒ");
+	            System.out.println(list);
+	         }
+	         
+	         return list;
+	      }catch(Exception ex){
+	         System.out.println("getMemberList ï¿½ë¿‰ï¿½ìœ­ : " + ex);
+	      }finally{
+	         if(rs!=null) try{rs.close();}catch(SQLException ex){}
+	         if(pstmt!=null) try{pstmt.close();}catch(SQLException ex){}
+	         if(con!=null) try{con.close();}catch(SQLException ex){}
+	      }
+	      return null;
+	   }
+
+	public boolean memberDelete(String id) {
+		String member_delete_sql="delete from member where id=?";
+		
+		String result = "";
+		System.out.println("3333");
+		try{
+			con = ds.getConnection();
+			pstmt=con.prepareStatement(member_delete_sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			if(result != id)return true;
+			System.out.println("4444");
+			return false;
+		}catch(Exception ex){
+			System.out.println("boardDelete ï¿½ë¿‰ï¿½ìœ­ : "+ex);
+		}	finally{
+			try{
+				if(pstmt!=null)pstmt.close();
+				if(con!=null) con.close();
+				}
+				catch(Exception ex){}
+			
+		}
+		
+		return false;
+	}
+
 	public int pwdCheck(String id, String pwd) {
 		int result = 0;
 		String dbPwd = "";
@@ -475,3 +547,4 @@ public class MemberDAO {
 	}
 
 }
+

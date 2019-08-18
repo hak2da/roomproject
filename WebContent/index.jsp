@@ -11,9 +11,6 @@
    <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
    <meta name="author" content="gettemplates.co" />
 
-
-
-   
    <!-- Animate.css -->
    <link rel="stylesheet" href="css/animate.css">
    <!-- Icomoon Icon Fonts-->
@@ -29,7 +26,13 @@
    <!--[if lt IE 9]>
    <script src="js/respond.min.js"></script>
    <![endif]-->
-
+	
+   <script>
+  	if (IsUserLoggedIn()) {
+      alert("로그인하세요.");
+      window.location = "/login.html";
+  	}
+   </script>
    </head>
    <body>
       
@@ -124,7 +127,7 @@
    <script src="js/bootstrap.min.js"></script>
    <!-- Waypoints -->
    <script src="js/jquery.waypoints.min.js"></script>
-   <!-- Main -->
+   <!-- Main -->	
    <script src="js/main.js"></script>
    </body>
 </html>

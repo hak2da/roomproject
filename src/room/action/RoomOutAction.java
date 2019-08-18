@@ -1,4 +1,4 @@
-package room.action;
+﻿package room.action;
 
 import java.util.Date;
 
@@ -21,7 +21,9 @@ public class RoomOutAction implements Action{
 		RoomDAO dao = new RoomDAO();
 		RoomVO vo = new RoomVO();
 		ActionForward forward=new ActionForward();
-		String realFolder="";
+
+		String realFolder="D:\\jee-2019-03\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
+
    		String saveFolder="/image";
 		
 		boolean result=false;
@@ -110,5 +112,4 @@ public class RoomOutAction implements Action{
 		}
 		return null;
 	}
-
 }

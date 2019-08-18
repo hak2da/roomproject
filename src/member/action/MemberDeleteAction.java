@@ -1,4 +1,3 @@
-﻿
 public class MemberDeleteAction implements Action {
 
 	@Override
@@ -17,4 +16,4 @@ public class MemberDeleteAction implements Action {
 	}
 
 
-}
+]

@@ -136,9 +136,8 @@
 								<button class="btn btn-lg btn-primary btn-block text-uppercase"
 									type="submit">로그인</button>
 
-
+								<button class="btn btn-lg btn-primary btn-block text-uppercase"
 									type="button" onclick="location.href='search.to'">아이디/비밀번호 찾기</button>
-
 
 								<button class="btn btn-lg btn-primary btn-block text-uppercase"
 									type="button" onclick="location.href='register.jsp'">회원가입</button>
@@ -230,7 +229,7 @@
 					</p>
 					<p>
 					<ul class="fh5co-social-icons">
-						<li><a href="#"><i class="icon-twitter"></i></a></li>
+						<li><a href="#"><i class="icon-t\witter"></i></a></li>
 						<li><a href="#"><i class="icon-facebook"></i></a></li>
 						<li><a href="#"><i class="icon-linkedin"></i></a></li>
 						<li><a href="#"><i class="icon-dribbble"></i></a></li>

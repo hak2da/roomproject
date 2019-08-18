@@ -5,41 +5,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>King &mdash; Free Website Template, Free HTML5 Template
-   by gettemplates.co</title>
+<title>방 내놓기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description"
-   content="Free HTML5 Website Template by gettemplates.co" />
-<meta name="keywords"
-   content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-<meta name="author" content="gettemplates.co" />
-
-<!-- 
-   //////////////////////////////////////////////////////
-
-   FREE HTML5 TEMPLATE 
-   DESIGNED & DEVELOPED by FreeHTML5.co
-      
-   Website:       http://freehtml5.co/
-   Email:          info@freehtml5.co
-   Twitter:       http://twitter.com/fh5co
-   Facebook:       https://www.facebook.com/fh5co
-
-   //////////////////////////////////////////////////////
-    -->
-
-<!-- Facebook and Twitter integration -->
-<meta property="og:title" content="" />
-<meta property="og:image" content="" />
-<meta property="og:url" content="" />
-<meta property="og:site_name" content="" />
-<meta property="og:description" content="" />
-<meta name="twitter:title" content="" />
-<meta name="twitter:image" content="" />
-<meta name="twitter:url" content="" />
-<meta name="twitter:card" content="" />
-
-<!-- <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'> -->
 
 <!-- Animate.css -->
 <link rel="stylesheet" href="css/animate.css">
@@ -57,18 +24,18 @@
 <!--[if lt IE 9]>
    <script src="js/respond.min.js"></script>
    <![endif]-->
-<!-- 구글 맵 api (사용안함) -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPiMMsJJAPPXRXq7jFuXCfn_WXbGdsIgw&libraries=places&callback=initMap"
-    async defer></script>
+
 <!-- 우편번호 및 주소 받아오기 -->
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<!-- 입주 가능 입력 캘린더 (아직 미사용) -->
+
 <link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.min.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="./jquery-ui-1.12.1/jquery-ui.min.js"></script>
 <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
 
 <script type="text/javascript">
+// 로그인 여부
+
  //MPAY 없음 선택
 function checkDisable(form)
 {
@@ -150,13 +117,15 @@ function sample4_execDaumPostcode() {
 
             var guideTextBox = document.getElementById("guide");
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-            if(data.autoRoadAddress) {
+             if(data.autoRoadAddress) {
                 var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                document.getElementById("sample4_roadAddress").value = extraRoadAddr;
                 guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
                 guideTextBox.style.display = 'block';
 
             } else if(data.autoJibunAddress) {
                 var expJibunAddr = data.autoJibunAddress;
+            	document.getElementById("sample4_jibunAddress").value = expJibunAddr;
                 guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
                 guideTextBox.style.display = 'block';
             } else {
@@ -167,24 +136,6 @@ function sample4_execDaumPostcode() {
     }).open();
 }
 
-//달력
-$(function(){
-   $("#date1").datepicker();
-   
-   $("#date2").datepicker({
-      showOn: "button",
-        buttonImage: "images/calendar.gif",
-       buttonImageOnly: false,
-      buttonText: "Select date"
-   });
-   
-   $("#date3").datepicker({
-      onSelect:function(dateText, inst) {
-         console.log(dateText);
-         console.log(inst);
-      }
-   });
-});
 //이미지
 
    function preview(id, input, target) {
@@ -260,13 +211,6 @@ $(function(){
 
 </head>
 <body>
-<!-- 달력 테스트 사용 코드 -->
-<!-- <input type="text" name="date" id="date1" size="12" />
-<br/>
-<input type="text" name="date" id="date2" size="12" />
-<br/>
-<input type="text" name="date" id="date3" size="12" />
-<input type="button" value="달력" onclick="$('#date3').datepicker('show');" /> -->
 
     <div class="fh5co-loader"></div>
    
@@ -288,7 +232,7 @@ $(function(){
 							</ul>
 						</li>
 						<li class="has-dropdown">
-							<a href="">방 내놓기dd</a>
+							<a href="">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
 								<li><a href="out.jsp">내 방 내놓기</a></li>
@@ -338,6 +282,7 @@ $(function(){
       <form action="RoomOutAction.do" method="post" name="boardform" enctype="multipart/form-data">
          <div class="wrap-950 add-container">
             <div class="content left-content">
+
 
                <h4>사진 등록</h4>
                <div class="add-photo">
