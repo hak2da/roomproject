@@ -41,7 +41,6 @@ public class RoomOutFrontController
 				e.printStackTrace();
 			}
 		}
-		
 			if(forward != null){
 				if(forward.isRedirect()){
 					response.sendRedirect(forward.getPath());

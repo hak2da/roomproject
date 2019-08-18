@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import map.bit.kakaomap.kakaoDAO;
+import map.bit.kakaomap.kakaoVO;
 import room.action.ActionForward;
 import room.model.RoomDAO;
 import room.model.RoomVO;
-
 
 public class RoomOutAction implements Action{
 
@@ -21,9 +22,7 @@ public class RoomOutAction implements Action{
 		RoomDAO dao = new RoomDAO();
 		RoomVO vo = new RoomVO();
 		ActionForward forward=new ActionForward();
-
-		String realFolder="D:\\jee-2019-03\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\roomProject\\image";
-
+		String realFolder="";
    		String saveFolder="/image";
 		
 		boolean result=false;
@@ -97,12 +96,53 @@ public class RoomOutAction implements Action{
 		
 			result = dao.roomadd(vo);
 			
+			
+			//영학수정파트
+			
+			String addr1=multi.getParameter("NADDRESS");
+			String addr2=multi.getParameter("RADDRESS");
+			
+			String addr="";
+			if(!addr1.equals("")) {
+				addr=addr1;
+			}else {
+				addr=addr2;
+			}
+			
+			System.out.println("addr1 = "+addr1+"\naddr2 = "+addr2+"\naddr = "+addr);
+					
+			
+			//System.out.println("multi.getParameter(\"lat\")="+String.valueOf(multi.getParameter("lat")));
+			String lat=String.valueOf(multi.getParameter("lat"));
+			String lng=String.valueOf(multi.getParameter("lng"));
+			int result2=0;
+			int count2 = kakaoDAO.getInstance().getRecordCount(addr); //클릭된 마커클러스터에 저장된 정보가있는지 반환한다.
+			System.out.println("count is "+count2);
+			
+			
+			if(count2>0) { //만약에 oneroomplanet 테이블에 저장된값이없다면 값을 추가한다.
+				System.out.println("해당주소가 잇으므로 데이터 처리를 안합니다.");
+			}else {
+				System.out.println("insert go");
+				System.out.println("lat ="+lat+"\nlng"+lng+"\nnaddress"+addr);
+				kakaoVO vo2 = new kakaoVO(lat, lng, addr, "123");
+				
+					//만약에 oneroomplanet 테이블에 저장된 데이터가 있다면 oneroomplanetreply데이터에 추가한다. 
+				//public kakaoVO(String lat, String lng, String addr, String content) {
+				result2 = kakaoDAO.getInstance().insert(vo2);
+			}
+			
+			
 			if(result==false){
 	   			System.out.println("등록 실패");
 	   			return null;
+	   		}else if(result2==0) {
+	   			System.out.println("영학이 넣은 데이터 실패");
 	   		}
 	   		System.out.println("등록 완료");
 	   		
+	   		
+			//영학수정파트
 		forward.setRedirect(true);
    		forward.setPath("./RoomOut.do");
    		return forward;
