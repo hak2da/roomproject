@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <html style="overflow-y: hidden !important">
@@ -255,7 +255,6 @@ function sample4_execDaumPostcode() {
    
    <div id="page">
   <nav class="fh5co-nav" role="navigation">
-
       <div class="container">
          <div class="row">
             <div class="col-xs-2">
@@ -278,7 +277,7 @@ function sample4_execDaumPostcode() {
                         <li><a href="out.jsp">내 방 내놓기</a></li>
                      </ul>
                   </li>
-
+                  
                <c:if test="${sessionScope.sessionID==null}">
                   <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
                

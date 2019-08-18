@@ -237,7 +237,7 @@
     	  //alert("오긴오냐");
     	  var addrtodb = decodeaddr; //주소
     	  var replycont = document.replypart.replyname.value; //리플
-    	  var id ="123"; //저장을 할 id
+    	  var id = "${sessionScope.sessionID}"; //저장을 할 id
     	  //alert("lng = "+lng+"\nlat"+lat);
     	  if(replycont!=''&& addrtodb!=''&&addrtodb!=null&&replycont!=null){
     		$.ajax(

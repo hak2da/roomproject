@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -22,6 +23,8 @@ public class RoomOutAction implements Action{
 		RoomDAO dao = new RoomDAO();
 		RoomVO vo = new RoomVO();
 		ActionForward forward=new ActionForward();
+		HttpSession session = request.getSession();
+		
 		String realFolder="";
    		String saveFolder="/image";
 		
@@ -30,8 +33,8 @@ public class RoomOutAction implements Action{
 		int fileSize=5*1024*1024;
    		
    		realFolder=request.getRealPath(saveFolder);
-		
-		try{
+   		
+   		try{
 			
 			MultipartRequest multi=null;
    			
@@ -74,6 +77,7 @@ public class RoomOutAction implements Action{
 			} else {
 				RADDRESS = multi.getParameter("RADDRESS") + " " + multi.getParameter("ADDRESS2") + multi.getParameter("ADDRESS3");
 			}
+			vo.setROOMID((String)session.getAttribute("sessionID"));
 			vo.setNADDRESS(NADDRESS);
 			vo.setRADDRESS(RADDRESS);
 			vo.setIMAGE1(multi.getFilesystemName("FILE1"));

@@ -32,31 +32,32 @@ public class RoomDAO {
 		int result=0;
 		
 		try {
-		sql = "INSERT INTO ROOMINFO (NADDRESS,RADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES "
-				+ "					(       ?,       ?,     ?,     ?,     ?,     ?,     ?,      ?,   ?,       ?,   ?,    ?,    ?,      ?,   ?,    ?,    ?,    ?,      ?)";
+		sql = "INSERT INTO ROOMINFO (ID,NADDRESS,RADDRESS,IMAGE1,IMAGE2,IMAGE3,IMAGE4,IMAGE5,DEPOSIT,RENT,ROOMTYPE,MPAY,MPAY2,RSIZE,PARKING,ELVE,FLOOR,RDATE,TITLE,CONTENT) VALUES "
+				+ "					( ?,       ?,       ?,     ?,     ?,     ?,     ?,     ?,      ?,   ?,       ?,   ?,    ?,    ?,      ?,   ?,    ?,    ?,    ?,      ?)";
 			
 		con = ds.getConnection();
 		pstmt = con.prepareStatement(sql);
 		
-		pstmt.setString(1, room.getNADDRESS());
-		pstmt.setString(2, room.getRADDRESS());
-		pstmt.setString(3, room.getIMAGE1());
-		pstmt.setString(4, room.getIMAGE2());
-		pstmt.setString(5, room.getIMAGE3());
-		pstmt.setString(6, room.getIMAGE4());
-		pstmt.setString(7, room.getIMAGE5());
-		pstmt.setInt(8, room.getDEPOSIT());
-		pstmt.setInt(9, room.getRENT()); //
-		pstmt.setString(10, room.getROOMTYPE());
-		pstmt.setString(11, room.getMPAY());
-		pstmt.setString(12, room.getMPAY2());
-		pstmt.setInt(13, room.getRSIZE());
-		pstmt.setString(14, room.getPARKING());
-		pstmt.setString(15, room.getELVE());
-		pstmt.setString(16, room.getFLOOR());
-		pstmt.setString(17, room.getRDATE());
-		pstmt.setString(18, room.getTITLE());
-		pstmt.setString(19, room.getCONTENT());
+		pstmt.setString(1, room.getROOMID());
+		pstmt.setString(2, room.getNADDRESS());
+		pstmt.setString(3, room.getRADDRESS());
+		pstmt.setString(4, room.getIMAGE1());
+		pstmt.setString(5, room.getIMAGE2());
+		pstmt.setString(6, room.getIMAGE3());
+		pstmt.setString(7, room.getIMAGE4());
+		pstmt.setString(8, room.getIMAGE5());
+		pstmt.setInt(9, room.getDEPOSIT());
+		pstmt.setInt(10, room.getRENT()); //
+		pstmt.setString(11, room.getROOMTYPE());
+		pstmt.setString(12, room.getMPAY());
+		pstmt.setString(13, room.getMPAY2());
+		pstmt.setInt(14, room.getRSIZE());
+		pstmt.setString(15, room.getPARKING());
+		pstmt.setString(16, room.getELVE());
+		pstmt.setString(17, room.getFLOOR());
+		pstmt.setString(18, room.getRDATE());
+		pstmt.setString(19, room.getTITLE());
+		pstmt.setString(20, room.getCONTENT());
 		
 		result=pstmt.executeUpdate();
 		if(result==0)return false;
