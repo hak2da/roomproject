@@ -61,7 +61,46 @@
 	white-space: nowrap;
 }
 </style>
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 
+<body>
+<header>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="../index.jsp" class="navbar-brand">OneRoom Planet</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a href="../index.jsp" class="nav-item nav-link active">Home</a>
+            
+            <a href="../out.do" class="nav-item nav-link">내 방 내놓기</a>
+            
+        </div>
+        <div class="navbar-nav ml-auto">
+        	<c:if test="${sessionScope.sessionID==null}">
+                    <li class="nav-item nav-link"><a href="login.to"><span>로그인</span></a></li>
+                         
+               </c:if>
+                    
+                    <c:if test="${sessionScope.sessionID!=null}">
+                         
+                  <li class="btn-cta"><span style="font-size: 30px">${sessionScope.sessionID }님</span></li> 
+                  <li class="btn-cta"><a href="logout.to"><span>로그아웃</span></a></li>
+               
+                    </c:if>
+        </div>
+    </div>
+</nav>
+</header>
 <div class="map_wrap">
 	<div id="map"
 		style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
@@ -69,8 +108,7 @@
 		<span class="title">지도중심기준 행정동 주소정보</span> <span id="centerAddr"></span>
 	</div>
 </div>
-</head>
-<body>
+
 	<p style="margin-top: -12px"></p>
 	<div name="good"
 		style="overflow: scroll; width: 30%; height: 850px; float: right; overflow: scroll; background-color: gold;">
