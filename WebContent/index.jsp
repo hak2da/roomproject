@@ -30,7 +30,7 @@
    <script>
   	if (IsUserLoggedIn()) {
       alert("로그인하세요.");
-      window.location = "/login.html";
+      window.location = "/login.jsp";
   	}
    </script>
    </head>
@@ -48,9 +48,10 @@
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
 						<li class="active"><a href="index.jsp">Home</a></li>
+						
 						<li class="has-dropdown">
 							<a href="">원룸</a>
-							<ul class="dropdown">
+							<ul class="dropdown" id="myTest">
 								<li><a href="jsp_yeonghak/map_finalV1.04.jsp">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
 							</ul>
