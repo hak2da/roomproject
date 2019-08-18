@@ -40,6 +40,10 @@ public class RoomOutFrontController
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		} else if (command.equals("/RoomOut.do")) {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("index.jsp");
 		}
 			if(forward != null){
 				if(forward.isRedirect()){

@@ -26,7 +26,7 @@ public class kakaoDAO {
 		// 연결은 JNDI * Pool 형태로 연결 객체 생성해서 리턴할것
 		Context initCtx = new InitialContext();
 
-		DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc:kakaoDB");
+		DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc:OracleDB");
 
 		return ds.getConnection();
 	}// getConnection() end

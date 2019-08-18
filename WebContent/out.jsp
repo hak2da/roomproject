@@ -207,6 +207,11 @@ function sample4_execDaumPostcode() {
       document.getElementById('btn-upload5').style.visibility = 'visible';
       document.getElementById('select-del5').style.visibility = 'hidden';
    }
+   
+   function check() {
+	    alert("등록 완료");
+	    return true;
+	}
 </script>
 
 </head>
@@ -279,7 +284,7 @@ function sample4_execDaumPostcode() {
       </div>
    </header>
 
-      <form action="RoomOutAction.do" method="post" name="boardform" enctype="multipart/form-data">
+      <form action="RoomOutAction.do" method="post" name="boardform" enctype="multipart/form-data" onsubmit="return check()">
          <div class="wrap-950 add-container">
             <div class="content left-content">
 
