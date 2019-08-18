@@ -33,7 +33,6 @@
       location.href="/login.jsp";
   	}
   	
-
    </script>
    </head>
    <body>
@@ -55,7 +54,7 @@
 							<a href="">원룸</a>
 							<ul class="dropdown">
 								<li><a href="jsp_yeonghak/map_finalV1.04.jsp" >원룸 검색</a></li>
-								<li><a onclick="check()">상세 검색</a></li>
+								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
 						
