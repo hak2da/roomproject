@@ -7,8 +7,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>King &mdash; Free Website Template, Free HTML5 Template
-	by gettemplates.co</title>
+<title>OneRoom Planet</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
 	content="Free HTML5 Website Template by gettemplates.co" />

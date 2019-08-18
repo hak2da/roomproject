@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>King &mdash; OneRoom Planet</title>
+<title>OneRoom Planet</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keywords"
 	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -42,7 +42,6 @@
       
    <div class="fh5co-loader"></div>
    
-   <div id="page">
   <nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
@@ -57,7 +56,7 @@
 							<a href="">원룸</a>
 							<ul class="dropdown">
 								<li><a href="jsp_yeonghak/map_finalV1.04.jsp" >원룸 검색</a></li>
-								<li><a onclick="check()">상세 검색</a></li>
+								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
 						
