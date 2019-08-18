@@ -227,7 +227,7 @@ function sample4_execDaumPostcode() {
 						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">
-								<li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
+								<li><a href="jsp_yeonghak/map_finalV1.04.jsp">원룸 검색</a></li>
 								<li><a href="#">상세 검색</a></li>
 							</ul>
 						</li>
