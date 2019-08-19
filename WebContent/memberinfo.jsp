@@ -6,8 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>King &mdash; Free Website Template, Free HTML5 Template
-	by gettemplates.co</title>
+<title>OneRoom Planet</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description"
 	content="Free HTML5 Website Template by gettemplates.co" />
@@ -49,7 +48,7 @@
                   <li class="active"><a href="index.html">Home</a></li>
                   <li class="has-dropdown"><a href="">원룸</a>
                      <ul class="dropdown">
-                        <li><a href="#">원룸 검색</a></li>
+                        <li><a href="jsp_yeonghak/map_finalV1.04.jsp">원룸 검색</a></li>
                         <li><a href="#">상세 검색</a></li>
                      </ul></li>
                   <li class="has-dropdown"><a href="#">방 내놓기</a>

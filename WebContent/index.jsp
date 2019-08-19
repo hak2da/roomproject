@@ -1,31 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" 
-   pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE HTML>
 <html>
-   <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>King &mdash; OneRoom Planet</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-   <meta name="author" content="gettemplates.co" />
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>OneRoom Planet</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords"
+	content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+<meta name="author" content="gettemplates.co" />
 
-   <!-- Animate.css -->
-   <link rel="stylesheet" href="css/animate.css">
-   <!-- Icomoon Icon Fonts-->
-   <link rel="stylesheet" href="css/icomoon.css">
-   <!-- Bootstrap  -->
-   <link rel="stylesheet" href="css/bootstrap.css">
-   <!-- Theme style  -->
-   <link rel="stylesheet" href="css/style.css">
+<!-- Animate.css -->
+<link rel="stylesheet" href="css/animate.css">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="css/icomoon.css">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="css/bootstrap.css">
+<!-- Theme style  -->
+<link rel="stylesheet" href="css/style.css">
 
-   <!-- Modernizr JS -->
-   <script src="js/modernizr-2.6.2.min.js"></script>
-   <!-- FOR IE9 below -->
-   <!--[if lt IE 9]>
+<!-- Modernizr JS -->
+<script src="js/modernizr-2.6.2.min.js"></script>
+<!-- FOR IE9 below -->
+<!--[if lt IE 9]>
    <script src="js/respond.min.js"></script>
    <![endif]-->
+
 	
    <script>
   	if (IsUserLoggedIn()) {
@@ -39,7 +41,6 @@
       
    <div class="fh5co-loader"></div>
    
-   <div id="page">
   <nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
@@ -124,3 +125,4 @@
    <script src="js/main.js"></script>
    </body>
 </html>
+
