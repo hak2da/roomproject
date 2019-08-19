@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.action.Action;
 import member.action.ActionForward;
+import member.action.AdminDeleteAction;
 import member.action.DeleteEmailAction;
 import member.action.EmailAction;
 import member.action.JoinAction;
@@ -173,7 +174,7 @@ public class MemberController extends javax.servlet.http.HttpServlet implements 
             e.printStackTrace();
          } 
       } else if (command.equals("/Delete.to")) {
-          action = new MemberDeleteAction();
+          action = new AdminDeleteAction();
           System.out.println("1111");
           try {
              forward = action.execute(request, response);

@@ -82,7 +82,7 @@
 						<li class="has-dropdown"><a href="#">방 내놓기</a>
 							<ul class="dropdown">
 								<li><a href="#">매물 보기</a></li>
-								<li><a href="out.jsp">내 방 내놓기</a></li>
+								<li><a href="out.do">내 방 내놓기</a></li>
 
 							</ul></li>
 						<li class="btn-cta"><a href="login.jsp"><span>로그인</span></a></li>

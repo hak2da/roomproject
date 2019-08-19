@@ -259,15 +259,28 @@ function sample4_execDaumPostcode() {
       <div class="container">
          <div class="row">
             <div class="col-xs-2">
+            <c:if test="${sessionScope.sessionID=='admin'}">
+               <div id="fh5co-logo"><a href="admin.jsp">2조</a></div>
+            </c:if>
+            <c:if test="${sessionScope.sessionID!='admin'}">
                <div id="fh5co-logo"><a href="index.jsp">2조</a></div>
+            </c:if>
             </div>
             <div class="col-xs-10 text-right menu-1">
                <ul>
-                  <li class="active"><a href="index.jsp">Home</a></li>
+               		
+               	  <c:if test="${sessionScope.sessionID=='admin'}">
+               		<li class="active"><a href="admin.jsp">Home</a></li>
+            	  </c:if>
+            	  <c:if test="${sessionScope.sessionID!='admin'}">
+               		<li class="active"><a href="index.jsp">Home</a></li>
+            	  </c:if>
+              
+            
                   <li class="has-dropdown">
                      <a href="">원룸</a>
                      <ul class="dropdown">
-                        <li><a href="kakaomap_test/kakaomap_v1.09_reply11.jsp">원룸 검색</a></li>
+						<li><a href="jsp_yeonghak/map_finalV1.04.jsp" >원룸 검색</a></li>
                         <li><a href="#">상세 검색</a></li>
                      </ul>
                   </li>
@@ -275,7 +288,7 @@ function sample4_execDaumPostcode() {
                      <a href="">방 내놓기</a>
                      <ul class="dropdown">
                         <li><a href="#">매물 보기</a></li>
-                        <li><a href="out.jsp">내 방 내놓기</a></li>
+                        <li><a href="out.do">내 방 내놓기</a></li>
                      </ul>
                   </li>
 
