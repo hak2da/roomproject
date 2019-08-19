@@ -73,14 +73,25 @@
 <header>
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a href="../index.jsp" class="navbar-brand">OneRoom Planet</a>
+	<c:if test="${sessionScope.sessionID=='admin'}">
+ 		<a href="../admin.jsp" class="navbar-brand">OneRoom Planet</a>    
+ 	</c:if>
+    <c:if test="${sessionScope.sessionID!='admin'}">
+        <a href="../index.jsp" class="navbar-brand">OneRoom Planet</a>
+    </c:if>
     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav">
-            <a href="../index.jsp" class="nav-item nav-link active">Home</a>
+        
+        	<c:if test="${sessionScope.sessionID=='admin'}">
+               	<a href="../admin.jsp" class="nav-item nav-link active">Home</a>
+            </c:if>
+            <c:if test="${sessionScope.sessionID!='admin'}">
+               	<a href="../index.jsp" class="nav-item nav-link active">Home</a>
+           	</c:if>
             
             <a href="../out.do" class="nav-item nav-link">내 방 내놓기</a>
             
@@ -94,7 +105,7 @@
                     <c:if test="${sessionScope.sessionID!=null}">
                          
                   <li class="btn-cta"><span style="font-size: 30px">${sessionScope.sessionID }님</span></li> 
-                  <li class="btn-cta"><a href="logout.to"><span>로그아웃</span></a></li>
+                  <li class="btn-cta"><a href="../logout.to"><span>로그아웃</span></a></li>
                
                     </c:if>
         </div>

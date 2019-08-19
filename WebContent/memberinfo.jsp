@@ -40,12 +40,12 @@
          <div class="row">
             <div class="col-xs-2">
                <div id="fh5co-logo">
-                  <a href="index.html">2조</a>
+                  <a href="index.jsp">2조</a>
                </div>
             </div>
             <div class="col-xs-10 text-right menu-1">
                <ul>
-                  <li class="active"><a href="index.html">Home</a></li>
+                  <li class="active"><a href="admin.jsp">Home</a></li>
                   <li class="has-dropdown"><a href="">원룸</a>
                      <ul class="dropdown">
                         <li><a href="jsp_yeonghak/map_finalV1.04.jsp">원룸 검색</a></li>
@@ -54,11 +54,11 @@
                   <li class="has-dropdown"><a href="#">방 내놓기</a>
                      <ul class="dropdown">
                         <li><a href="#">매물 보기</a></li>
-                        <li><a href="out.html">내 방 내놓기</a></li>
+                        <li><a href="out.do">내 방 내놓기</a></li>
 
                      </ul></li>
-                  <li class="btn-cta"><a href="login.jsp"><span>Login</span></a></li>
-                  <li class="btn-cta"><a href="register.html"><span>register</span></a></li>
+                  <li class="btn-cta"><a href="login.to"><span>Login</span></a></li>
+                  <li class="btn-cta"><a href="register.to"><span>register</span></a></li>
                </ul>
 
 

@@ -428,7 +428,7 @@ public class MemberDAO {
 	public void delete(String id) {
 		try {
 			String sql = "delete FROM MEMBER WHERE ID=?";
-
+			System.out.println(id);
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);

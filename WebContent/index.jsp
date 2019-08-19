@@ -35,7 +35,6 @@
       location.href="/login.jsp";
   	}
   	
-
    </script>
    </head>
    <body>

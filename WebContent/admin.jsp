@@ -43,6 +43,8 @@
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
 						<li class="active"><a href="index.jsp">Home</a></li>
+						<li class="active"><a href="memberlist.to">관리자메뉴</a></li>
+						
 						<li class="has-dropdown">
 							<a href="">원룸</a>
 							<ul class="dropdown">

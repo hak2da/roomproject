@@ -29,10 +29,16 @@ public class RoomOutFrontController
 		System.out.println("실행");
 		
 		if(command.equals("/out.do")){
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			System.out.println("들어옴");
-			forward.setPath("out.jsp");
+			if(request.getSession(false) != null) {
+	            forward = new ActionForward();
+	            forward.setRedirect(false);
+	            System.out.println("들어옴");
+	            forward.setPath("out.jsp");
+	         } else {
+	            forward = new ActionForward();
+	            forward.setRedirect(false);
+	            forward.setPath("login.jsp");
+	         }
 		} else if (command.equals("/RoomOutAction.do")) {
 			action  = new RoomOutAction();
 			try {
