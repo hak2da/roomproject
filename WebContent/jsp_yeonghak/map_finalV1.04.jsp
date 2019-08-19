@@ -87,7 +87,7 @@
         </div>
         <div class="navbar-nav ml-auto">
         	<c:if test="${sessionScope.sessionID==null}">
-                    <li class="nav-item nav-link"><a href="login.to"><span>로그인</span></a></li>
+                    <li class="nav-item nav-link"><a href="../login.to"><span>로그인</span></a></li>
                          
                </c:if>
                     
