@@ -24,7 +24,8 @@ public class PwdEmailAction implements Action {
 		
 		String pwd = dao.pwdSearch(request.getParameter("name"), request.getParameter("id"), request.getParameter("email"), request.getParameter("phone"));
 		
-		String from = "jinsan654321@gmail.com";
+//		String from = "jinsan654321@gmail.com";
+		String from = "hak2dag@gmail.com";
 		String to = request.getParameter("email");
 		String subject = request.getParameter("id") + "님의 비밀번호 입니다.";
 		String content = "비밀번호 : " + pwd;

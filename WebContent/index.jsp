@@ -30,6 +30,7 @@
 
 	
    <script>
+   
   	if (IsUserLoggedIn()) {
       alert("로그인하세요.");
       location.href="/login.jsp";

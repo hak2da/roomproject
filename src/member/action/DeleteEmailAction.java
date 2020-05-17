@@ -29,7 +29,8 @@ public class DeleteEmailAction implements Action {
 		}
 		
 		String randomNum = request.getParameter("randomNum");
-		String from = "jinsan654321@gmail.com";
+//		String from = "jinsan654321@gmail.com";
+		String from = "hak2dag@gmail.com";
 		String to = request.getParameter("email");
 		String subject = "회원가입을 위한 이메일 확인 메일입니다.";
 		String content = "인증번호 : " + randomNum;

@@ -1,0 +1,62 @@
+-- ROOM."MEMBER" definition
+
+show databases;
+
+use room;
+
+CREATE TABLE MEMBER 
+   (	NAME VARCHAR(30) NOT NULL , 
+	ID VARCHAR(30), 
+	PWD VARCHAR(30), 
+	EMAIL VARCHAR(30), 
+	PHONE VARCHAR(50), 
+	CNAME VARCHAR(30), 
+	USERNUM int, 
+	 PRIMARY KEY (ID)
+  ) default character set utf8 collate utf8_general_ci;
+  
+
+-- ROOM.ONEROOMPLANETREPLY definition
+
+create table ONEROOMPLANETREPLY ( REPLY varchar(500),
+ADDR varchar(200),
+ID varchar(100),
+SUTJA int ) default character set
+utf8 collate utf8_general_ci;
+
+-- ROOM.ONEROOMPLANETTWO definition
+
+CREATE TABLE ONEROOMPLANETTWO 
+   (	LAT FLOAT, 
+	LNG FLOAT, 
+	ADDR varchar(200), 
+	CONTENT varchar(1000), 
+	 PRIMARY KEY (ADDR)
+  ) default character set utf8 collate utf8_general_ci; ;
+
+-- ROOM.ROOMINFO definition
+
+CREATE TABLE ROOMINFO 
+   (	ID varchar(30), 
+	NADDRESS varchar(500) NOT NULL , 
+	RADDRESS varchar(500) NOT NULL , 
+	IMAGE1 varchar(200), 
+	IMAGE2 varchar(200), 
+	IMAGE3 varchar(200), 
+	IMAGE4 varchar(200), 
+	IMAGE5 varchar(200), 
+	DEPOSIT int NOT NULL , 
+	RENT int, 
+	ROOMTYPE varchar(100), 
+	MPAY varchar(100) NOT NULL , 
+	MPAY2 varchar(200), 
+	RSIZE int, 
+	PARKING varchar(30), 
+	ELVE varchar(30), 
+	FLOOR varchar(30), 
+	RDATE varchar(30), 
+	TITLE varchar(100), 
+	CONTENT Nvarchar(2000), 
+	 CONSTRAINT ID_FK FOREIGN KEY (ID)
+	  REFERENCES MEMBER (ID) 
+   )  default character set utf8 collate utf8_general_ci;
