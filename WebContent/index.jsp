@@ -21,22 +21,19 @@
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
 
+<!-- Theme style  -->
+<link rel="stylesheet" href="css/bootstrapmin.css">
+
+
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
 <!-- FOR IE9 below -->
 <!--[if lt IE 9]>
    <script src="js/respond.min.js"></script>
-   <![endif]-->
+   <![endif] -->
 
 	
-   <script>
    
-  	if (IsUserLoggedIn()) {
-      alert("로그인하세요.");
-      location.href="/login.jsp";
-  	}
-  	
-   </script>
    </head>
    <body>
       
@@ -67,6 +64,13 @@
 								<li><a href="out.do">내 방 내놓기</a></li>
 							</ul>
 						</li>
+						
+						<li>
+						<a onclick="modalshow()" style="cursor:pointer;">
+							이용안내
+						</a>
+						</li>
+						
                   
                <c:if test="${sessionScope.sessionID==null}">
                     <li class="btn-cta"><a href="login.to"><span>로그인</span></a></li>
@@ -84,9 +88,6 @@
                     </c:if>
                      
                </ul>
-               
-               
-               
             </div>
          </div>
          
@@ -100,7 +101,7 @@
             <div class="col-md-8 col-md-offset-2 text-center">
                <div class="display-t">
                   <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                     <h1>OneRoom Planet</h1>
+                     <h1 onclick="setCookie('notice', '', -1)">OneRoom Planet</h1>
                      <div class="row">
                      </div>
                   </div>
@@ -114,6 +115,33 @@
       <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
    </div>
    
+   <!-- Modal -->
+  <div  class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div style="width:800px;" class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 style="font-weight: bold;text-align:center;" class="modal-title">방문해주셔서 감사합니다!</h3>
+        </div>
+        <div class="modal-body">
+        <p style="font-size:20px;">처음 방문하시는 거면 한번 읽어주세요</p>
+        <ol style="margin:2% 0 0 5%;font-size:15px;">
+        	<li><p>회원가입을 안하신 손님이라면 편의를 위해 ID는 '<font style="color:red;font-weight:bold;">customer1</font>' pwd는 '<font style="color:red;font-weight:bold;">room</font>'으로 로그인 해주세요.</p></li>
+        	<li><p>회원가입,카카오맵을 통한 리뷰작성,주소에 대한 상세정보남기기 기능을 사용하실수 있습니다.</p></li>
+        	<li><p>이 창은 최초 접속시 한번만 뜨며 화면 상단 가운데 <font style="font-weight:bold;">이용 안내</font>를 클릭하면 볼수있습니다.</p></li>
+        </ol>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+   
    <!-- jQuery -->
    <script src="js/jquery.min.js"></script>
    <!-- jQuery Easing -->
@@ -124,6 +152,55 @@
    <script src="js/jquery.waypoints.min.js"></script>
    <!-- Main -->	
    <script src="js/main.js"></script>
+	
+   
    </body>
+
 </html>
+
+<script type="text/javascript">
+   
+	window.onload = test;
+
+	function test(){
+		
+		if(getCookie('notice') != 'forbeginer'){
+			
+			modalshow();
+			setCookie('notice','forbeginer',1);
+			
+		}
+	}
+   
+	//   	쿠키영역 시작
+	
+   function setCookie(cName, cValue, cDay){
+        var expire = new Date();
+        expire.setDate(expire.getDate() + cDay);
+        cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
+        if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
+        document.cookie = cookies;
+    }
+ 
+    // 쿠키 가져오기
+    function getCookie(cName) {
+        cName = cName + '=';
+        var cookieData = document.cookie;
+        var start = cookieData.indexOf(cName);
+        var cValue = '';
+        if(start != -1){
+            start += cName.length;
+            var end = cookieData.indexOf(';', start);
+            if(end == -1)end = cookieData.length;
+            cValue = cookieData.substring(start, end);
+        }
+        return unescape(cValue);
+    }    
+	//   	쿠키영역 끝
+	
+	function modalshow(){
+		 $("#myModal").modal();
+	}
+	
+</script>
 
